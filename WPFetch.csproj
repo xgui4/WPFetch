@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\Utilisateur\.nuget\packages\fluentsysinfo.core\1.0.8860\contentFiles\any\net8.0-windows7.0\Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="os-tan.png" />
   </ItemGroup>
 
