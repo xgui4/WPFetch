@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopWallpaper"
+        xmlns:vm="clr-namespace:WPFetch.ViewModels"
         mc:Ignorable="d"
         Title="WPFetch" Height="460" Width="850">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="11*"/>
@@ -14,8 +18,8 @@
             <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="374*"/>
         </Grid.ColumnDefinitions>
-        <Image Margin="-22,-23,-404,-84" Source="Images/os-tan.png" Stretch="Fill" OpacityMask="Black" Grid.ColumnSpan="5"/>
+        <Image Margin="29,25,492,23" Source="{Binding FetchImage}" Stretch="Fill" OpacityMask="Black" Grid.Column="3" Grid.ColumnSpan="2" />
         <Label Content="" HorizontalAlignment="Left" Margin="318,0,0,0" VerticalAlignment="Center" Width="446" Height="359" Name="Information" FontSize="15" Grid.Column="4"/>
-
     </Grid>
 </Window>
+
