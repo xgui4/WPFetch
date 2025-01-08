@@ -21,7 +21,6 @@ namespace WPFetch.Utils
                 {
                     foreach (ManagementObject managementObject in searcher.Get().Cast<ManagementObject>())
                     {
-                        Console.WriteLine(managementObject.ToString() + "\n");
                         output.Add(managementObject[outputType]?.ToString() ?? "N/A");
                     }
                 }

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:DesktopWallpaper"
         xmlns:vm="clr-namespace:WPFetch.ViewModels"
         mc:Ignorable="d"
-        Title="WPFetch" Height="460" Width="850">
+        Title="WPFetch" Height="460" Width="850"
+        Icon="../Images/appicon.ico">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>

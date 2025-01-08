@@ -6,6 +6,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\appicon.ico</ApplicationIcon>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+	<AssemblyName>WPFetch</AssemblyName>
+	<Company>Xgui4 Studio</Company>
+	<Copyright>Copyright (C) Xgui4 Studio 2024</Copyright>
+	<FileVersion>0.0.0.1</FileVersion>
+	<CreateDesktopShortcut>true</CreateDesktopShortcut>
+	<InformationalVersion>0.0.0.1 Dev</InformationalVersion>
+	<TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+	<DefaultLanguage>English</DefaultLanguage>
+	<Description>A utility to fetch you system info with a OS-tan</Description>
+	<Version>0.0.0.1 </Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +25,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\appicon.ico" />
     <None Remove="Images\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp" />
     <None Remove="Images\my-os-tan-for-windows-11-koemi-madobe-today-is-its-v0-c7qkcaernesb1.webp" />
     <None Remove="Images\what-are-you-doing-user-microsoft-4096x2559-v0-bdllqkutbaud1.webp" />
     <None Remove="os-tan.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\appicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +45,14 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="FluentSysInfo.Core" Version="1.0.8860" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
     <PackageReference Include="System.Management" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\appicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
