@@ -18,11 +18,8 @@
 	<DefaultLanguage>English</DefaultLanguage>
 	<Description>A utility to fetch you system info with a OS-tan</Description>
 	<Version>0.0.0.1 </Version>
+	<LangVersion>preview</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="C:\Users\Utilisateur\.nuget\packages\fluentsysinfo.core\1.0.8860\contentFiles\any\net8.0-windows7.0\Icon.ico" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Images\appicon.ico" />

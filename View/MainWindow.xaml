@@ -20,7 +20,42 @@
             <ColumnDefinition Width="374*"/>
         </Grid.ColumnDefinitions>
         <Image Margin="29,25,492,23" Source="{Binding FetchImage}" Stretch="Fill" OpacityMask="Black" Grid.Column="3" Grid.ColumnSpan="2" />
-        <Label Content="" HorizontalAlignment="Left" Margin="318,0,0,0" VerticalAlignment="Center" Width="446" Height="359" Name="Information" FontSize="15" Grid.Column="4"/>
+        <TextBlock HorizontalAlignment="Left" Margin="318,0,0,0" VerticalAlignment="Center" Width="446" Height="335" Name="Information" FontSize="15" Grid.Column="4">
+            <Run FontWeight="Bold" Text="{Binding OperatingSystemInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding OperatingSystemInformationValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding KernelInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding KernelInformationValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding MachineNameInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MachineNameInformationValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding Is64BitInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding Is64BitInformationValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding StorageInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding StorageInformationValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding CpuThreadsInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuThreadsInformationValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding CpuInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuInformationValue}"/> 
+            <LineBreak/>
+            <ListBox ItemsSource="{Binding Gpus}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock>
+                                <Run Text="{Binding Label}"/>
+                                <Run Text=" : "/>
+                                <Run Text="{Binding Name}"/>
+                            </TextBlock>
+                          </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding MemoryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MemoryInformationValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding NumbersOfTaskRunningLabel}" /> <Run Text=":"/> <Run Text="{Binding NumbersOfTaskRunningValue}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="{Binding BatteryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding BatteryInformationValue}"/>
+        </TextBlock>
+        <Button Grid.Column="4" Content="Refresh" Margin="398,395,0,0" VerticalAlignment="Top" Command="{Binding RefreshCommand}"/>
     </Grid>
 </Window>
 
