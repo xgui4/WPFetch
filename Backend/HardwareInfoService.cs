@@ -82,8 +82,8 @@ namespace WPFetch.Backend
 
         public List<GpuModel> RequestGPU()
         {
-            List<string> gpusString = system.Gpus ?? new List<string>() { "No GPU Found !" };
-            List<GpuModel> gpuModels = new List<GpuModel>();
+            List<string> gpusString = system.Gpus ?? ["No GPU Found !"];
+            List<GpuModel> gpuModels = [];
             GpuModel previousGpu = new SentinelGpuModel();
             GpuModel currentGpu; 
             foreach (string gpu in gpusString)

@@ -172,8 +172,8 @@ namespace WPFetch.ViewModels
         [RelayCommand]
         private void SetAboutButton()
         {
-            About about = new About();
-            about.Show();
+            About about = new(){ShowInTaskbar = false};
+            about.ShowDialog();
         }
 
         private void UpdateModel()
@@ -182,9 +182,9 @@ namespace WPFetch.ViewModels
             KernelInformationValue = hardwareInfoService.RequestKernel();
             MachineNameInformationValue = hardwareInfoService.RequestMachineName(); 
             Is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
-            StorageInformationValue = hardwareInfoService.RequestStorage(); 
+            StorageInformationValue = hardwareInfoService.RequestStorage();
             CpuThreadsInformationValue = hardwareInfoService.RequestCpuThreads();
-            Gpus = new ObservableCollection<GpuModel>(hardwareInfoService.RequestGPU());
+            if (Gpus?.Count == 0 ) Gpus = new ObservableCollection<GpuModel>(hardwareInfoService.RequestGPU());
             CpuInformationValue = hardwareInfoService.RequestCPU(); 
             MemoryInformationValue = hardwareInfoService.RequestRAM();
             NumbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning(); 
