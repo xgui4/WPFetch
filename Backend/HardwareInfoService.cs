@@ -10,16 +10,16 @@ namespace WPFetch.Backend
 {
     public class HardwareInfoService
     {
-        private SystemInformation system; 
+        private SystemInformationModel system; 
         
         public HardwareInfoService()
         {
-            system = new SystemInformation();
+            system = new SystemInformationModel();
         }
 
         public void Update()
         {
-            system.Fetch(); 
+            system.FetchAll(); 
         }
 
         public string RequestOperatingSystem()
