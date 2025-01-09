@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPFetch.View.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFetch.View"
+        xmlns:vm="clr-namespace:WPFetch.ViewModels"
+        mc:Ignorable="d"
+        Title="About" Height="500" Width="500">
+    <Window.DataContext>
+        <vm:AboutViewModel />
+    </Window.DataContext>
+    <StackPanel>
+        <Image Name="AppIcon" Source="../Images/appicon.ico" HorizontalAlignment="Left" Width="100" Height="100"/>
+        <TextBlock Name="AppTitle">
+            <Run FontWeight="Bold" Text="WPFetch Version 0.0.0.1 Developer Preview"/>
+        </TextBlock>
+        <Label Content="A utility to fetch you system info with a OS-tan"/>
+        <Button Name="CheckUpdate" Content="Check Update" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
+        <Button Name="Configure" Content="Configure (Coming Soon)" Background="Red" IsEnabled="False"/>
+    </StackPanel>
+</Window>

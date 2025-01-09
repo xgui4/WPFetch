@@ -1,94 +1,152 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DesktopWallpaper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFetch.Backend;
 using WPFetch.Model;
+using WPFetch.Utils;
+using WPFetch.View;
 
 namespace WPFetch.ViewModels
 {
     public partial class MainWindowViewModel : ObservableObject
     {
+        private static readonly App app = (App)Application.Current;
+
+        private static readonly HardwareInfoService hardwareInfoService = new();
+
+        private static readonly MainImageService mainImageService = new(app);
+
         [ObservableProperty]
-        public string? fetchImage = GetOsTan();
+        private string? fetchImage = GetOsTan();
+
+        [ObservableProperty]
+        private string operatingSystemInformationLabel = "Operating System"; 
         
-        private static App app = (App)Application.Current;
+        [ObservableProperty]
+        private string? operatingSystemInformationValue = hardwareInfoService.RequestOperatingSystem();
+
+        [ObservableProperty]
+        private string kernelInformationLabel = "Kernel";
+
+        [ObservableProperty]
+        private string? kernelInformationValue = hardwareInfoService.RequestKernel();
+
+        [ObservableProperty]
+        private string machineNameInformationLabel = "Machine Name";
+
+        [ObservableProperty]
+        private string? machineNameInformationValue = hardwareInfoService.RequestMachineName();
+
+        [ObservableProperty]
+        private string is64BitInformationLabel = "64 Bit Operating System";
+
+        [ObservableProperty]
+        private string? is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
+
+        [ObservableProperty]
+        private string storageInformationLabel = "Storage";
+
+        [ObservableProperty]
+        private string? storageInformationValue = hardwareInfoService.RequestStorage();
+
+        [ObservableProperty]
+        private string cpuThreadsInformationLabel = "Threads";
+
+        [ObservableProperty]
+        private string? cpuThreadsInformationValue = hardwareInfoService.RequestCpuThreads();
+
+        [ObservableProperty]
+        private string cpuInformationLabel = "Processor";
+
+        [ObservableProperty]
+        private string? cpuInformationValue = hardwareInfoService.RequestCPU();
+
+        [ObservableProperty]
+        private ObservableCollection<GpuModel>? gpus = new(hardwareInfoService.RequestGPU()); 
+
+        [ObservableProperty]
+        private string memoryInformationLabel = "Total Memory (RAM)";
+
+        [ObservableProperty]
+        private string? memoryInformationValue = hardwareInfoService.RequestRAM();
+
+        [ObservableProperty]
+        private string numbersOfTaskRunningLabel = "Numbers of Tasks Running"; 
+
+        [ObservableProperty]
+        private string? numbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning();
+
+        [ObservableProperty]
+        private string batteryInformationLabel = "Battery";
+
+        [ObservableProperty]
+        private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage(); 
 
         private static string GetOsTan()
         {
             if (app.CmdArgs?.Arguments.Count == 0)
             {
-                return GetDefaultOSTanPath(); 
+                return mainImageService.GetDefaultOSTanPath(); 
             }
             else
             {
-                return GetOSTanPathWithCmdArgs();
+                return mainImageService.GetOSTanPathWithCmdArgs();
             }
         }
 
-        private static string GetDefaultOSTanPath()
+        [RelayCommand]
+        private void SetRefreshButton()
         {
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22))
-            {
-                return Os_Tan.WINDOWS_11.GetOsTanPathImgPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
-            {
-                return Os_Tan.WINDOWS_10.GetOsTanPathImgPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
-            {
-                return Os_Tan.WINDOWS_8.GetOsTanPathImgPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
-            {
-                return Os_Tan.WINDOWS_7.GetOsTanPathImgPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
-            {
-                return Os_Tan.WINDOWS_VISTA.GetOsTanPathImgPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
-            {
-                return Os_Tan.WINDOWS_XP.GetOsTanPathImgPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
-            {
-                return Os_Tan.WINDOWS_2000.GetOsTanPathImgPath();
-            }
-            else
-            {
-                return Os_Tan.NT.GetOsTanPathImgPath();
-            }
+            hardwareInfoService.Update();
+            UpdateSystemInformationData();
         }
 
-        private static string GetOSTanPathWithCmdArgs()
+        [RelayCommand]
+        private void SetAboutButton()
         {
-            Console.WriteLine(app.CmdArgs?.Arguments.FirstOrDefault(arg => arg.StartsWith("windowsver=")));
-            switch (app.CmdArgs?.Arguments.FirstOrDefault(arg => arg.StartsWith("windowsver=")))
-            {
-                case "windowsver=11":
-                    return Os_Tan.WINDOWS_11.GetOsTanPathImgPath();
-                case "windowsver=10":
-                    return Os_Tan.WINDOWS_10.GetOsTanPathImgPath();
-                case "windowsver=8":
-                    return Os_Tan.WINDOWS_8.GetOsTanPathImgPath();
-                case "windowsver=7":
-                    return Os_Tan.WINDOWS_7.GetOsTanPathImgPath();
-                case "windowsver=vista":
-                    return Os_Tan.WINDOWS_VISTA.GetOsTanPathImgPath();
-                case "windowsver=xp":
-                    return Os_Tan.WINDOWS_XP.GetOsTanPathImgPath();
-                case "windowsver=2000":
-                    return Os_Tan.WINDOWS_2000.GetOsTanPathImgPath();
-                default:
-                    Console.WriteLine("This Windows Version doesn't have a OS-Tan Yet or doesn't exist");
-                    return Os_Tan.NT.GetOsTanPathImgPath();
-            }
+            About about = new(){ShowInTaskbar = false};
+            about.ShowDialog();
         }
-    }
+
+        private void UpdateSystemInformationData()
+        {
+            var osToCompare = hardwareInfoService.RequestOperatingSystem();
+            if (osToCompare != OperatingSystemInformationValue) OperatingSystemInformationValue = osToCompare;
+
+            string kernelToCompare = hardwareInfoService.RequestKernel();
+            if (kernelToCompare != KernelInformationValue) KernelInformationValue = kernelToCompare;
+
+            string machineNameToCompare = hardwareInfoService.RequestMachineName();
+            if (machineNameToCompare != MachineNameInformationValue) MachineNameInformationValue = machineNameToCompare;
+
+            string newValue = hardwareInfoService.RequestIsSystem64Bit();
+            if (newValue != Is64BitInformationValue) Is64BitInformationValue = newValue;
+
+            string storageToCompare = hardwareInfoService.RequestStorage();
+            if (storageToCompare != StorageInformationValue) StorageInformationValue = storageToCompare;
+
+            string threadsToCompare = hardwareInfoService.RequestCpuThreads();
+            if (threadsToCompare != CpuThreadsInformationValue) CpuThreadsInformationValue = threadsToCompare;
+
+            if (Gpus?.Count == 0 ) Gpus = new ObservableCollection<GpuModel>(hardwareInfoService.RequestGPU());
+
+            string cpuToCompare = hardwareInfoService.RequestCPU();
+            if (cpuToCompare != CpuInformationValue) CpuInformationValue = cpuToCompare;
+
+            string memoryToCompare = hardwareInfoService.RequestRAM();
+            if (memoryToCompare != MemoryInformationValue) MemoryInformationValue = memoryToCompare;
+
+            string batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
+            if (batteryToCompare != BatteryInformationValue) BatteryInformationValue = batteryToCompare;
+        }
+      }
     }
