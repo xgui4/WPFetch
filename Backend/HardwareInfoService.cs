@@ -22,26 +22,26 @@ namespace WPFetch.Backend
             system.Fetch(); 
         }
 
-        public string getOS()
+        public string RequestOperatingSystem()
         {
             return system.OperatingSystemName ?? "Not Fetched yet!";
         }
 
-        public string getKernel()
+        public string RequestKernel()
         {
             return system.KernelVersion ?? "Not Fetched yet!";
         }
 
-        public string getMachineName()
+        public string RequestMachineName()
         {
             return system.MachineName ?? "Not Fetched yet!";
         }
 
-        public string is64BitOsString()
+        public string RequestIsSystem64Bit()
         {
            try
            {
-                int boolean = Convert.ToInt32(is64BitOS()); 
+                int boolean = Convert.ToInt32(Is64BitOS()); 
                 
                 if (boolean == 1)
                 {
@@ -56,44 +56,62 @@ namespace WPFetch.Backend
            }
         } 
 
-        private bool is64BitOS()
+        private bool Is64BitOS()
         {
             return system.Is64BitOS ?? throw new Exception("Not Fetched yet!"); 
         }
 
-        public string getStorage() 
-        { 
-            return system.Storage ?? "Not fetched yet !";
+        public string RequestStorage() 
+        {
+            if (system.Storage != null)
+                return $"{system.Storage} Go";
+            else
+                return "Not fetched yet !";
         }
 
-        public string getCpusThreads()
+        public string RequestCpuThreads()
         {
             return system.ProcessorCount ?? "Not fetched yet !";
         }
 
-        public string getCpuInfo()
+        public string RequestCPU()
         {
 
-            return system.ProcessorName ?? "Not fetched yet!";
+            return system.ProcessorName ?? "Not fetched yet !";
         }
 
-        public List<string> getGpusInfo()
+        public List<GpuModel> RequestGPU()
         {
-            return system.Gpus ?? new List<string>(); 
+            List<string> gpusString = system.Gpus ?? new List<string>() { "No GPU Found !" };
+            List<GpuModel> gpuModels = new List<GpuModel>();
+            GpuModel previousGpu = new SentinelGpuModel();
+            GpuModel currentGpu; 
+            foreach (string gpu in gpusString)
+            {
+                gpuModels.Add(currentGpu = new GpuModel(previousGpu, gpu));
+                previousGpu = currentGpu;
+            }
+            return gpuModels; 
         }
 
-        public string getMemoryInfo()
+        public string RequestRAM()
         {
-            return system.TotalMemory ?? "Not fetched yet!";
+            if (system.TotalMemory != null)
+                return $"{system.TotalMemory} Go"; 
+            else
+                return "Not fetched yet!"; 
         }
 
-        public string getNumberOfProcess()
+        public string RequestNumberOfTaskRunning()
         {
             return system.NumbertOfTaskRunning ?? "Not fetched yet!";
         }
-        public string getBatteryPercentage()
+        public string RequestBatteryPercentage()
         {
-            return system.Battery ?? "Not fetched yet!";   
+            if (system.Battery != null)
+                return $"{system.Battery}%";
+            else
+                return "Not fetched yet!"; 
         }
     }
 }

@@ -24,8 +24,8 @@ namespace WPFetch.Model
             Label = $"GPU {_iterator}"; 
         }
 
-        public string Label { get; set; }
+        public string? Label { get; set; } = "GPU";
 
-        public string Name { get; set; }
+        public string? Name { get; set; } = "Unknow GPU";
     }
 }

@@ -12,6 +12,7 @@ using System.Windows;
 using WPFetch.Backend;
 using WPFetch.Model;
 using WPFetch.Utils;
+using WPFetch.View;
 
 namespace WPFetch.ViewModels
 {
@@ -29,69 +30,64 @@ namespace WPFetch.ViewModels
         private string? operatingSystemInformationLabel = "Operating System";
 
         [ObservableProperty]
-        private string? operatingSystemInformationValue = hardwareInfoService.getOS();
+        private string? operatingSystemInformationValue = hardwareInfoService.RequestOperatingSystem();
 
         [ObservableProperty]
         private string? kernelInformationLabel = "Kernel";
 
         [ObservableProperty]
-        private string? kernelInformationValue = hardwareInfoService.getKernel();
+        private string? kernelInformationValue = hardwareInfoService.RequestKernel();
 
         [ObservableProperty]
         private string? machineNameInformationLabel = "Machine Name";
 
         [ObservableProperty]
-        private string? machineNameInformationValue = hardwareInfoService.getMachineName();
+        private string? machineNameInformationValue = hardwareInfoService.RequestMachineName();
 
         [ObservableProperty]
         private string? is64BitInformationLabel = "64 Bit Operating System";
 
         [ObservableProperty]
-        private string? is64BitInformationValue = hardwareInfoService.is64BitOsString();
+        private string? is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
 
         [ObservableProperty]
         private string? storageInformationLabel = "Storage";
 
         [ObservableProperty]
-        private string? storageInformationValue = hardwareInfoService.getStorage();
+        private string? storageInformationValue = hardwareInfoService.RequestStorage();
 
         [ObservableProperty]
         private string? cpuThreadsInformationLabel = "Threads";
 
         [ObservableProperty]
-        private string? cpuThreadsInformationValue = hardwareInfoService.getCpusThreads();
+        private string? cpuThreadsInformationValue = hardwareInfoService.RequestCpuThreads();
 
         [ObservableProperty]
         private string? cpuInformationLabel = "Processor";
 
         [ObservableProperty]
-        private string? cpuInformationValue = hardwareInfoService.getCpuInfo();
-
-        private static GpuModel gpu1 = new GpuModel("Graphic Card Fetching isnt available yet !");
+        private string? cpuInformationValue = hardwareInfoService.RequestCPU();
 
         [ObservableProperty]
-        private ObservableCollection<GpuModel>? gpus = new ObservableCollection<GpuModel>()
-        {
-            gpu1
-        }; 
+        private ObservableCollection<GpuModel>? gpus = new ObservableCollection<GpuModel>(hardwareInfoService.RequestGPU()); 
 
         [ObservableProperty]
         private string? memoryInformationLabel = "Total Memory (RAM)";
 
         [ObservableProperty]
-        private string? memoryInformationValue = hardwareInfoService.getMemoryInfo();
+        private string? memoryInformationValue = hardwareInfoService.RequestRAM();
 
         [ObservableProperty]
         private string? numbersOfTaskRunningLabel = "Numbers of Tasks Running"; 
 
         [ObservableProperty]
-        private string? numbersOfTaskRunningValue = hardwareInfoService.getNumberOfProcess();
+        private string? numbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning();
 
         [ObservableProperty]
         private string? batteryInformationLabel = "Battery";
 
         [ObservableProperty]
-        private string? batteryInformationValue = hardwareInfoService.getBatteryPercentage(); 
+        private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage(); 
 
         private static string GetOsTan()
         {
@@ -167,25 +163,32 @@ namespace WPFetch.ViewModels
         }
 
         [RelayCommand]
-        private void Refresh()
+        private void SetRefreshButton()
         {
             hardwareInfoService.Update();
-            RefreshData();
-            Console.WriteLine($"Bouton refresh enclenché.");
+            UpdateModel();
         }
 
-        private void RefreshData()
+        [RelayCommand]
+        private void SetAboutButton()
         {
-            OperatingSystemInformationValue = hardwareInfoService.getOS(); 
-            KernelInformationValue = hardwareInfoService.getKernel();
-            MachineNameInformationValue = hardwareInfoService.getMachineName(); 
-            Is64BitInformationValue = hardwareInfoService.is64BitOsString();
-            StorageInformationValue = hardwareInfoService.getStorage(); 
-            CpuThreadsInformationValue = hardwareInfoService.getCpusThreads(); 
-            CpuInformationValue = hardwareInfoService.getCpuInfo(); 
-            MemoryInformationValue = hardwareInfoService.getMemoryInfo();
-            NumbersOfTaskRunningValue = hardwareInfoService.getNumberOfProcess(); 
-            BatteryInformationValue = hardwareInfoService.getBatteryPercentage(); 
+            About about = new About();
+            about.Show();
+        }
+
+        private void UpdateModel()
+        {
+            OperatingSystemInformationValue = hardwareInfoService.RequestOperatingSystem(); 
+            KernelInformationValue = hardwareInfoService.RequestKernel();
+            MachineNameInformationValue = hardwareInfoService.RequestMachineName(); 
+            Is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
+            StorageInformationValue = hardwareInfoService.RequestStorage(); 
+            CpuThreadsInformationValue = hardwareInfoService.RequestCpuThreads();
+            Gpus = new ObservableCollection<GpuModel>(hardwareInfoService.RequestGPU());
+            CpuInformationValue = hardwareInfoService.RequestCPU(); 
+            MemoryInformationValue = hardwareInfoService.RequestRAM();
+            NumbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning(); 
+            BatteryInformationValue = hardwareInfoService.RequestBatteryPercentage(); 
         }
       }
     }
