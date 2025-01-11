@@ -26,6 +26,7 @@
     <None Remove="Images\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp" />
     <None Remove="Images\my-os-tan-for-windows-11-koemi-madobe-today-is-its-v0-c7qkcaernesb1.webp" />
     <None Remove="Images\what-are-you-doing-user-microsoft-4096x2559-v0-bdllqkutbaud1.webp" />
+    <None Remove="Images\win11.png" />
     <None Remove="os-tan.png" />
   </ItemGroup>
 
@@ -33,6 +34,12 @@
     <Content Include="Images\appicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\win11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

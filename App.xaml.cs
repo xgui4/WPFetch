@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using WPFetch.Backend;
 using WPFetch.Model;
 
 namespace DesktopWallpaper
@@ -13,6 +14,8 @@ namespace DesktopWallpaper
     public partial class App : Application
     {
         public CommandLineArguments? CmdArgs { get; private set; }
+        public HardwareInfoService? HardwareInfoService { get; private set; }
+        public MainImageService? MainImageService { get; private set; }
 
         /// <summary>
         /// Source du code : https://wpf-tutorial.com/wpf-application/command-line-parameters/
@@ -22,22 +25,16 @@ namespace DesktopWallpaper
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             CmdArgs = new CommandLineArguments(e.Args);
-
-            /*
-            int answer = (int)MessageBox.Show("Do you want to add the program to your start menu ?", "Add shortcut to start menu?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (answer == 6)
+            HardwareInfoService = new HardwareInfoService();
+            MainImageService = new MainImageService((App)Application.Current);
+            try
             {
-                try
-                {
-                    string pathvar = Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.Machine);
-                    Environment.SetEnvironmentVariable("PATH", pathvar + ";" + Environment.ProcessPath + "\\", EnvironmentVariableTarget.Machine);
-                }
-                catch (Exception ex) 
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                HardwareInfoService.Update();
             }
-            */
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message, "Error while fetching system info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

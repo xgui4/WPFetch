@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPFetch.Model;
+using WPFetch.Model.Enums;
 
 namespace WPFetch.Backend
 {
@@ -74,6 +74,16 @@ namespace WPFetch.Backend
                     Console.WriteLine("This Windows Version doesn't have a OS-Tan Yet or doesn't exist");
                     return Os_Tan.NT.GetOsTanPathImgPath();
             }
+        }
+
+        public string GetDefaultWindowsVerImage()
+        {
+            return "../Images/win11.png"; 
+        }
+
+        public string GetWindowsVerImageWithCmdArgs()
+        {
+            throw new NotImplementedException("Not implemented yet!");
         }
 
     }

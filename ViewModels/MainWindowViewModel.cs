@@ -5,13 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WPFetch.Backend;
-using WPFetch.Model;
+using WPFetch.Model.System;
 using WPFetch.Utils;
 using WPFetch.View;
 
@@ -21,12 +22,15 @@ namespace WPFetch.ViewModels
     {
         private static readonly App app = (App)Application.Current;
 
-        private static readonly HardwareInfoService hardwareInfoService = new();
+        private static readonly HardwareInfoService hardwareInfoService = app.HardwareInfoService ?? throw new ApplicationException("HardwareInfoService not found!");
 
-        private static readonly MainImageService mainImageService = new(app);
+        private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService Not Found");
 
         [ObservableProperty]
         private string? fetchImage = GetOsTan();
+
+        [ObservableProperty]
+        private string? windowsVerImage = GetWindowsVerImage();
 
         [ObservableProperty]
         private string operatingSystemInformationLabel = "Operating System"; 
@@ -103,11 +107,23 @@ namespace WPFetch.ViewModels
             }
         }
 
+        private static string GetWindowsVerImage()
+        {
+            //if (app.CmdArgs?.Arguments.Count == 0)
+            //{
+                return mainImageService.GetDefaultWindowsVerImage();
+            //}
+            //else
+            //{
+              //  return mainImageService.GetWindowsVerImageWithCmdArgs();
+            //}
+        }
+
         [RelayCommand]
-        private void SetRefreshButton()
+        private async Task SetRefreshButton()
         {
             hardwareInfoService.Update();
-            UpdateSystemInformationData();
+            await Task.Run(() => { UpdateSystemInformationData(); });
         }
 
         [RelayCommand]
@@ -144,6 +160,9 @@ namespace WPFetch.ViewModels
 
             string memoryToCompare = hardwareInfoService.RequestRAM();
             if (memoryToCompare != MemoryInformationValue) MemoryInformationValue = memoryToCompare;
+
+            string numberOfTaskToCompare = hardwareInfoService.RequestNumberOfTaskRunning();
+            if (numberOfTaskToCompare != NumbersOfTaskRunningValue) NumbersOfTaskRunningValue = numberOfTaskToCompare;
 
             string batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
             if (batteryToCompare != BatteryInformationValue) BatteryInformationValue = batteryToCompare;

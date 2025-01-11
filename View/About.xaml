@@ -11,12 +11,10 @@
         <vm:AboutViewModel />
     </Window.DataContext>
     <StackPanel>
-        <Image Name="AppIcon" Source="../Images/appicon.ico" HorizontalAlignment="Left" Width="100" Height="100"/>
-        <TextBlock Name="AppTitle">
-            <Run FontWeight="Bold" Text="WPFetch Version 0.0.0.1 Developer Preview"/>
-        </TextBlock>
-        <Label Content="A utility to fetch you system info with a OS-tan"/>
-        <Button Name="CheckUpdate" Content="Check Update" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
-        <Button Name="Configure" Content="Configure (Coming Soon)" Background="Red" IsEnabled="False"/>
+        <Image Name="AppIcon" Source="{Binding AppIconPath}" HorizontalAlignment="Left" Width="100" Height="100"/>
+        <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
+        <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
+        <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
+        <Button Name="ConfigureAppButton" Content="{Binding ConfigureAppButtonLabel}" Command="{Binding SetConfigureAppButtonCommand}" Background="Red"/>
     </StackPanel>
 </Window>

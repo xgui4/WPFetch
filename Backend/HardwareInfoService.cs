@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPFetch.Model;
+using WPFetch.Model.System;
 
 namespace WPFetch.Backend
 {
@@ -19,7 +19,7 @@ namespace WPFetch.Backend
 
         public void Update()
         {
-            system.FetchAll(); 
+            system.FetchAll();
         }
 
         public string RequestOperatingSystem()

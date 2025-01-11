@@ -1,8 +1,9 @@
 ﻿using System.Numerics;
 using FluentSysInfo.Core.Enums;
+using WPFetch.Model.Enums;
 using WPFetch.Utils;
 
-namespace WPFetch.Model;
+namespace WPFetch.Model.System;
 
 public class SystemInformationModel
 {
@@ -15,8 +16,8 @@ public class SystemInformationModel
     public string? TotalMemory { get; private set; } = null;
     public string? Storage { get; private set; } = null;
     public List<string>? Gpus { get; private set; } = [];
-    public string? NumbertOfTaskRunning { get; private set; } = null; 
-    public string? Battery { get; private set; } = null; 
+    public string? NumbertOfTaskRunning { get; private set; } = null;
+    public string? Battery { get; private set; } = null;
 
     public void FetchAll()
     {
