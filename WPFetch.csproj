@@ -26,7 +26,41 @@
     <None Remove="Images\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp" />
     <None Remove="Images\my-os-tan-for-windows-11-koemi-madobe-today-is-its-v0-c7qkcaernesb1.webp" />
     <None Remove="Images\what-are-you-doing-user-microsoft-4096x2559-v0-bdllqkutbaud1.webp" />
+    <None Remove="Images\win10.png" />
     <None Remove="Images\win11.png" />
+    <None Remove="Images\win2012Server.png" />
+    <None Remove="Images\win2016Server-white.png" />
+    <None Remove="Images\win2019Server.png" />
+    <None Remove="Images\win2022Server.png" />
+    <None Remove="Images\win2025Server.png" />
+    <None Remove="Images\win2K.png" />
+    <None Remove="Images\win2K3Server-white.png" />
+    <None Remove="Images\win2K3Server.png" />
+    <None Remove="Images\win2K8Server-white.png" />
+    <None Remove="Images\win3dot1.png" />
+    <None Remove="Images\win3x-white.png" />
+    <None Remove="Images\win3x.png" />
+    <None Remove="Images\win7-white.png" />
+    <None Remove="Images\win7.png" />
+    <None Remove="Images\win8.png" />
+    <None Remove="Images\win95-white.png" />
+    <None Remove="Images\win95.png" />
+    <None Remove="Images\win98-white.png" />
+    <None Remove="Images\win98.png" />
+    <None Remove="Images\WindowsXP-white.png" />
+    <None Remove="Images\WindowsXP.png" />
+    <None Remove="Images\winLonghorn-white.png" />
+    <None Remove="Images\winLonghorn.png" />
+    <None Remove="Images\winME-white.png" />
+    <None Remove="Images\winME.png" />
+    <None Remove="Images\winNeptune-white.png" />
+    <None Remove="Images\winNeptune.png" />
+    <None Remove="Images\winNT-white.png" />
+    <None Remove="Images\winNT.png" />
+    <None Remove="Images\winVista-white.png" />
+    <None Remove="Images\winVista.png" />
+    <None Remove="Images\winX-white.png" />
+    <None Remove="Images\winX.png" />
     <None Remove="os-tan.png" />
   </ItemGroup>
 
@@ -37,6 +71,42 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\win2012Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2016Server-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2019Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2022Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2025Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2K.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2K3Server-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2K3Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win2K8Server-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win3dot1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\win10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\win11.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -61,6 +131,75 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\os-tan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win3x-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win3x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win7-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win95-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win95.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win98-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\win98.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\WindowsXP-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\WindowsXP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winLonghorn-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winLonghorn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winME-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winME.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winNeptune-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winNeptune.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winNT-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winNT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winVista-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winVista.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winX-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\winX.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

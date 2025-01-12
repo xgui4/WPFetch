@@ -21,7 +21,7 @@
                 <TextBlock Name="SystemInformation" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15">
                     <Run FontWeight="Bold" Text="{Binding OperatingSystemInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding OperatingSystemInformationValue}"/>
                     <LineBreak/>
-                    <Run FontWeight="Bold" Text="{Binding KernelInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding KernelInformationValue}"/>
+                    <Run FontWeight="Bold" Text="{Binding KernelInformationLabel}"/> <Run Text=":"/> <Run Text="{Binding KernelInformationValue}"/>
                     <LineBreak/>
                     <Run FontWeight="Bold" Text="{Binding MachineNameInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MachineNameInformationValue}"/>
                     <LineBreak/>

@@ -59,12 +59,12 @@ namespace WPFetch.Utils
                 setting.Theme = theme; 
         }
 
-        public List<HardwaresModels> GetHardwaresToFetch()
+        public List<SystemOptions> GetHardwaresToFetch()
         {
             return setting.HardwaresToFetch.ToList(); 
         }
 
-        public void UpdateHardwaresToFetch(List<HardwaresModels> hardwaresToFetch)
+        public void UpdateHardwaresToFetch(List<SystemOptions> hardwaresToFetch)
         {
             setting.HardwaresToFetch = hardwaresToFetch.ToArray(); 
         }

@@ -25,6 +25,6 @@ namespace WPFetch.Model.Json
         public required string Theme { get; set; }
 
         [JsonProperty(nameof(HardwaresToFetch))]
-        public required HardwaresModels[] HardwaresToFetch { get; set; }
+        public required SystemOptions[] HardwaresToFetch { get; set; }
     }
 }

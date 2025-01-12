@@ -90,14 +90,14 @@ namespace WPFetch.ViewModels
         private string? numbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning();
 
         [ObservableProperty]
-        private string batteryInformationLabel = "Battery";
+        private string batteryInformationLabel = "BatteryPercentage";
 
         [ObservableProperty]
         private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage(); 
 
         private static string GetOsTan()
         {
-            if (app.CmdArgs?.Arguments.Count == 0)
+            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
             {
                 return mainImageService.GetDefaultOSTanPath(); 
             }
@@ -109,14 +109,14 @@ namespace WPFetch.ViewModels
 
         private static string GetWindowsVerImage()
         {
-            //if (app.CmdArgs?.Arguments.Count == 0)
-            //{
+            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
+            {
                 return mainImageService.GetDefaultWindowsVerImage();
-            //}
-            //else
-            //{
-              //  return mainImageService.GetWindowsVerImageWithCmdArgs();
-            //}
+            }
+            else
+            {
+                return mainImageService.GetWindowsVerImageWithCmdArgs();
+            }
         }
 
         [RelayCommand]
