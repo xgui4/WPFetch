@@ -51,7 +51,7 @@ namespace WPFetch.ViewModels
         private string? machineNameInformationValue = hardwareInfoService.RequestMachineName();
 
         [ObservableProperty]
-        private string is64BitInformationLabel = "64 Bit Operating System";
+        private string is64BitInformationLabel = "Is 64 Bit Operating System";
 
         [ObservableProperty]
         private string? is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
@@ -96,10 +96,10 @@ namespace WPFetch.ViewModels
         private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage();
 
         [ObservableProperty]
-        private string? refreshButtonLabel = "Refresh";
+        private string? refreshButtonLabel = "🔄️ Refresh";
 
         [ObservableProperty]
-        private string? moreButtonLabel = "More";
+        private string? moreButtonLabel = "➕ More";
 
         private static string GetOsTan()
         {
@@ -128,14 +128,14 @@ namespace WPFetch.ViewModels
         [RelayCommand]
         private async Task SetRefreshButton()
         {
-            hardwareInfoService.Update();
+            await Task.Run(() => { hardwareInfoService.Update(); });
             await Task.Run(() => { UpdateSystemInformationData(); });
         }
 
         [RelayCommand]
         private void SetAboutButton()
         {
-            About about = new(){ShowInTaskbar = false};
+            About about = new();
             about.ShowDialog();
         }
 

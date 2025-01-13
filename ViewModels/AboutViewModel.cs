@@ -25,10 +25,10 @@ namespace WPFetch.ViewModels
         private string? appIconPath = "../Images/appicon.ico";
 
         [ObservableProperty]
-        private string? authorsLabel = "Developer : Xgui4 Studio";
+        private string? authorsLabel = "🧑‍💻 Developer : Xgui4 Studio";
 
         [ObservableProperty]
-        private string? licenseLabel = "License : MIT License"; 
+        private string? licenseLabel = "📜 License : MIT License"; 
 
         [ObservableProperty]
         private string? checkUpdateButtonLabel = "Check Update";
@@ -43,10 +43,15 @@ namespace WPFetch.ViewModels
         private string? defaultWindowsVersionInputBoxValue;
 
         [ObservableProperty]
-        private ObservableCollection<string> localesAvailable = new ObservableCollection<string>() {}; 
+        private ObservableCollection<string> localesAvailable = langs; 
 
         [ObservableProperty]
-        private Locales localeSelected; 
+        private string? localeSelected; 
+
+        /// <summary>
+        /// This is temporaly until i add the language service later
+        /// </summary>
+        private static ObservableCollection<string> langs = [Locales.FR.GetString(), Locales.EN.GetString()];
 
         [RelayCommand]
         private void ConfirmChangesButton()

@@ -6,38 +6,46 @@
         xmlns:local="clr-namespace:DesktopWallpaper"
         xmlns:vm="clr-namespace:WPFetch.ViewModels"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="WPFetch" Height="460" Width="850"
         Icon="../Images/appicon.ico">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
-    <StackPanel Margin="10">
-        <StackPanel Margin="20" Orientation="Horizontal">
+    <StackPanel Margin="5">
+        <StackPanel Margin="5" Orientation="Horizontal">
             <Image Name="MainImage" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="300" Source="{Binding FetchImage}" Stretch="Fill"/>
             <Line Margin="10"/>
             <StackPanel Orientation="Vertical">
                 <Image Name="WindowsVerImage" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="50" Source="{Binding WindowsVerImage}" Stretch="Fill"/>
-                <Line Margin="5"/>
+                <Line Margin="8"/>
                 <TextBlock Name="SystemInformation" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15">
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE977;" />
                     <Run FontWeight="Bold" Text="{Binding OperatingSystemInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding OperatingSystemInformationValue}"/>
                     <LineBreak/>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xF167;" />
                     <Run FontWeight="Bold" Text="{Binding KernelInformationLabel}"/> <Run Text=":"/> <Run Text="{Binding KernelInformationValue}"/>
                     <LineBreak/>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xEC4E;" />
                     <Run FontWeight="Bold" Text="{Binding MachineNameInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MachineNameInformationValue}"/>
                     <LineBreak/>
                     <Run FontWeight="Bold" Text="{Binding Is64BitInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding Is64BitInformationValue}"/>
                     <LineBreak/>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xEDA2;" />
                     <Run FontWeight="Bold" Text="{Binding StorageInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding StorageInformationValue}"/>
                     <LineBreak/>
-                    <Run FontWeight="Bold" Text="{Binding CpuThreadsInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuThreadsInformationValue}"/>
-                    <LineBreak/>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE950;" />
                     <Run FontWeight="Bold" Text="{Binding CpuInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuInformationValue}"/> 
+                    <LineBreak/>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE950;" />
+                    <Run FontWeight="Bold" Text="{Binding CpuThreadsInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuThreadsInformationValue}"/>
                     <LineBreak/>
                     <ItemsControl ItemsSource="{Binding Gpus}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock>
+                                        <Image Source="../Images/gpu-white.png" Width="16" Height="16"/>
                                         <Run FontWeight="Bold" Text="{Binding Label}"/>
                                         <Run Text=" : "/>
                                         <Run Text="{Binding Name}"/>
@@ -47,16 +55,21 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                     <LineBreak/>
+                    <Image Source="../Images/ram-white.png" Width="16" Height="16"/>
                     <Run FontWeight="Bold" Text="{Binding MemoryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MemoryInformationValue}"/>
                     <LineBreak/>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE71D;" />
                     <Run FontWeight="Bold" Text="{Binding NumbersOfTaskRunningLabel}" /> <Run Text=":"/> <Run Text="{Binding NumbersOfTaskRunningValue}"/>
                     <LineBreak/>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xF5FC;" />
                     <Run FontWeight="Bold" Text="{Binding BatteryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding BatteryInformationValue}"/>
                 </TextBlock>
             </StackPanel>
         </StackPanel>
-        <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding RefreshButtonLabel}" Command="{Binding SetRefreshButtonCommand}" Background="Yellow" Foreground="Black"/>
-        <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding MoreButtonLabel}" Command="{Binding SetAboutButtonCommand}" Background="Green"/>
+        <TextBlock Name="Disclaimer" FontWeight="UltraBlack" Text="Disclaimer : This product isn't a official product by Microsoft and isn't affliated (and never will) by them."/>
+        <Line Margin="5"/>
+        <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding RefreshButtonLabel}" Command="{Binding SetRefreshButtonCommand}" Background="{DynamicResource {x:Static SystemColors.AccentColorLight1BrushKey}}"/>
+        <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding MoreButtonLabel}" Command="{Binding SetAboutButtonCommand}" Background="{DynamicResource {x:Static SystemColors.AccentColorDark1BrushKey}}"/>
     </StackPanel>
 </Window>
 
