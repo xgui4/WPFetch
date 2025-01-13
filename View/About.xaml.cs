@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace WPFetch.View
 {
     /// <summary>
-    /// Interaction logic for Aboutxaml.xaml
+    /// Interaction logic for About.xaml
     /// </summary>
     public partial class About : Window
     {

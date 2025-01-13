@@ -2,11 +2,14 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFetch.Model.Enums;
 
 namespace WPFetch.ViewModels
 {
@@ -22,16 +25,33 @@ namespace WPFetch.ViewModels
         private string? appIconPath = "../Images/appicon.ico";
 
         [ObservableProperty]
+        private string? authorsLabel = "Developer : Xgui4 Studio";
+
+        [ObservableProperty]
+        private string? licenseLabel = "License : MIT License"; 
+
+        [ObservableProperty]
         private string? checkUpdateButtonLabel = "Check Update";
 
         [ObservableProperty]
-        private string? configureAppButtonLabel = "Configure App Setting";
+        private string? confirmChangesButtonLabel = "Confirm Changes";
+
+        [ObservableProperty]
+        private bool isFluentUIEnable = true;
+
+        [ObservableProperty]
+        private string? defaultWindowsVersionInputBoxValue;
+
+        [ObservableProperty]
+        private ObservableCollection<string> localesAvailable = new ObservableCollection<string>() {}; 
+
+        [ObservableProperty]
+        private Locales localeSelected; 
 
         [RelayCommand]
-        private void SetConfigureAppButton()
+        private void ConfirmChangesButton()
         {
             MessageBox.Show("This is still a work in progress", "Information", MessageBoxButton.OK, MessageBoxImage.Exclamation); 
-
         }
 
         [RelayCommand]

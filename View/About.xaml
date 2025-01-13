@@ -14,7 +14,31 @@
         <Image Name="AppIcon" Source="{Binding AppIconPath}" HorizontalAlignment="Left" Width="100" Height="100"/>
         <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
         <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
+        <Label Name="Authors" Content="{Binding AuthorsLabel}"/>
+        <Label Name="License" Content="{Binding LicenseLabel}"/>
         <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
-        <Button Name="ConfigureAppButton" Content="{Binding ConfigureAppButtonLabel}" Command="{Binding SetConfigureAppButtonCommand}" Background="Red"/>
+
+        <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="Config"/>
+
+        <StackPanel Orientation="Horizontal">
+            <Label Name="FluentUICheckBoxLabel" Content="Enable Fuent UI (Windows 11 only)"/>
+            <CheckBox Name="FluentUIEnable" IsChecked="{Binding IsFluentUIEnable}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Label Name="DefaultWindowsInputBoxLabel" Content="Default Windows Version :"/>
+            <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}"/>
+        </StackPanel>
+
+        <ListBox ItemsSource="{Binding LocalesAvailable}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem Content="{Binding LocaleSelected}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+        
+        <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" Background="Red" IsEnabled="False"/>
+        
     </StackPanel>
 </Window>

@@ -33,8 +33,8 @@ namespace WPFetch.ViewModels
         private string? windowsVerImage = GetWindowsVerImage();
 
         [ObservableProperty]
-        private string operatingSystemInformationLabel = "Operating System"; 
-        
+        private string operatingSystemInformationLabel = "Operating System";
+
         [ObservableProperty]
         private string? operatingSystemInformationValue = hardwareInfoService.RequestOperatingSystem();
 
@@ -75,7 +75,7 @@ namespace WPFetch.ViewModels
         private string? cpuInformationValue = hardwareInfoService.RequestCPU();
 
         [ObservableProperty]
-        private ObservableCollection<GpuModel>? gpus = new(hardwareInfoService.RequestGPU()); 
+        private ObservableCollection<GpuModel>? gpus = new(hardwareInfoService.RequestGPU());
 
         [ObservableProperty]
         private string memoryInformationLabel = "Total Memory (RAM)";
@@ -84,16 +84,22 @@ namespace WPFetch.ViewModels
         private string? memoryInformationValue = hardwareInfoService.RequestRAM();
 
         [ObservableProperty]
-        private string numbersOfTaskRunningLabel = "Numbers of Tasks Running"; 
+        private string numbersOfTaskRunningLabel = "Numbers of Tasks Running";
 
         [ObservableProperty]
         private string? numbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning();
 
         [ObservableProperty]
-        private string batteryInformationLabel = "BatteryPercentage";
+        private string batteryInformationLabel = "Battery";
 
         [ObservableProperty]
-        private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage(); 
+        private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage();
+
+        [ObservableProperty]
+        private string? refreshButtonLabel = "Refresh";
+
+        [ObservableProperty]
+        private string? moreButtonLabel = "More";
 
         private static string GetOsTan()
         {

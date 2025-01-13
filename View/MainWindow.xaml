@@ -55,8 +55,8 @@
                 </TextBlock>
             </StackPanel>
         </StackPanel>
-        <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="Refresh" Command="{Binding SetRefreshButtonCommand}" Background="Yellow" Foreground="Black"/>
-        <Button Name="AboutButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="About" Command="{Binding SetAboutButtonCommand}" Background="Green"/>
+        <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding RefreshButtonLabel}" Command="{Binding SetRefreshButtonCommand}" Background="Yellow" Foreground="Black"/>
+        <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding MoreButtonLabel}" Command="{Binding SetAboutButtonCommand}" Background="Green"/>
     </StackPanel>
 </Window>
 

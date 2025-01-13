@@ -176,7 +176,7 @@ namespace WPFetch.Backend
                     return WindowsVerImage.WIN_NEPTUNE.GetWindowsVerPath();
                 default:
                     Console.WriteLine(NoOsTanFound);
-                    return Os_Tan.NT.GetOsTanPathImgPath();
+                    return WindowsVerImage.WIN_NT.GetWindowsVerPath();
             }
         } 
     }

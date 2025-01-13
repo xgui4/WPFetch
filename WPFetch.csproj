@@ -61,7 +61,9 @@
     <None Remove="Images\winVista.png" />
     <None Remove="Images\winX-white.png" />
     <None Remove="Images\winX.png" />
+    <None Remove="LICENSE.txt" />
     <None Remove="os-tan.png" />
+    <None Remove="README.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -200,6 +202,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\winX.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
