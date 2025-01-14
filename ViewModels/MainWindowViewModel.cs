@@ -26,6 +26,12 @@ namespace WPFetch.ViewModels
 
         private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService Not Found");
 
+        public MainWindowViewModel()
+        {
+            hardwareInfoService.GenerateLog();
+        }
+
+
         [ObservableProperty]
         private string? fetchImage = GetOsTan();
 
@@ -128,8 +134,10 @@ namespace WPFetch.ViewModels
         [RelayCommand]
         private async Task SetRefreshButton()
         {
-            await Task.Run(() => { hardwareInfoService.Update(); });
-            await Task.Run(() => { UpdateSystemInformationData(); });
+            await Task.Run(() => {
+                hardwareInfoService.Update(); 
+                UpdateSystemInformationData(); 
+            });
         }
 
         [RelayCommand]
@@ -172,6 +180,8 @@ namespace WPFetch.ViewModels
 
             string batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
             if (batteryToCompare != BatteryInformationValue) BatteryInformationValue = batteryToCompare;
+
+            hardwareInfoService.GenerateLog();
         }
-      }
+    }
     }

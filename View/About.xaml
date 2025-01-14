@@ -13,46 +13,47 @@
     </Window.DataContext>
     <ScrollViewer>
         <StackPanel>
-        <Image Name="AppIcon" Source="{Binding AppIconPath}" HorizontalAlignment="Left" Width="100" Height="100"/>
-        <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
-        <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
-        <Label Name="Authors" Content="{Binding AuthorsLabel}"/>
-        <Label Name="License" Content="{Binding LicenseLabel}"/>
-        <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
+            <Image Name="AppIcon" Source="{Binding AppIconPath}" HorizontalAlignment="Left" Width="100" Height="100"/>
+            <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
+            <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
+            <Label Name="Authors" Content="{Binding AuthorsLabel}"/>
+            <Label Name="License" Content="{Binding LicenseLabel}"/>
+            <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
 
-        <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="Config (Work in progress)"/>
+            <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="Config (Work in progress)"/>
 
-        <StackPanel Orientation="Horizontal">
-            <Label Name="FluentUICheckBoxLabel" Content="Enable Fuent UI (Windows 11 only)"/>
-            <CheckBox Name="FluentUIEnable" IsChecked="{Binding IsFluentUIEnable}"/>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Name="FluentUICheckBoxLabel" Content="Enable Fuent UI (Windows 11 only)"/>
+                <CheckBox Name="FluentUIEnable" IsChecked="{Binding IsFluentUIEnable}"/>
+            </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-            <Label Name="DefaultWindowsInputBoxLabel" Content="Default Windows Version :"/>
-            <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}"/>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Name="DefaultWindowsInputBoxLabel" Content="Default Windows Version :"/>
+                <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}"/>
+            </StackPanel>
 
-        <Label Content="Choose a other language :"/>
-        <ComboBox ItemsSource="{Binding LocalesAvailable}" SelectedValue="{Binding LocaleSelected}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <ComboBoxItem Content="{Binding}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+            <Label Content="Choose a other language :"/>
+            <ComboBox ItemsSource="{Binding LocalesAvailable}" SelectedValue="{Binding LocaleSelected}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ComboBoxItem Content="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-        <Label Content="Choose a other theme :"/>
-        <ComboBox ItemsSource="{Binding ThemesAvailable}" SelectedValue="{Binding ThemeSelected}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <ComboBoxItem Content="{Binding}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+            <Label Content="Choose a other theme :"/>
+            <ComboBox ItemsSource="{Binding ThemesAvailable}" SelectedValue="{Binding ThemeSelected}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ComboBoxItem Content="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-        <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" Background="Red" IsEnabled="False"/>
+            <Label Content="Save Configuration and configuration feature via GUI isn't implemented yet!"/>
+            <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" Background="Red" IsEnabled="False"/>
 
-        <Label FontSize="50" Content="More Options coming later" />
+            <Label FontSize="20" Content="More options coming later" />
 
         </StackPanel>
     </ScrollViewer>

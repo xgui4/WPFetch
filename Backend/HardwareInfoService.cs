@@ -1,9 +1,11 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPFetch.Model.System;
 
 namespace WPFetch.Backend
@@ -22,6 +24,7 @@ namespace WPFetch.Backend
         public void Update()
         {
             system.FetchAll();
+            GenerateLog();
         }
 
         public string RequestOperatingSystem()
@@ -114,6 +117,22 @@ namespace WPFetch.Backend
                 return $"{system.Battery}%";
             else
                 return Unknown; 
+        }
+
+        public void GenerateLog()
+        {
+            string logsFolderPath = Environment.CurrentDirectory + "\\logs\\";
+
+            if (!Directory.Exists(logsFolderPath))
+            {
+                Directory.CreateDirectory(logsFolderPath);
+                MessageBox.Show(logsFolderPath + " Created!");
+            }
+
+            using (StreamWriter file = new StreamWriter(logsFolderPath + "HardwareInfoService.log"))
+            {
+                system.ErrorsDuringFetch.ForEach((error) => file.WriteLine(error));
+            }
         }
     }
 }

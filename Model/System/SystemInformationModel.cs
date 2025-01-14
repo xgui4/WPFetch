@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics;
+using System.Numerics;
+using System.Windows;
 using FluentSysInfo.Core.Enums;
 using WPFetch.Model.Enums;
 using WPFetch.Utils;
@@ -18,6 +20,7 @@ public class SystemInformationModel
     public List<string>? Gpus { get; private set; } = [];
     public string? NumbertOfTaskRunning { get; private set; } = null;
     public string? Battery { get; private set; } = null;
+    public List<string> ErrorsDuringFetch { get; private set; } = [];
 
     public void FetchAll()
     {
@@ -36,7 +39,15 @@ public class SystemInformationModel
 
     public void FetchOperatingSystemName()
     {
-        OperatingSystemName = FluentSystemManager.GetHardwareInfo(FluentSysInfoTypes.OperatingSystem, "Caption");
+        try
+        {
+            OperatingSystemName = FluentSystemManager.GetHardwareInfo(FluentSysInfoTypes.OperatingSystem, "Caption");
+        }
+        catch (Exception ex) {
+            ErrorsDuringFetch.Add(ex.Message);
+            Debug.WriteLine(ex);
+            OperatingSystemName = "N/A";
+        }
     }
 
     public void FetchKernelVersion()
@@ -61,48 +72,103 @@ public class SystemInformationModel
 
     public void FetchProcessorInfo()
     {
-        ProcessorName = FluentSystemManager.GetHardwareInfo(FluentSysInfoTypes.CPU, "Name");
+        try
+        {
+            ProcessorName = FluentSystemManager.GetHardwareInfo(FluentSysInfoTypes.CPU, "Name");
+        }
+        catch (Exception ex)
+        {
+            ErrorsDuringFetch.Add(ex.Message);
+            Debug.WriteLine(ex);
+            ProcessorName = "N/A";
+        }
     }
 
     public void FetchBatteryInfo()
     {
-        Battery = SystemManager.GetHardwareInfo(Cim.BATTERY, "EstimatedChargeRemaining").ToArray()[0];
+        try
+        {
+            Battery = SystemManager.GetHardwareInfo(Cim.BATTERY, "EstimatedChargeRemaining").ToArray()[0];
+        }
+        catch(Exception ex)
+        {
+            ErrorsDuringFetch.Add(ex.Message);
+            Debug.WriteLine(ex);
+            Battery = "N/A"; 
+        }
     }
 
     public void FetchNumberOfProcessRunning()
     {
-        int numberProc = 0;
-        foreach (var proc_id in SystemManager.GetHardwareInfo(Cim.PROCESSES, "Name")) { numberProc++; }
-        NumbertOfTaskRunning = numberProc.ToString();
+        try
+        {
+            int numberProc = 0;
+            foreach (var proc_id in SystemManager.GetHardwareInfo(Cim.PROCESSES, "Name")) { numberProc++; }
+            NumbertOfTaskRunning = numberProc.ToString();
+        }
+        catch (Exception ex)
+        {
+            ErrorsDuringFetch.Add(ex.Message);
+            Debug.WriteLine(ex);
+            NumbertOfTaskRunning = "N/A";
+        }
     }
 
     public void FetchStorage()
     {
-        Storage = FluentSystemManager.GetHardwareInfo(FluentSysInfoTypes.Disk, "Size");
-        Storage = new BigDataManager().BitStringToGigInt(Storage).ToString();
+        try
+        {
+            Storage = FluentSystemManager.GetHardwareInfo(FluentSysInfoTypes.Disk, "Size");
+            Storage = new BigDataManager().BitStringToGigInt(Storage).ToString();
+        }
+        catch (Exception ex)
+        {
+            ErrorsDuringFetch.Add(ex.Message);
+            Debug.WriteLine(ex);
+            Storage = "N/A"; 
+        }
     }
 
     public void FetchTotalMemoryInfo()
     {
-        TotalMemory = "0";
-        List<string> mems = SystemManager.GetHardwareInfo(Cim.RAM, "Capacity");
-        BigInteger now = 0;
-        BigInteger temp = 0;
-        foreach (string capacity in mems)
+        try
         {
-            temp = now + BigInteger.Parse(capacity);
-            now = temp;
+            TotalMemory = "0";
+            List<string> mems = SystemManager.GetHardwareInfo(Cim.RAM, "Capacity");
+            BigInteger now = 0;
+            BigInteger temp = 0;
+            foreach (string capacity in mems)
+            {
+                temp = now + BigInteger.Parse(capacity);
+                now = temp;
+            }
+            TotalMemory = $"{temp / new BigDataManager().Gigaoctect}";
         }
-        TotalMemory = $"{temp / new BigDataManager().Gigaoctect}";
+        catch (Exception e)
+        {
+            ErrorsDuringFetch.Add(e.Message);
+            Debug.WriteLine(e);
+            TotalMemory = "N/A"; 
+        }
     }
 
     public void FetchGpusInfo()
     {
-        var gpus = SystemManager.GetHardwareInfo(Cim.GPU, "Name");
-
-        foreach (string gpu in gpus)
+        try
         {
-            Gpus?.Add(gpu);
+            var gpus = SystemManager.GetHardwareInfo(Cim.GPU, "Name");
+
+            foreach (string gpu in gpus)
+            {
+                Gpus?.Add(gpu);
+            }
+        }
+
+        catch (Exception ex)
+        {
+            ErrorsDuringFetch.Add(ex.Message);
+            Debug.WriteLine(ex);
+            Gpus?.Add("Error while find GPU Info");
         }
     }
 }

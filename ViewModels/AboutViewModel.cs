@@ -68,7 +68,14 @@ namespace WPFetch.ViewModels
         [RelayCommand]
         private async Task SetCheckUpdateButton()
         {
-            await Task.Run(() => { Process.Start("explorer", "https://github.com/xgui4/WPFetch/releases"); }); 
+            try
+            {
+                await Task.Run(() => { Process.Start("explorer", "https://github.com/xgui4/WPFetch/releases"); });
+            }
+
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Unexcepted Error");
+            }
         }
     }
 }
