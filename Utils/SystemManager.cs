@@ -5,7 +5,7 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Automation;
-using WPFetch.Model;
+using WPFetch.Model.Enums;
 
 namespace WPFetch.Utils
 {

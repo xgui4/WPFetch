@@ -6,17 +6,55 @@
         xmlns:local="clr-namespace:WPFetch.View"
         xmlns:vm="clr-namespace:WPFetch.ViewModels"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="About" Height="500" Width="500">
     <Window.DataContext>
-        <vm:AboutViewModel />
+        <vm:AboutViewModel/>
     </Window.DataContext>
-    <StackPanel>
-        <Image Name="AppIcon" Source="../Images/appicon.ico" HorizontalAlignment="Left" Width="100" Height="100"/>
-        <TextBlock Name="AppTitle">
-            <Run FontWeight="Bold" Text="WPFetch Version 0.0.0.1 Developer Preview"/>
-        </TextBlock>
-        <Label Content="A utility to fetch you system info with a OS-tan"/>
-        <Button Name="CheckUpdate" Content="Check Update" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
-        <Button Name="Configure" Content="Configure (Coming Soon)" Background="Red" IsEnabled="False"/>
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel>
+            <Image Name="AppIcon" Source="{Binding AppIconPath}" HorizontalAlignment="Left" Width="100" Height="100"/>
+            <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
+            <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
+            <Label Name="Authors" Content="{Binding AuthorsLabel}"/>
+            <Label Name="License" Content="{Binding LicenseLabel}"/>
+            <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
+
+            <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="Config (Work in progress)"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Name="FluentUICheckBoxLabel" Content="Enable Fuent UI (Windows 11 only)"/>
+                <CheckBox Name="FluentUIEnable" IsChecked="{Binding IsFluentUIEnable}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Name="DefaultWindowsInputBoxLabel" Content="Default Windows Version :"/>
+                <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}"/>
+            </StackPanel>
+
+            <Label Content="Choose a other language :"/>
+            <ComboBox ItemsSource="{Binding LocalesAvailable}" SelectedValue="{Binding LocaleSelected}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ComboBoxItem Content="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Label Content="Choose a other theme :"/>
+            <ComboBox ItemsSource="{Binding ThemesAvailable}" SelectedValue="{Binding ThemeSelected}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ComboBoxItem Content="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Label Content="Save Configuration and configuration feature via GUI isn't implemented yet!"/>
+            <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" Background="Red" IsEnabled="False"/>
+
+            <Label FontSize="20" Content="More options coming later" />
+
+        </StackPanel>
+    </ScrollViewer>
 </Window>

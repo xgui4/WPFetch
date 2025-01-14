@@ -1,16 +1,20 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPFetch.Model;
+using System.Windows;
+using WPFetch.Model.System;
 
 namespace WPFetch.Backend
 {
     public class HardwareInfoService
     {
-        private SystemInformationModel system; 
+        private const string Unknown = "N/A";
+
+        private readonly SystemInformationModel system; 
         
         public HardwareInfoService()
         {
@@ -19,22 +23,23 @@ namespace WPFetch.Backend
 
         public void Update()
         {
-            system.FetchAll(); 
+            system.FetchAll();
+            GenerateLog();
         }
 
         public string RequestOperatingSystem()
         {
-            return system.OperatingSystemName ?? "Not Fetched yet!";
+            return system.OperatingSystemName ?? Unknown;
         }
 
         public string RequestKernel()
         {
-            return system.KernelVersion ?? "Not Fetched yet!";
+            return system.KernelVersion ?? Unknown;
         }
 
         public string RequestMachineName()
         {
-            return system.MachineName ?? "Not Fetched yet!";
+            return system.MachineName ?? Unknown;
         }
 
         public string RequestIsSystem64Bit()
@@ -58,7 +63,7 @@ namespace WPFetch.Backend
 
         private bool Is64BitOS()
         {
-            return system.Is64BitOS ?? throw new Exception("Not Fetched yet!"); 
+            return system.Is64BitOS ?? throw new Exception(Unknown); 
         }
 
         public string RequestStorage() 
@@ -66,18 +71,18 @@ namespace WPFetch.Backend
             if (system.Storage != null)
                 return $"{system.Storage} Go";
             else
-                return "Not fetched yet !";
+                return Unknown;
         }
 
         public string RequestCpuThreads()
         {
-            return system.ProcessorCount ?? "Not fetched yet !";
+            return system.ProcessorCount ?? Unknown;
         }
 
         public string RequestCPU()
         {
 
-            return system.ProcessorName ?? "Not fetched yet !";
+            return system.ProcessorName ?? Unknown;
         }
 
         public List<GpuModel> RequestGPU()
@@ -99,19 +104,35 @@ namespace WPFetch.Backend
             if (system.TotalMemory != null)
                 return $"{system.TotalMemory} Go"; 
             else
-                return "Not fetched yet!"; 
+                return Unknown; 
         }
 
         public string RequestNumberOfTaskRunning()
         {
-            return system.NumbertOfTaskRunning ?? "Not fetched yet!";
+            return system.NumbertOfTaskRunning ?? Unknown;
         }
         public string RequestBatteryPercentage()
         {
             if (system.Battery != null)
                 return $"{system.Battery}%";
             else
-                return "Not fetched yet!"; 
+                return Unknown; 
+        }
+
+        public void GenerateLog()
+        {
+            string logsFolderPath = Environment.CurrentDirectory + "\\logs\\";
+
+            if (!Directory.Exists(logsFolderPath))
+            {
+                Directory.CreateDirectory(logsFolderPath);
+                MessageBox.Show(logsFolderPath + " Created!");
+            }
+
+            using (StreamWriter file = new StreamWriter(logsFolderPath + "HardwareInfoService.log"))
+            {
+                system.ErrorsDuringFetch.ForEach((error) => file.WriteLine(error));
+            }
         }
     }
 }

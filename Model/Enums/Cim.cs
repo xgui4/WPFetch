@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace WPFetch.Model
+namespace WPFetch.Model.Enums
 {
     public enum Cim
     {
@@ -22,7 +22,7 @@ namespace WPFetch.Model
 
     public static class CimExtension
     {
-        private const string Select = "SELECT * FROM"; 
+        private const string Select = "SELECT * FROM";
 
         public static string GetWmiQuery(this Cim cim)
         {

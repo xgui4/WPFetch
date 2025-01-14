@@ -5,13 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WPFetch.Backend;
-using WPFetch.Model;
+using WPFetch.Model.System;
 using WPFetch.Utils;
 using WPFetch.View;
 
@@ -21,16 +22,25 @@ namespace WPFetch.ViewModels
     {
         private static readonly App app = (App)Application.Current;
 
-        private static readonly HardwareInfoService hardwareInfoService = new();
+        private static readonly HardwareInfoService hardwareInfoService = app.HardwareInfoService ?? throw new ApplicationException("HardwareInfoService not found!");
 
-        private static readonly MainImageService mainImageService = new(app);
+        private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService Not Found");
+
+        public MainWindowViewModel()
+        {
+            hardwareInfoService.GenerateLog();
+        }
+
 
         [ObservableProperty]
         private string? fetchImage = GetOsTan();
 
         [ObservableProperty]
-        private string operatingSystemInformationLabel = "Operating System"; 
-        
+        private string? windowsVerImage = GetWindowsVerImage();
+
+        [ObservableProperty]
+        private string operatingSystemInformationLabel = "Operating System";
+
         [ObservableProperty]
         private string? operatingSystemInformationValue = hardwareInfoService.RequestOperatingSystem();
 
@@ -47,7 +57,7 @@ namespace WPFetch.ViewModels
         private string? machineNameInformationValue = hardwareInfoService.RequestMachineName();
 
         [ObservableProperty]
-        private string is64BitInformationLabel = "64 Bit Operating System";
+        private string is64BitInformationLabel = "Is 64 Bit Operating System";
 
         [ObservableProperty]
         private string? is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
@@ -71,7 +81,7 @@ namespace WPFetch.ViewModels
         private string? cpuInformationValue = hardwareInfoService.RequestCPU();
 
         [ObservableProperty]
-        private ObservableCollection<GpuModel>? gpus = new(hardwareInfoService.RequestGPU()); 
+        private ObservableCollection<GpuModel>? gpus = new(hardwareInfoService.RequestGPU());
 
         [ObservableProperty]
         private string memoryInformationLabel = "Total Memory (RAM)";
@@ -80,7 +90,7 @@ namespace WPFetch.ViewModels
         private string? memoryInformationValue = hardwareInfoService.RequestRAM();
 
         [ObservableProperty]
-        private string numbersOfTaskRunningLabel = "Numbers of Tasks Running"; 
+        private string numbersOfTaskRunningLabel = "Numbers of Tasks Running";
 
         [ObservableProperty]
         private string? numbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning();
@@ -89,11 +99,17 @@ namespace WPFetch.ViewModels
         private string batteryInformationLabel = "Battery";
 
         [ObservableProperty]
-        private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage(); 
+        private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage();
+
+        [ObservableProperty]
+        private string? refreshButtonLabel = "🔄️ Refresh";
+
+        [ObservableProperty]
+        private string? moreButtonLabel = "➕ More";
 
         private static string GetOsTan()
         {
-            if (app.CmdArgs?.Arguments.Count == 0)
+            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
             {
                 return mainImageService.GetDefaultOSTanPath(); 
             }
@@ -103,17 +119,31 @@ namespace WPFetch.ViewModels
             }
         }
 
-        [RelayCommand]
-        private void SetRefreshButton()
+        private static string GetWindowsVerImage()
         {
-            hardwareInfoService.Update();
-            UpdateSystemInformationData();
+            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
+            {
+                return mainImageService.GetDefaultWindowsVerImage();
+            }
+            else
+            {
+                return mainImageService.GetWindowsVerImageWithCmdArgs();
+            }
+        }
+
+        [RelayCommand]
+        private async Task SetRefreshButton()
+        {
+            await Task.Run(() => {
+                hardwareInfoService.Update(); 
+                UpdateSystemInformationData(); 
+            });
         }
 
         [RelayCommand]
         private void SetAboutButton()
         {
-            About about = new(){ShowInTaskbar = false};
+            About about = new();
             about.ShowDialog();
         }
 
@@ -145,8 +175,13 @@ namespace WPFetch.ViewModels
             string memoryToCompare = hardwareInfoService.RequestRAM();
             if (memoryToCompare != MemoryInformationValue) MemoryInformationValue = memoryToCompare;
 
+            string numberOfTaskToCompare = hardwareInfoService.RequestNumberOfTaskRunning();
+            if (numberOfTaskToCompare != NumbersOfTaskRunningValue) NumbersOfTaskRunningValue = numberOfTaskToCompare;
+
             string batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
             if (batteryToCompare != BatteryInformationValue) BatteryInformationValue = batteryToCompare;
+
+            hardwareInfoService.GenerateLog();
         }
-      }
+    }
     }
