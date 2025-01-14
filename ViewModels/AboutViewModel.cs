@@ -46,7 +46,13 @@ namespace WPFetch.ViewModels
         private ObservableCollection<string> localesAvailable = langs; 
 
         [ObservableProperty]
-        private string? localeSelected; 
+        private string? localeSelected;
+
+        [ObservableProperty]
+        private ObservableCollection<string?> themesAvailable = [ "System", "Dark", "Light" ];
+
+        [ObservableProperty]
+        private string? themeSelected;
 
         /// <summary>
         /// This is temporaly until i add the language service later
