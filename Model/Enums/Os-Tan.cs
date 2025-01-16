@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
+using WPFetch.Utils;
 
 namespace WPFetch.Model.Enums
 {
@@ -34,6 +36,7 @@ namespace WPFetch.Model.Enums
 
     public static class Os_TanExtension
     {
+        private static readonly RessourcesManager ressources = new(); 
         public static string GetOsTanPathImgPath(this Os_Tan tan)
         {
             return tan switch
@@ -55,10 +58,10 @@ namespace WPFetch.Model.Enums
                 Os_Tan.WINDOWS_VISTA => "https://www.ostan-collections.net/wiki/images/thumb/d/da/Schoolgirlvistan.jpg/450px-Schoolgirlvistan.jpg",
                 Os_Tan.WINDOWS_SERVER_2003 => "https://www.ostan-collections.net/wiki/images/2/2f/WinServer2003tan.jpg",
                 Os_Tan.WINDOWS_SERVER_2008 => "https://www.ostan-collections.net/wiki/images/thumb/1/1a/Saba-fish.jpg/300px-Saba-fish.jpg",
-                Os_Tan.WINDOWS_7 => "../Images/os-tan.png",
+                Os_Tan.WINDOWS_7 => ressources.GetImagesPath("os-tan7.png"),
                 Os_Tan.WINDOWS_8 => "https://www.ostan-collections.net/wiki/images/7/77/Yuai.png",
                 Os_Tan.WINDOWS_10 => "https://www.ostan-collections.net/wiki/images/thumb/0/04/10-full_promo.png/414px-10-full_promo.png?20150609062724",
-                Os_Tan.WINDOWS_11 => "../Images/fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp",
+                Os_Tan.WINDOWS_11 => ressources.GetImagesPath("fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp"),
                 _ => throw new ArgumentException("This is not a valid OS-tan, pls try again.")
             };
         }

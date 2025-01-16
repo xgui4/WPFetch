@@ -18,7 +18,7 @@ namespace WPFetch.Backend
         }
         public string GetDefaultOSTanPath()
         {
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22))
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
             {
                 return Os_Tan.WINDOWS_11.GetOsTanPathImgPath();
             }
@@ -104,7 +104,7 @@ namespace WPFetch.Backend
 
         public string GetDefaultWindowsVerImage()
         {
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22))
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
             {
                 return WindowsVerImage.WIN_11.GetWindowsVerPath();
             }
