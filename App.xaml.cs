@@ -16,6 +16,10 @@ namespace DesktopWallpaper
         public CommandLineArguments? CmdArgs { get; private set; }
         public HardwareInfoService? HardwareInfoService { get; private set; }
         public MainImageService? MainImageService { get; private set; }
+        public LoggerServiceService? LoggerService { get; private set; }
+        public SettingService? SettingService { get; private set; }
+        public ThemeService? ThemeService { get; private set; }
+        public RessourcesManagerService? RessourcesManagerService { get; private set; }
 
         /// <summary>
         /// Source du code : https://wpf-tutorial.com/wpf-application/command-line-parameters/
@@ -27,6 +31,10 @@ namespace DesktopWallpaper
             CmdArgs = new CommandLineArguments(e.Args);
             HardwareInfoService = new HardwareInfoService();
             MainImageService = new MainImageService((App)Application.Current);
+            LoggerService = new LoggerServiceService();
+            SettingService = new SettingService();
+            ThemeService = new ThemeService();
+            RessourcesManagerService = new RessourcesManagerService();
 
             try
             {

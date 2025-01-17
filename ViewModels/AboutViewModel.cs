@@ -21,7 +21,7 @@ namespace WPFetch.ViewModels
     public partial class AboutViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string? fullTitleValue = "WPFetch Version 0.0.0.1 Developer Preview 2";
+        private string? fullTitleValue = "WPFetch Version 0.0.0.1 Developer Preview 2b";
 
         [ObservableProperty]
         private string? descriptionValue = "A utility to fetch you system info with a OS-tan";

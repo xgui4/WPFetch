@@ -31,7 +31,6 @@ namespace WPFetch.ViewModels
             hardwareInfoService.GenerateLog();
         }
 
-
         [ObservableProperty]
         private string? fetchImage = GetOsTan();
 
@@ -107,9 +106,18 @@ namespace WPFetch.ViewModels
         [ObservableProperty]
         private string? moreButtonLabel = "➕ More";
 
+        [ObservableProperty]
+        private string? gpuImagePath = new RessourcesManager().GetImagesPath("gpu-white.png");
+
+        [ObservableProperty]
+        private string? ramImagePath = new RessourcesManager().GetImagesPath("ram-white.png");
+
+        [ObservableProperty]
+        private string? disclaimerValue = "Disclaimer : This product isn't a official product by Microsoft and isn't affliated(and never will) by them.";
+
         private static string GetOsTan()
         {
-            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
+            if (app.CmdArgs?.Arguments == null || app.CmdArgs.Arguments.Count == 0)
             {
                 return mainImageService.GetDefaultOSTanPath(); 
             }
@@ -121,7 +129,7 @@ namespace WPFetch.ViewModels
 
         private static string GetWindowsVerImage()
         {
-            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
+            if (app.CmdArgs?.Arguments == null || app.CmdArgs.Arguments.Count == 0)
             {
                 return mainImageService.GetDefaultWindowsVerImage();
             }
@@ -152,33 +160,33 @@ namespace WPFetch.ViewModels
             var osToCompare = hardwareInfoService.RequestOperatingSystem();
             if (osToCompare != OperatingSystemInformationValue) OperatingSystemInformationValue = osToCompare;
 
-            string kernelToCompare = hardwareInfoService.RequestKernel();
+            var kernelToCompare = hardwareInfoService.RequestKernel();
             if (kernelToCompare != KernelInformationValue) KernelInformationValue = kernelToCompare;
 
-            string machineNameToCompare = hardwareInfoService.RequestMachineName();
+            var machineNameToCompare = hardwareInfoService.RequestMachineName();
             if (machineNameToCompare != MachineNameInformationValue) MachineNameInformationValue = machineNameToCompare;
 
-            string newValue = hardwareInfoService.RequestIsSystem64Bit();
+            var newValue = hardwareInfoService.RequestIsSystem64Bit();
             if (newValue != Is64BitInformationValue) Is64BitInformationValue = newValue;
 
-            string storageToCompare = hardwareInfoService.RequestStorage();
+            var storageToCompare = hardwareInfoService.RequestStorage();
             if (storageToCompare != StorageInformationValue) StorageInformationValue = storageToCompare;
 
-            string threadsToCompare = hardwareInfoService.RequestCpuThreads();
+            var threadsToCompare = hardwareInfoService.RequestCpuThreads();
             if (threadsToCompare != CpuThreadsInformationValue) CpuThreadsInformationValue = threadsToCompare;
 
             if (Gpus?.Count == 0 ) Gpus = new ObservableCollection<GpuModel>(hardwareInfoService.RequestGPU());
 
-            string cpuToCompare = hardwareInfoService.RequestCPU();
+            var cpuToCompare = hardwareInfoService.RequestCPU();
             if (cpuToCompare != CpuInformationValue) CpuInformationValue = cpuToCompare;
 
-            string memoryToCompare = hardwareInfoService.RequestRAM();
+            var memoryToCompare = hardwareInfoService.RequestRAM();
             if (memoryToCompare != MemoryInformationValue) MemoryInformationValue = memoryToCompare;
 
-            string numberOfTaskToCompare = hardwareInfoService.RequestNumberOfTaskRunning();
+            var numberOfTaskToCompare = hardwareInfoService.RequestNumberOfTaskRunning();
             if (numberOfTaskToCompare != NumbersOfTaskRunningValue) NumbersOfTaskRunningValue = numberOfTaskToCompare;
 
-            string batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
+            var batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
             if (batteryToCompare != BatteryInformationValue) BatteryInformationValue = batteryToCompare;
 
             hardwareInfoService.GenerateLog();

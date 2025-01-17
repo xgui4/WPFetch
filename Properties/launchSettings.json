@@ -1,0 +1,32 @@
+{
+  "profiles": {
+    "WPFetch": {
+      "commandName": "Project"
+    },
+    "Windows10Mock": {
+      "commandName": "Project",
+      "commandLineArgs": "windowsver=10 os-tan=10",
+      "nativeDebugging": true
+    },
+    "Windows10Mock2": {
+      "commandName": "Project",
+      "commandLineArgs": "windowsver=10",
+      "nativeDebugging": true
+    },
+    "OS-TanMock": {
+      "commandName": "Project",
+      "commandLineArgs": "os-tan=10",
+      "nativeDebugging": true
+    },
+    "Windows11Mock": {
+      "commandName": "Project",
+      "commandLineArgs": "windowsver=11 os-tan=11",
+      "nativeDebugging": true
+    },
+    "Windows8Mock": {
+      "commandName": "Project",
+      "commandLineArgs": "windowsver=8 os-tan=8",
+      "nativeDebugging": true
+    }
+  }
+}

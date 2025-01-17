@@ -45,7 +45,7 @@
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock>
-                                        <Image Source="../Ressources/Images/gpu-white.png" Width="16" Height="16"/>
+                                        <Image Source="{Binding GpuLabelImagePath}" Width="16" Height="16"/>
                                         <Run FontWeight="Bold" Text="{Binding Label}"/>
                                         <Run Text=" : "/>
                                         <Run Text="{Binding Name}"/>
@@ -55,7 +55,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                     <LineBreak/>
-                    <Image Source="../Ressources/Images/ram-white.png" Width="16" Height="16"/>
+                    <Image Source="{Binding RamImagePath}" Width="16" Height="16"/>
                     <Run FontWeight="Bold" Text="{Binding MemoryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MemoryInformationValue}"/>
                     <LineBreak/>
                     <Run FontFamily="Segoe Fluent Icons" Text="&#xE71D;" />
@@ -66,10 +66,11 @@
                 </TextBlock>
             </StackPanel>
         </StackPanel>
-        <TextBlock Name="Disclaimer" FontWeight="UltraBlack" Text="Disclaimer : This product isn't a official product by Microsoft and isn't affliated (and never will) by them."/>
+        <TextBlock Name="Disclaimer" FontWeight="UltraBlack" Text="{Binding DisclaimerValue}"/>
         <Line Margin="5"/>
-        <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding RefreshButtonLabel}" Command="{Binding SetRefreshButtonCommand}" Background="{DynamicResource {x:Static SystemColors.AccentColorLight1BrushKey}}"/>
-        <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding MoreButtonLabel}" Command="{Binding SetAboutButtonCommand}" Background="{DynamicResource {x:Static SystemColors.AccentColorDark1BrushKey}}"/>
+        <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding RefreshButtonLabel}" Command="{Binding SetRefreshButtonCommand}"/>
+        <Line Margin="5" />
+        <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding MoreButtonLabel}" Command="{Binding SetAboutButtonCommand}"/>
     </StackPanel>
 </Window>
 
