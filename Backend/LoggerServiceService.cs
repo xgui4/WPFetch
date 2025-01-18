@@ -8,5 +8,6 @@ namespace WPFetch.Backend
 {
     public class LoggerServiceService
     {
+        public LoggerServiceService() { }
     }
 }

@@ -45,7 +45,7 @@
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock>
-                                        <Image Source="{Binding GpuLabelImagePath}" Width="16" Height="16"/>
+                                        <Image Source="{Binding Image}" Width="16" Height="16"/> 
                                         <Run FontWeight="Bold" Text="{Binding Label}"/>
                                         <Run Text=" : "/>
                                         <Run Text="{Binding Name}"/>

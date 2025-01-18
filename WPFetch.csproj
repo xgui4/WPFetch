@@ -115,12 +115,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Ressources\Images\gpu-white.png">
+    <Content Include="Ressources\Images\gpu-white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Ressources\Images\gpu.png">
+    </Content>
+    <Content Include="Ressources\Images\gpu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Content Include="Ressources\Images\ram-white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -171,9 +171,9 @@
     <Content Include="Ressources\Images\win8.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Ressources\Images\win95-white.png">
+    <Content Include="Ressources\Images\win95-white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Content Include="Ressources\Images\win95.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

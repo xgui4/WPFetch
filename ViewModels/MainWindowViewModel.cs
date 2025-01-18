@@ -24,7 +24,9 @@ namespace WPFetch.ViewModels
 
         private static readonly HardwareInfoService hardwareInfoService = app.HardwareInfoService ?? throw new ApplicationException("HardwareInfoService not found!");
 
-        private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService Not Found");
+        private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService not found!");
+
+        private static readonly RessourcesManagerService resx = app.RessourcesManagerService ?? throw new ApplicationException("RessourcesManagerSevice not found!");
 
         public MainWindowViewModel()
         {
@@ -107,36 +109,19 @@ namespace WPFetch.ViewModels
         private string? moreButtonLabel = "➕ More";
 
         [ObservableProperty]
-        private string? gpuImagePath = new RessourcesManager().GetImagesPath("gpu-white.png");
-
-        [ObservableProperty]
-        private string? ramImagePath = new RessourcesManager().GetImagesPath("ram-white.png");
+        private string? ramImagePath = resx.GetImagesPath("ram-white.png");
 
         [ObservableProperty]
         private string? disclaimerValue = "Disclaimer : This product isn't a official product by Microsoft and isn't affliated(and never will) by them.";
 
         private static string GetOsTan()
         {
-            if (app.CmdArgs?.Arguments == null || app.CmdArgs.Arguments.Count == 0)
-            {
-                return mainImageService.GetDefaultOSTanPath(); 
-            }
-            else
-            {
-                return mainImageService.GetOSTanPathWithCmdArgs();
-            }
+            return mainImageService.RequestOSTanPath();
         }
 
         private static string GetWindowsVerImage()
         {
-            if (app.CmdArgs?.Arguments == null || app.CmdArgs.Arguments.Count == 0)
-            {
-                return mainImageService.GetDefaultWindowsVerImage();
-            }
-            else
-            {
-                return mainImageService.GetWindowsVerImageWithCmdArgs();
-            }
+            return mainImageService.RequestWindowsVerLogoPath();
         }
 
         [RelayCommand]

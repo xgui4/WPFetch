@@ -18,10 +18,13 @@ namespace WPFetch.Utils
             RessourcesFolderPath = Path.Combine(AppContext.BaseDirectory, "Ressources");
             ImagesFolderPath = Path.Combine(RessourcesFolderPath, "Images");
             AppDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Xgui4 Studio", "WPFetch");
+        }
 
+        public void CreateAppDataFolder()
+        {
             if (Directory.Exists(AppDataFolderPath) == false)
             {
-                Directory.CreateDirectory(AppDataFolderPath); 
+                Directory.CreateDirectory(AppDataFolderPath);
             }
         }
 
@@ -32,7 +35,7 @@ namespace WPFetch.Utils
 
         public string GetAppDataFolderPath()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); 
+            return AppDataFolderPath; 
         }
     }
 }

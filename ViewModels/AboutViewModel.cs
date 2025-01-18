@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DesktopWallpaper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFetch.Backend;
 using WPFetch.Model.Enums;
 using WPFetch.Model.Json;
 using WPFetch.Model.System;
@@ -20,6 +22,22 @@ namespace WPFetch.ViewModels
 {
     public partial class AboutViewModel : ObservableObject
     {
+        private static readonly App app = (App)Application.Current;
+
+        private static SettingService? settings;
+
+        public AboutViewModel()
+        {
+            try
+            {
+                settings = app.SettingService ?? throw new Exception("Setting Service Not Found !");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Critical Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+            }
+        }
+
         [ObservableProperty]
         private string? fullTitleValue = "WPFetch Version 0.0.0.1 Developer Preview 2b";
 
@@ -33,7 +51,7 @@ namespace WPFetch.ViewModels
         private string? authorsLabel = "🧑‍💻 Developer : Xgui4 Studio";
 
         [ObservableProperty]
-        private string? licenseLabel = "📜 License : MIT License"; 
+        private string? licenseLabel = "📜 License : MIT License";
 
         [ObservableProperty]
         private string? checkUpdateButtonLabel = "Check Update";
@@ -48,13 +66,13 @@ namespace WPFetch.ViewModels
         private string? defaultWindowsVersionInputBoxValue;
 
         [ObservableProperty]
-        private ObservableCollection<string> localesAvailable = langs; 
+        private ObservableCollection<string> localesAvailable = langs;
 
         [ObservableProperty]
         private string? localeSelected;
 
         [ObservableProperty]
-        private ObservableCollection<string?> themesAvailable = [ "System", "Dark", "Light" ];
+        private ObservableCollection<string> themesAvailable = new(settings?.GetThemesList() ?? ["System", "Dark", "Light", "None"]); //this temporaly list isnt supposed to be there
 
         [ObservableProperty]
         private string? themeSelected;
@@ -67,22 +85,19 @@ namespace WPFetch.ViewModels
         [RelayCommand] 
         private void ConfirmChangesButton() 
         {
-            RessourcesManager resx = new RessourcesManager(); 
-            MessageBox.Show("This is still a work in progress", "Information", MessageBoxButton.OK, MessageBoxImage.Exclamation); 
-            Setting config = new Setting(
-                LocaleSelected ?? "English", 
-                DefaultWindowsVersionInputBoxValue ?? "Windows NT", 
-                IsFluentUIEnable, ThemeSelected ?? "System", 
-                new[] { SystemOptions.OperatingSystem }
-            ); 
-
-            string configJson = JsonConvert.SerializeObject(config, Formatting.Indented); 
-            using (StreamWriter streamWriter = new StreamWriter(Path.Combine(resx.GetAppDataFolderPath(), "config.json")))
+            settings?.SaveConfig(
+                new Dictionary<string, string>
+                {
+                    { "LocaleSelected", LocaleSelected ?? "English" },
+                    { "DefaultWindowsVersionInputBoxValue", DefaultWindowsVersionInputBoxValue ?? "Windows NT" },
+                    { "IsFluentUIEnable", IsFluentUIEnable.ToString() },
+                    { "ThemeSelected", ThemeSelected ?? "System"}
+                }
+                ); 
+            if (settings == null)
             {
-                streamWriter.WriteLine(configJson); 
+                MessageBox.Show("Error : Setting Manager Service wasn't found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            MessageBox.Show(configJson); 
         }
 
         [RelayCommand]

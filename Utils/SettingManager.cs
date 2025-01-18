@@ -11,7 +11,9 @@ namespace WPFetch.Utils
 {
     public class SettingManager
     {
-        private readonly Setting setting; 
+        private readonly Setting setting;
+
+        public string[] Themes { get; init; } = ["System", "Dark", "Light"];  
 
         public SettingManager(Setting setting)
         {
