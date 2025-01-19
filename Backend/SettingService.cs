@@ -63,7 +63,6 @@ namespace WPFetch.Backend
                 var configFilePath = Path.Combine(appDataPath, "config.json");
                 var content = File.ReadAllText(configFilePath);
                 var setting = JsonConvert.DeserializeObject<Setting>(content);
-                MessageBox.Show($"Setting applied : {setting?.ToString()}");
                 return setting ?? new DefaultSetting(); 
             }
             catch (Exception ex)

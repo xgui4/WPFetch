@@ -41,7 +41,7 @@
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock>
-                                        <Image Source="{Binding Image}" Width="16" Height="16"/> 
+                                        <Image Name="GraphicCardImage" Source="{Binding Image}" Width="16" Height="16"/> 
                                         <Run FontWeight="Bold" Text="{Binding Label}"/>
                                         <Run Text=" : "/>
                                         <Run Text="{Binding Name}"/>
@@ -51,7 +51,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                     <LineBreak/>
-                    <Image Source="{Binding RamImagePath}" Width="16" Height="16"/>
+                    <Image Name="MemorySickImage" Source="{Binding RamImagePath}" Width="16" Height="16"/>
                     <Run FontWeight="Bold" Text="{Binding MemoryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MemoryInformationValue}"/>
                     <LineBreak/>
                     <Run FontFamily="Segoe Fluent Icons" Text="&#xE71D;" />

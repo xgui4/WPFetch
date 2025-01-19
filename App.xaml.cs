@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
@@ -60,12 +61,7 @@ namespace DesktopWallpaper
             {
                 if (IsMicaSupported())
                 {
-                    Resources.MergedDictionaries.Add(new ResourceDictionary
-                    {
-                        Source = new Uri("pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml")
-                    });
-                    int? appLightMode = (int?)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) ?? -1;
-                    Theme = appLightMode == 0 ? "Dark" : "White";
+                    SetUpMicaTheme();
                 }
                 else
                 {
@@ -77,6 +73,43 @@ namespace DesktopWallpaper
             {
                 MessageBox.Show(ex.Message, "Error while applying theme", MessageBoxButton.OK, MessageBoxImage.Error);
                 Theme = "White"; 
+            }
+        }
+
+        private void SetUpMicaTheme()
+        {
+            Resources.MergedDictionaries.Add(new ResourceDictionary
+            {
+                Source = new Uri("pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml")
+            });
+
+            int? appLightMode = (int?)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) ?? -1;
+            Theme = appLightMode == 0 ? "Dark" : "White";
+
+            var settingTemp = SettingService?.GetSettings();
+
+            if (settingTemp != null)
+            {
+                if (settingTemp.Theme == "Dark")
+                {
+                    Current.ThemeMode = ThemeMode.Dark;
+                    Theme = "Dark";
+                }
+                if (settingTemp.Theme == "White")
+                {
+                    Current.ThemeMode = ThemeMode.Light;
+                    Theme = "Light";
+                }
+                if (settingTemp.Theme == "System")
+                {
+                    Current.ThemeMode = ThemeMode.System;
+                    Theme = "System";
+                }
+                if (settingTemp.Theme == "None")
+                {
+                    Current.ThemeMode = ThemeMode.None;
+                    Theme = "None";
+                }
             }
         }
 
