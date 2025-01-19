@@ -12,7 +12,6 @@ public class SystemInformationModel
     public string? OperatingSystemName { get; private set; } = null;
     public string? KernelVersion { get; private set; } = null;
     public string? MachineName { get; private set; } = null;
-    public bool? Is64BitOS { get; private set; } = null;
     public string? ProcessorCount { get; private set; } = null;
     public string? ProcessorName { get; private set; } = null;
     public string? TotalMemory { get; private set; } = null;
@@ -27,7 +26,6 @@ public class SystemInformationModel
         FetchOperatingSystemName();
         FetchKernelVersion();
         FetchMachineName();
-        FetchOsIsX64();
         FetchThreads();
         FetchProcessorInfo();
         FetchTotalMemoryInfo();
@@ -58,11 +56,6 @@ public class SystemInformationModel
     public void FetchMachineName()
     {
         MachineName = Environment.MachineName;
-    }
-
-    public void FetchOsIsX64()
-    {
-        Is64BitOS = Environment.Is64BitProcess;
     }
 
     public void FetchThreads()

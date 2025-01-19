@@ -45,31 +45,6 @@ namespace WPFetch.Backend
             return system.MachineName ?? Unknown;
         }
 
-        public string RequestIsSystem64Bit()
-        {
-           try
-           {
-                int boolean = Convert.ToInt32(Is64BitOS()); 
-                
-                if (boolean == 1)
-                {
-                    return "true"; 
-                }
-
-                return "false";
-           } 
-           catch (Exception ex) 
-           {
-                logger.Log(ex.Message);
-                return "N/A"; 
-           }
-        } 
-
-        private bool Is64BitOS()
-        {
-            return system.Is64BitOS ?? throw new Exception(Unknown); 
-        }
-
         public string RequestStorage() 
         {
             if (system.Storage != null)

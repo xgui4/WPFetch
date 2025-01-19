@@ -58,12 +58,6 @@ namespace WPFetch.ViewModels
         private string? machineNameInformationValue = hardwareInfoService.RequestMachineName();
 
         [ObservableProperty]
-        private string is64BitInformationLabel = "Is 64 Bit Operating System";
-
-        [ObservableProperty]
-        private string? is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
-
-        [ObservableProperty]
         private string storageInformationLabel = "Storage";
 
         [ObservableProperty]
@@ -150,9 +144,6 @@ namespace WPFetch.ViewModels
 
             var machineNameToCompare = hardwareInfoService.RequestMachineName();
             if (machineNameToCompare != MachineNameInformationValue) MachineNameInformationValue = machineNameToCompare;
-
-            var newValue = hardwareInfoService.RequestIsSystem64Bit();
-            if (newValue != Is64BitInformationValue) Is64BitInformationValue = newValue;
 
             var storageToCompare = hardwareInfoService.RequestStorage();
             if (storageToCompare != StorageInformationValue) StorageInformationValue = storageToCompare;

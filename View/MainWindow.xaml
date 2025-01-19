@@ -29,16 +29,12 @@
                     <Run FontFamily="Segoe Fluent Icons" Text="&#xEC4E;" />
                     <Run FontWeight="Bold" Text="{Binding MachineNameInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MachineNameInformationValue}"/>
                     <LineBreak/>
-                    <Run FontWeight="Bold" Text="{Binding Is64BitInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding Is64BitInformationValue}"/>
-                    <LineBreak/>
                     <Run FontFamily="Segoe Fluent Icons" Text="&#xEDA2;" />
                     <Run FontWeight="Bold" Text="{Binding StorageInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding StorageInformationValue}"/>
                     <LineBreak/>
                     <Run FontFamily="Segoe Fluent Icons" Text="&#xE950;" />
                     <Run FontWeight="Bold" Text="{Binding CpuInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuInformationValue}"/> 
-                    <LineBreak/>
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE950;" />
-                    <Run FontWeight="Bold" Text="{Binding CpuThreadsInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuThreadsInformationValue}"/>
+                    <Run  Text="("/> <Run Text="{Binding CpuThreadsInformationValue}"/> <Run Text="{Binding CpuThreadsInformationLabel}" /> <Run Text=")" />
                     <LineBreak/>
                     <ItemsControl ItemsSource="{Binding Gpus}">
                         <ItemsControl.ItemTemplate>
