@@ -10,6 +10,7 @@ using WPFetch.Exceptions;
 using WPFetch.Model.Json;
 using WPFetch.Model.System;
 using WPFetch.Utils;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WPFetch.Backend
 {
@@ -53,9 +54,39 @@ namespace WPFetch.Backend
             MessageBox.Show(configJson);
         }
 
-        public void GetSettings()
+        public Setting GetSettings()
         {
+            try
+            {
+                var resxTemp = new RessourcesManager();
+                var appDataPath = resxTemp.GetAppDataFolderPath();
+                var configFilePath = Path.Combine(appDataPath, "config.json");
+                var content = File.ReadAllText(configFilePath);
+                var setting = JsonConvert.DeserializeObject<Setting>(content);
+                MessageBox.Show($"Setting applied : {setting?.ToString()}");
+                return setting ?? new DefaultSetting(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error while getting setting from storage", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return new DefaultSetting();
+        }
 
+        public void ResetSetting()
+        {
+            try
+            {
+                var resxTemp = new RessourcesManager();
+                var appDataPath = resxTemp.GetAppDataFolderPath();
+                var configFilePath = Path.Combine(appDataPath, "config.json");
+                File.Delete(configFilePath);
+                File.Create(configFilePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error while trying to reset setting", MessageBoxButton.OK, MessageBoxImage.Error); 
+            }
         }
     }
 }

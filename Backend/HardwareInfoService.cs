@@ -7,12 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WPFetch.Model.System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WPFetch.Backend
 {
-    public class HardwareInfoService : IService
+    public class HardwareInfoService
     {
         private const string Unknown = "N/A";
+
+        private readonly static LoggerService logger = new("HardwareInfoService");
 
         private readonly SystemInformationModel system; 
         
@@ -57,7 +60,8 @@ namespace WPFetch.Backend
            } 
            catch (Exception ex) 
            {
-                return ex.Message;
+                logger.Log(ex.Message);
+                return "N/A"; 
            }
         } 
 
@@ -116,22 +120,14 @@ namespace WPFetch.Backend
             if (system.Battery != null)
                 return $"{system.Battery}%";
             else
-                return Unknown; 
+                return Unknown;
         }
 
         public void GenerateLog()
         {
-            string logsFolderPath = Environment.CurrentDirectory + "\\logs\\";
-
-            if (!Directory.Exists(logsFolderPath))
-            {
-                Directory.CreateDirectory(logsFolderPath);
-                MessageBox.Show(logsFolderPath + " Created!");
-            }
-
-            using (StreamWriter file = new StreamWriter(logsFolderPath + "HardwareInfoService.log"))
-            {
-                system.ErrorsDuringFetch.ForEach((error) => file.WriteLine(error));
+            logger.Log("Logging Started.");
+            foreach (var error in system.ErrorsDuringFetch) { 
+                logger.Log(error); 
             }
         }
     }

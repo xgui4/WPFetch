@@ -112,5 +112,19 @@ namespace WPFetch.ViewModels
                 MessageBox.Show(ex.Message, "Unexcepted Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        [RelayCommand]
+        private async Task ResetChangesButton() 
+        {
+            try
+            {
+                await Task.Run(() => { settings?.ResetSetting(); });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Unexcepted Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
     }
 }

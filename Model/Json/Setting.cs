@@ -40,5 +40,10 @@ namespace WPFetch.Model.Json
 
             HardwaresToFetch = hardwaresToFetch;
         }
+
+        public override string ToString()
+        {
+            return $"Locale : {LocaleSelected.ToString()}, Default Win Version : {DefaultWindowsVersions}, Fluent Theme : {IsFluentUIEnabled}, Aero2 Theme Mode : {Theme} , List of Hardware To Fetch : {HardwaresToFetch}";
+        }
     }
 }

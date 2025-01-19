@@ -18,10 +18,10 @@ namespace DesktopWallpaper
         public CommandLineArguments? CmdArgs { get; private set; }
         public HardwareInfoService? HardwareInfoService { get; private set; }
         public MainImageService? MainImageService { get; private set; }
-        public LoggerService? LoggerService { get; private set; }
+        private LoggerService? AppLoggerService { get; set; }
         public SettingService? SettingService { get; private set; }
         public RessourcesManagerService? RessourcesManagerService { get; private set; }
-        public string? Theme { get; private set; }
+        public string? Theme { get; private set; } = "Dark";
 
         /// <summary>
         /// Source du code : https://wpf-tutorial.com/wpf-application/command-line-parameters/
@@ -33,11 +33,19 @@ namespace DesktopWallpaper
             CmdArgs = new CommandLineArguments(e.Args);
             HardwareInfoService = new HardwareInfoService();
             MainImageService = new MainImageService((App)Application.Current);
-            LoggerService = new LoggerService();
+            AppLoggerService = new LoggerService("App");
             SettingService = new SettingService();
             RessourcesManagerService = new RessourcesManagerService();
 
-            SettingService.AddAppliedSettings(new DefaultSetting());
+            try
+            {
+                Setting setting = SettingService.GetSettings();
+                SettingService.AddAppliedSettings(setting);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error while applying setting from confile file", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             try
             {
@@ -57,21 +65,18 @@ namespace DesktopWallpaper
                         Source = new Uri("pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml")
                     });
                     int? appLightMode = (int?)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) ?? -1;
-                    Theme = appLightMode == 0 ? "Mica Dark Theme" : "Mica White Theme";
+                    Theme = appLightMode == 0 ? "Dark" : "White";
                 }
                 else
                 {
                     MessageBox.Show("Mica (Fluent UI with transparency) is not supported in your Windows version: Mica requires Windows 11 and later. Fallback to default WPF theme.");
-                    Resources.MergedDictionaries.Add(new ResourceDictionary
-                    {
-                        Source = new Uri("pack://application:,,,/PresentationFramework.AeroLite;component/Ressources/Themes/AeroLite.xaml")
-                    });
-                    Theme = "default";
+                    Theme = "White";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error while applying theme", MessageBoxButton.OK, MessageBoxImage.Error);
+                Theme = "White"; 
             }
         }
 

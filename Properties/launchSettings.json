@@ -27,6 +27,11 @@
       "commandName": "Project",
       "commandLineArgs": "windowsver=8 os-tan=8",
       "nativeDebugging": true
+    },
+    "Windows7Mock": {
+      "commandName": "Project",
+      "commandLineArgs": "windowsver=7 os-tan=7",
+      "nativeDebugging": true
     }
   }
 }

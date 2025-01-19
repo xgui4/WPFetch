@@ -52,6 +52,7 @@
 
             <Label Content="Save Configuration and configuration feature via GUI isn't implemented yet!"/>
             <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}"/>
+            <Button Name="ResetChangesButton" Content="Reset Setting (Require app to be restart to take effect)" Command="{Binding ResetChangesButtonCommand}"/>
 
             <Label FontSize="20" Content="More options coming later" />
 

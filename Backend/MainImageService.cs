@@ -9,6 +9,8 @@ namespace WPFetch.Backend
 
         private const string MainImageArg = "os-tan=";
         private const string WindowsVerImageArg = "windowsver=";
+
+
         public MainImageService(App app)
         {
             this.app = app;
@@ -79,62 +81,126 @@ namespace WPFetch.Backend
 
         private string GetDefaultWindowsVerImage()
         {
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
+            if (app.Theme == "Dark")
             {
-                return WindowsVerImage.WIN_11.GetWindowsVerPath();
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
+                {
+                    return WindowsVerImage.WIN_11.GetWindowsVerPathForDarkMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
+                {
+                    return WindowsVerImage.WIN_10.GetWindowsVerPathForDarkMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
+                {
+                    return WindowsVerImage.WIN_8.GetWindowsVerPathForDarkMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
+                {
+                    return WindowsVerImage.WIN_7.GetWindowsVerPathForDarkMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
+                {
+                    return WindowsVerImage.WIN_VISTA.GetWindowsVerPathForDarkMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
+                {
+                    return WindowsVerImage.WIN_XP.GetWindowsVerPathForDarkMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
+                {
+                    return WindowsVerImage.WIN_2K.GetWindowsVerPathForDarkMode();
+                }
+                else
+                {
+                    return WindowsVerImage.WIN_NT.GetWindowsVerPathForDarkMode();
+                }
             }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
+            else 
             {
-                return WindowsVerImage.WIN_10.GetWindowsVerPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
-            {
-                return WindowsVerImage.WIN_8.GetWindowsVerPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
-            {
-                return WindowsVerImage.WIN_7.GetWindowsVerPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
-            {
-                return WindowsVerImage.WIN_VISTA.GetWindowsVerPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
-            {
-                return WindowsVerImage.WIN_XP.GetWindowsVerPath();
-            }
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
-            {
-                return WindowsVerImage.WIN_2K.GetWindowsVerPath();
-            }
-            else
-            {
-                return WindowsVerImage.WIN_NT.GetWindowsVerPath();
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
+                {
+                    return WindowsVerImage.WIN_11.GetWindowsVerPathForLightMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
+                {
+                    return WindowsVerImage.WIN_10.GetWindowsVerPathForLightMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
+                {
+                    return WindowsVerImage.WIN_8.GetWindowsVerPathForLightMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
+                {
+                    return WindowsVerImage.WIN_7.GetWindowsVerPathForLightMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
+                {
+                    return WindowsVerImage.WIN_VISTA.GetWindowsVerPathForLightMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
+                {
+                    return WindowsVerImage.WIN_XP.GetWindowsVerPathForLightMode();
+                }
+                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
+                {
+                    return WindowsVerImage.WIN_2K.GetWindowsVerPathForLightMode();
+                }
+                else
+                {
+                    return WindowsVerImage.WIN_NT.GetWindowsVerPathForLightMode();
+                }
             }
         }
 
         public string RequestWindowsVerLogoPath()
         {
-            return (app.CmdArgs?.Arguments.FirstOrDefault(arg => arg.StartsWith(WindowsVerImageArg))) switch
+            if (app.Theme == "Dark")
             {
-                $"{WindowsVerImageArg}11" => WindowsVerImage.WIN_11.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}10" => WindowsVerImage.WIN_10.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}8" => WindowsVerImage.WIN_8.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}7" => WindowsVerImage.WIN_7.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}vista" => WindowsVerImage.WIN_VISTA.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}xp" => WindowsVerImage.WIN_XP.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}2000" => WindowsVerImage.WIN_2K.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}ME" => WindowsVerImage.WIN_ME.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}1" => WindowsVerImage.WIN_1.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}2" => WindowsVerImage.WIN_2.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}3.1" => WindowsVerImage.WIN_3.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}3" => WindowsVerImage.WIN_3.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}NT" => WindowsVerImage.WIN_NT.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}95" => WindowsVerImage.WIN_95.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}98" => WindowsVerImage.WIN_98.GetWindowsVerPath(),
-                $"{WindowsVerImageArg}Neptune" => WindowsVerImage.WIN_NEPTUNE.GetWindowsVerPath(),
-                _ => GetDefaultWindowsVerImage(),
-            };
+                return (app.CmdArgs?.Arguments.FirstOrDefault(arg => arg.StartsWith(WindowsVerImageArg))) switch
+                {
+                    $"{WindowsVerImageArg}11" => WindowsVerImage.WIN_11.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}10" => WindowsVerImage.WIN_10.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}8" => WindowsVerImage.WIN_8.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}7" => WindowsVerImage.WIN_7.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}vista" => WindowsVerImage.WIN_VISTA.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}xp" => WindowsVerImage.WIN_XP.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}2000" => WindowsVerImage.WIN_2K.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}ME" => WindowsVerImage.WIN_ME.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}1" => WindowsVerImage.WIN_1.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}2" => WindowsVerImage.WIN_2.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}3.1" => WindowsVerImage.WIN_3.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}3" => WindowsVerImage.WIN_3.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}NT" => WindowsVerImage.WIN_NT.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}95" => WindowsVerImage.WIN_95.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}98" => WindowsVerImage.WIN_98.GetWindowsVerPathForDarkMode(),
+                    $"{WindowsVerImageArg}Neptune" => WindowsVerImage.WIN_NEPTUNE.GetWindowsVerPathForDarkMode(),
+                    _ => GetDefaultWindowsVerImage(),
+                };
+            }
+            else
+            {
+                return (app.CmdArgs?.Arguments.FirstOrDefault(arg => arg.StartsWith(WindowsVerImageArg))) switch
+                {
+                    $"{WindowsVerImageArg}11" => WindowsVerImage.WIN_11.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}10" => WindowsVerImage.WIN_10.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}8" => WindowsVerImage.WIN_8.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}7" => WindowsVerImage.WIN_7.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}vista" => WindowsVerImage.WIN_VISTA.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}xp" => WindowsVerImage.WIN_XP.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}2000" => WindowsVerImage.WIN_2K.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}ME" => WindowsVerImage.WIN_ME.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}1" => WindowsVerImage.WIN_1.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}2" => WindowsVerImage.WIN_2.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}3.1" => WindowsVerImage.WIN_3.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}3" => WindowsVerImage.WIN_3.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}NT" => WindowsVerImage.WIN_NT.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}95" => WindowsVerImage.WIN_95.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}98" => WindowsVerImage.WIN_98.GetWindowsVerPathForLightMode(),
+                    $"{WindowsVerImageArg}Neptune" => WindowsVerImage.WIN_NEPTUNE.GetWindowsVerPathForLightMode(),
+                    _ => GetDefaultWindowsVerImage(),
+                };
+            }
         } 
     }
 }

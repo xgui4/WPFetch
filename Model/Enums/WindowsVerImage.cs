@@ -87,7 +87,7 @@ namespace WPFetch.Model.Enums
         /// </summary>
         /// <param name="winVer"></param>
         /// <returns></returns>
-        public static string GetWindowsVerPath(this WindowsVerImage winVer)
+        public static string GetWindowsVerPathForDarkMode(this WindowsVerImage winVer)
         {
             return winVer switch
             {
@@ -107,6 +107,30 @@ namespace WPFetch.Model.Enums
                 WindowsVerImage.WIN_ME => ressources.GetImagesPath("winME-white.png"),
                 WindowsVerImage.WIN_2K => ressources.GetImagesPath("win2K.png"),
                 WindowsVerImage.WIN_LONGHORN => ressources.GetImagesPath("winLonghorn-white.png"),
+                _ => "Not Found!",
+            };
+        }
+
+        public static string GetWindowsVerPathForLightMode(this WindowsVerImage winVer)
+        {
+            return winVer switch
+            {
+                WindowsVerImage.WIN_XP => ressources.GetImagesPath("WindowsXP.png"),
+                WindowsVerImage.WIN_VISTA => ressources.GetImagesPath("winVista.png"),
+                WindowsVerImage.WIN_7 => ressources.GetImagesPath("win7.png"),
+                WindowsVerImage.WIN_8 => ressources.GetImagesPath("win8.png"),
+                WindowsVerImage.WIN_10 => ressources.GetImagesPath("win10.png"),
+                WindowsVerImage.WIN_11 => ressources.GetImagesPath("win11.png"),
+                WindowsVerImage.WIN_1 => ressources.GetImagesPath("winX.png"),
+                WindowsVerImage.WIN_2 => ressources.GetImagesPath("winX.png"),
+                WindowsVerImage.WIN_3 => ressources.GetImagesPath("win3X.png"),
+                WindowsVerImage.WIN_NT => ressources.GetImagesPath("winNT.png"),
+                WindowsVerImage.WIN_95 => ressources.GetImagesPath("win95.png"),
+                WindowsVerImage.WIN_98 => ressources.GetImagesPath("win98.png"),
+                WindowsVerImage.WIN_NEPTUNE => ressources.GetImagesPath("winNeptune.png"),
+                WindowsVerImage.WIN_ME => ressources.GetImagesPath("winME.png"),
+                WindowsVerImage.WIN_2K => ressources.GetImagesPath("win2K.png"),
+                WindowsVerImage.WIN_LONGHORN => ressources.GetImagesPath("winLonghorn.png"),
                 _ => "Not Found!",
             };
         }

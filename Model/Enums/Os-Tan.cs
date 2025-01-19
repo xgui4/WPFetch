@@ -62,7 +62,7 @@ namespace WPFetch.Model.Enums
                 Os_Tan.WINDOWS_8 => "https://www.ostan-collections.net/wiki/images/7/77/Yuai.png",
                 Os_Tan.WINDOWS_10 => "https://www.ostan-collections.net/wiki/images/thumb/0/04/10-full_promo.png/414px-10-full_promo.png?20150609062724",
                 Os_Tan.WINDOWS_11 => ressources.GetImagesPath("fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp"),
-                _ => throw new ArgumentException("This is not a valid OS-tan, pls try again.")
+                _ => "Not found!"
             };
         }
     }
