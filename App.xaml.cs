@@ -18,7 +18,7 @@ namespace DesktopWallpaper
         public CommandLineArguments? CmdArgs { get; private set; }
         public HardwareInfoService? HardwareInfoService { get; private set; }
         public MainImageService? MainImageService { get; private set; }
-        public LoggerServiceService? LoggerService { get; private set; }
+        public LoggerService? LoggerService { get; private set; }
         public SettingService? SettingService { get; private set; }
         public RessourcesManagerService? RessourcesManagerService { get; private set; }
         public string? Theme { get; private set; }
@@ -33,7 +33,7 @@ namespace DesktopWallpaper
             CmdArgs = new CommandLineArguments(e.Args);
             HardwareInfoService = new HardwareInfoService();
             MainImageService = new MainImageService((App)Application.Current);
-            LoggerService = new LoggerServiceService();
+            LoggerService = new LoggerService();
             SettingService = new SettingService();
             RessourcesManagerService = new RessourcesManagerService();
 
@@ -48,27 +48,33 @@ namespace DesktopWallpaper
                 MessageBox.Show(ex.Message, "Error while fetching system info", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            // Check Windows version and apply appropriate theme
-            if (IsMicaSupported())
+            try
             {
-                Resources.MergedDictionaries.Add(new ResourceDictionary
+                if (IsMicaSupported())
                 {
-                    Source = new Uri("pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml")
-                });
-                int? appLightMode = (int?)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) ?? -1;
-                if (appLightMode == 0) Theme = "Mica Dark Theme";
-                else Theme = "Mica White Theme"; 
+                    Resources.MergedDictionaries.Add(new ResourceDictionary
+                    {
+                        Source = new Uri("pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml")
+                    });
+                    int? appLightMode = (int?)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) ?? -1;
+                    Theme = appLightMode == 0 ? "Mica Dark Theme" : "Mica White Theme";
+                }
+                else
+                {
+                    MessageBox.Show("Mica (Fluent UI with transparency) is not supported in your Windows version: Mica requires Windows 11 and later. Fallback to default WPF theme.");
+                    Resources.MergedDictionaries.Add(new ResourceDictionary
+                    {
+                        Source = new Uri("pack://application:,,,/PresentationFramework.AeroLite;component/Ressources/Themes/AeroLite.xaml")
+                    });
+                    Theme = "default";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Mica (Fluent UI with transparancy) is not supported in your Windows Versions : Mica require Windows 11 and later. Fallback to Defaut WPF theme.");
-                Resources.MergedDictionaries.Add(new ResourceDictionary
-                {
-                    Source = new Uri("pack://application:,,,/PresentationFramework.AeroLite;component/Themes/AeroLite.xaml")
-                });
-                Theme = "default"; 
+                MessageBox.Show(ex.Message, "Error while applying theme", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         /// <summary>
         /// Return true if the current windows version support Mica 

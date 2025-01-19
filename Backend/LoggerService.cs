@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFetch.Backend
 {
-    public class LoggerServiceService
+    public class LoggerService : IService
     {
-        public LoggerServiceService() { }
+        public LoggerService() { }
     }
 }

@@ -109,7 +109,7 @@ namespace WPFetch.ViewModels
             }
 
             catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Unexcepted Error");
+                MessageBox.Show(ex.Message, "Unexcepted Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

@@ -3,7 +3,7 @@ using WPFetch.Model.Enums;
 
 namespace WPFetch.Backend
 {
-    public class MainImageService
+    public class MainImageService : IService
     {
         private readonly App app;
 

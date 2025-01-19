@@ -7,7 +7,7 @@ using WPFetch.Utils;
 
 namespace WPFetch.Backend
 {
-    public class RessourcesManagerService
+    public class RessourcesManagerService : IService
     {
         private readonly RessourcesManager resx; 
 

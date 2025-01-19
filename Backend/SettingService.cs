@@ -13,7 +13,7 @@ using WPFetch.Utils;
 
 namespace WPFetch.Backend
 {
-    public class SettingService
+    public class SettingService : IService
     {
         private SettingManager? settingManager;
 
@@ -51,6 +51,11 @@ namespace WPFetch.Backend
             }
 
             MessageBox.Show(configJson);
+        }
+
+        public void GetSettings()
+        {
+
         }
     }
 }

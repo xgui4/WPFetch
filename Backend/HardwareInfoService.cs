@@ -10,7 +10,7 @@ using WPFetch.Model.System;
 
 namespace WPFetch.Backend
 {
-    public class HardwareInfoService
+    public class HardwareInfoService : IService
     {
         private const string Unknown = "N/A";
 
