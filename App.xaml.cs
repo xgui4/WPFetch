@@ -22,7 +22,7 @@ namespace DesktopWallpaper
         private LoggerService? AppLoggerService { get; set; }
         public SettingService? SettingService { get; private set; }
         public RessourcesManagerService? RessourcesManagerService { get; private set; }
-        public string? Theme { get; private set; } = "Dark";
+        public string? Theme { get; private set; }
 
         /// <summary>
         /// Source du code : https://wpf-tutorial.com/wpf-application/command-line-parameters/
@@ -40,12 +40,13 @@ namespace DesktopWallpaper
 
             try
             {
-                Setting setting = SettingService.GetSettings();
+                SettingService.ObtainPreferencesFromDisk();
+                Setting setting = SettingService.GetSetting();
                 SettingService.AddAppliedSettings(setting);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error while applying setting from confile file", MessageBoxButton.OK, MessageBoxImage.Error);
+                AppLoggerService.Log($"Critical Error when applying theme : {ex.Message}");
             }
 
             try
@@ -54,7 +55,7 @@ namespace DesktopWallpaper
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error while fetching system info", MessageBoxButton.OK, MessageBoxImage.Error);
+                AppLoggerService.Log($"Critical Error while fetching system info : {ex.Message}");
             }
 
             try
@@ -65,54 +66,62 @@ namespace DesktopWallpaper
                 }
                 else
                 {
-                    MessageBox.Show("Mica (Fluent UI with transparency) is not supported in your Windows version: Mica requires Windows 11 and later. Fallback to default WPF theme.");
+                    AppLoggerService.Log($"Mica (Fluent UI with transparency) is not supported in your Windows version: Mica requires Windows 11 and later. Fallback to default WPF theme.");
                     Theme = "White";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error while applying theme", MessageBoxButton.OK, MessageBoxImage.Error);
+                AppLoggerService.Log($"Critical error while applying theme : {ex.Message}");
                 Theme = "White"; 
             }
         }
 
         private void SetUpMicaTheme()
         {
-            Resources.MergedDictionaries.Add(new ResourceDictionary
+            try
             {
-                Source = new Uri("pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml")
-            });
+                Resources.MergedDictionaries.Add(new ResourceDictionary
+                {
+                    Source = new Uri("pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml")
+                });
 
-            int? appLightMode = (int?)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) ?? -1;
-            Theme = appLightMode == 0 ? "Dark" : "White";
+                int? appLightMode = (int?)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", -1) ?? -1;
+                Theme = appLightMode == 0 ? "Dark" : "White";
 
-            var settingTemp = SettingService?.GetSettings();
+                var settingTemp = SettingService?.GetSetting();
 
-            if (settingTemp != null)
+
+                if (settingTemp != null)
+                {
+                    if (settingTemp.Theme == "Dark")
+                    {
+                        Current.ThemeMode = ThemeMode.Dark;
+                        Theme = "Dark";
+                    }
+                    if (settingTemp.Theme == "White")
+                    {
+                        Current.ThemeMode = ThemeMode.Light;
+                        Theme = "Light";
+                    }
+                    if (settingTemp.Theme == "System")
+                    {
+                        Current.ThemeMode = ThemeMode.System;
+                        Theme = "System";
+                    }
+                    if (settingTemp.Theme == "None")
+                    {
+                        Current.ThemeMode = ThemeMode.None;
+                        Theme = "None";
+                    }
+                }
+                
+            }
+            catch (Exception ex)
             {
-                if (settingTemp.Theme == "Dark")
-                {
-                    Current.ThemeMode = ThemeMode.Dark;
-                    Theme = "Dark";
-                }
-                if (settingTemp.Theme == "White")
-                {
-                    Current.ThemeMode = ThemeMode.Light;
-                    Theme = "Light";
-                }
-                if (settingTemp.Theme == "System")
-                {
-                    Current.ThemeMode = ThemeMode.System;
-                    Theme = "System";
-                }
-                if (settingTemp.Theme == "None")
-                {
-                    Current.ThemeMode = ThemeMode.None;
-                    Theme = "None";
-                }
+                AppLoggerService?.Log(ex.Message);
             }
         }
-
 
         /// <summary>
         /// Return true if the current windows version support Mica 

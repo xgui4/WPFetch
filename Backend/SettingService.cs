@@ -16,10 +16,14 @@ namespace WPFetch.Backend
 {
     public class SettingService : IService
     {
+        private readonly LoggerService logger;
+        private Setting? setting;
         private SettingManager? settingManager;
 
         public SettingService()
         {
+            logger = new LoggerService("SettingService");
+            setting = null; 
         }
 
         public void AddAppliedSettings(Setting appliedSetting)
@@ -35,9 +39,8 @@ namespace WPFetch.Backend
 
         public void SaveConfig(Dictionary<string, string> keys)
         {
-            RessourcesManager resx = new RessourcesManager();
-            MessageBox.Show("This is still a work in progress", "Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            Setting config = new Setting(
+            var resx = new RessourcesManager();
+            var config = new Setting(
                 keys["LocaleSelected"] ?? "English",
                 keys["DefaultWindowsVersionInputBoxValue"] ?? "Windows NT",
                 Convert.ToBoolean(keys["IsFluentUIEnable"]), 
@@ -45,32 +48,35 @@ namespace WPFetch.Backend
                 [SystemOptions.OperatingSystem]
             );
 
-            string configJson = JsonConvert.SerializeObject(config, Formatting.Indented);
-            using (StreamWriter streamWriter = new StreamWriter(Path.Combine(resx.GetAppDataFolderPath(), "config.json")))
-            {
-                streamWriter.WriteLine(configJson);
-            }
-
-            MessageBox.Show(configJson);
+            var configJson = JsonConvert.SerializeObject(config, Formatting.Indented);
+            using var streamWriter = new StreamWriter(Path.Combine(resx.GetAppDataFolderPath(), "config.json"));
+            streamWriter.WriteLine(configJson);
         }
 
-        public Setting GetSettings()
+        public void ObtainPreferencesFromDisk() 
         {
+            var resxTemp = new RessourcesManager();
+            var appDataPath = resxTemp.GetAppDataFolderPath();
+            var configFilePath = Path.Combine(appDataPath, "config.json");
+            Setting settingTemp = new DefaultSetting();
+
             try
-            {
-                var resxTemp = new RessourcesManager();
-                var appDataPath = resxTemp.GetAppDataFolderPath();
-                var configFilePath = Path.Combine(appDataPath, "config.json");
-                var content = File.ReadAllText(configFilePath);
-                var setting = JsonConvert.DeserializeObject<Setting>(content);
-                return setting ?? new DefaultSetting(); 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error while getting setting from storage", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            return new DefaultSetting();
+            { 
+                if (File.Exists(configFilePath)) 
+                { 
+                    var content = File.ReadAllText(configFilePath); 
+                    settingTemp = JsonConvert.DeserializeObject<Setting>(content) ?? new DefaultSetting();
+                } 
+                setting = settingTemp ?? new DefaultSetting(); 
+            } 
+            catch (Exception ex) 
+            { 
+                logger.Log($"Error in ObtainPreferencesFromDisk: {ex.Message}. StackTrace: {ex.StackTrace}"); 
+                logger.Log($"Failed to load config file at '{configFilePath}'"); 
+                setting = new DefaultSetting();
+            } 
         }
+        public Setting GetSetting() { if (setting == null) throw new InvalidOperationException("Setting wasn't set yet"); return setting; }
 
         public void ResetSetting()
         {
@@ -79,12 +85,11 @@ namespace WPFetch.Backend
                 var resxTemp = new RessourcesManager();
                 var appDataPath = resxTemp.GetAppDataFolderPath();
                 var configFilePath = Path.Combine(appDataPath, "config.json");
-                File.Delete(configFilePath);
-                File.Create(configFilePath);
+                File.WriteAllText(configFilePath, string.Empty);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error while trying to reset setting", MessageBoxButton.OK, MessageBoxImage.Error); 
+                logger.Log(ex.Message); 
             }
         }
     }

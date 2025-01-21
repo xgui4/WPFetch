@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,35 +13,39 @@ namespace WPFetch.Backend
 {
     public class LoggerService : IService
     {
-        private readonly string LogsFolderPath;
-        private readonly string LogFile; 
+        private readonly string FolderPath;
+        private readonly string Filename;
 
-        public LoggerService(string logFile)
-        { 
-            RessourcesManager ressourcesManager = new RessourcesManager();
-            string appDataPath = ressourcesManager.GetAppDataFolderPath();
-            LogsFolderPath = Path.Combine(appDataPath, "logs");
-
-            if (!Directory.Exists(LogsFolderPath))
-            {
-                Directory.CreateDirectory(LogsFolderPath);
-            }
-            LogFile = logFile; 
+        public LoggerService(string filename)
+        {
+            var ressourcesManager = new RessourcesManager();
+            var appDataPath = ressourcesManager.GetAppDataFolderPath();
+            FolderPath = Path.Combine(appDataPath, "logs");
+            Filename = filename;
+            Log($"Starting Logging {Filename}");
         }
 
-        public void Log(string message) 
+        public void Log(string message)
         {
             try
             {
-                string path = Path.Combine(LogsFolderPath, $"{LogFile}.log");
-                Debug.WriteLine(path);
-                using StreamWriter file = new(path, true);
-                file.WriteLine($"{DateTime.Now}. message");
+                var path = Path.Combine(FolderPath, $"{Filename}.log");
+                if (!Directory.Exists(path)) Directory.CreateDirectory(FolderPath);
+                if (!File.Exists(FolderPath)) File.WriteAllText(path, string.Empty);
+                using var outputFile = new StreamWriter(path, true);
+                outputFile.WriteLine($"{DateTime.Now}: {message}");
             }
-            catch(Exception ex) {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(message);
+            catch (Exception ex) {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Logging to file failed: {ex.Message}");
+                Console.WriteLine(message);
+                Console.ForegroundColor = ConsoleColor.White;
             }
+        }
+
+        ~LoggerService()
+        {
+            Log($"Ending Loggin {Filename}"); 
         }
     }
 }

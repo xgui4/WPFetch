@@ -1,4 +1,4 @@
-# WPFetch Version 0.0.0.1 (Developper Preview 2b)
+# WPFetch Version 0.0.0.1 (Developper Preview 3)
 
 ## Warning this a BETA Version of a protoype version
 
@@ -10,7 +10,6 @@
 A utility to fetch you system info with a OS-tan
 
 ## Features
-
 - Fetch you hardware like noefetch does but with a GUI and with customisable main image 
 - Show OS-Tan as main images and windows logo on top on of the setup info
 - Command line argurment

@@ -100,7 +100,6 @@ namespace WPFetch.Backend
 
         public void GenerateLog()
         {
-            logger.Log("Logging Started.");
             foreach (var error in system.ErrorsDuringFetch) { 
                 logger.Log(error); 
             }

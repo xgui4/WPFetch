@@ -17,6 +17,8 @@
             <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
             <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
             <Label Name="Authors" Content="{Binding AuthorsLabel}"/>
+            <Label Name="Features" Content="{Binding FeaturesLabelValue}" />
+            <Label Name="Techs" Content="{Binding TechUsedLabelValue}" />
             <Label Name="License" Content="{Binding LicenseLabel}"/>
             <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}"/>
 
@@ -50,9 +52,10 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Label Content="Save Configuration and configuration feature via GUI isn't implemented yet!"/>
-            <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}"/>
-            <Button Name="ResetChangesButton" Content="Reset Setting (Require app to be restart to take effect)" Command="{Binding ResetChangesButtonCommand}"/>
+            <Label Content="Disabled due to not being finish 100% and being not functionnal."/>
+            
+            <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" IsEnabled="False"/>
+            <Button Name="ResetChangesButton" Content="Reset Setting (Require app to be restart to take effect)" Command="{Binding ResetChangesButtonCommand}" IsEnabled="False"/>
 
             <Label FontSize="20" Content="More options coming later" />
 
