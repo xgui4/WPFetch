@@ -31,49 +31,56 @@ namespace DesktopWallpaper
         /// <param name="e"></param>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            CmdArgs = new CommandLineArguments(e.Args);
-            HardwareInfoService = new HardwareInfoService();
-            MainImageService = new MainImageService((App)Application.Current);
-            AppLoggerService = new LoggerService("App");
-            SettingService = new SettingService();
-            RessourcesManagerService = new RessourcesManagerService();
-
             try
             {
-                SettingService.ObtainPreferencesFromDisk();
-                Setting setting = SettingService.GetSetting();
-                SettingService.AddAppliedSettings(setting);
-            }
-            catch (Exception ex)
-            {
-                AppLoggerService.Log($"Critical Error when applying theme : {ex.Message}");
-            }
+                CmdArgs = new CommandLineArguments(e.Args);
+                HardwareInfoService = new HardwareInfoService();
+                MainImageService = new MainImageService((App)Application.Current);
+                AppLoggerService = new LoggerService("App");
+                SettingService = new SettingService();
+                RessourcesManagerService = new RessourcesManagerService();
 
-            try
-            {
-                HardwareInfoService.Update();
-            }
-            catch (Exception ex)
-            {
-                AppLoggerService.Log($"Critical Error while fetching system info : {ex.Message}");
-            }
-
-            try
-            {
-                if (IsMicaSupported())
+                try
                 {
-                    SetUpMicaTheme();
+                    SettingService.ObtainPreferencesFromDisk();
+                    Setting setting = SettingService.GetSetting();
+                    SettingService.AddAppliedSettings(setting);
                 }
-                else
+                catch (Exception ex)
                 {
-                    AppLoggerService.Log($"Mica (Fluent UI with transparency) is not supported in your Windows version: Mica requires Windows 11 and later. Fallback to default WPF theme.");
+                    AppLoggerService.Log($"Critical Error when applying theme : {ex.Message}");
+                }
+
+                try
+                {
+                    HardwareInfoService.Update();
+                }
+                catch (Exception ex)
+                {
+                    AppLoggerService.Log($"Critical Error while fetching system info : {ex.Message}");
+                }
+
+                try
+                {
+                    if (IsMicaSupported())
+                    {
+                        SetUpMicaTheme();
+                    }
+                    else
+                    {
+                        AppLoggerService.Log($"Mica (Fluent UI with transparency) is not supported in your Windows version: Mica requires Windows 11 and later. Fallback to default WPF theme.");
+                        Theme = "White";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    AppLoggerService.Log($"Critical error while applying theme : {ex.Message}");
                     Theme = "White";
                 }
             }
             catch (Exception ex)
             {
-                AppLoggerService.Log($"Critical error while applying theme : {ex.Message}");
-                Theme = "White"; 
+                MessageBox.Show($"Some error occured while loading services, this app might not work as attended. \n Excepion Occured : ,\n {ex.Message}", "Unhandled Exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

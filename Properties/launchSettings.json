@@ -23,6 +23,11 @@
       "commandLineArgs": "windowsver=11 os-tan=11",
       "nativeDebugging": true
     },
+    "Windows11AltMock": {
+      "commandName": "Project",
+      "commandLineArgs": "windowsver=11 os-tan=11_ALT",
+      "nativeDebugging": true
+    },
     "Windows8Mock": {
       "commandName": "Project",
       "commandLineArgs": "windowsver=8 os-tan=8",
