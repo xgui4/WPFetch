@@ -10,7 +10,6 @@ namespace WPFetch.Backend
         private const string MainImageArg = "os-tan=";
         private const string WindowsVerImageArg = "windowsver=";
 
-
         public MainImageService(App app)
         {
             this.app = app;

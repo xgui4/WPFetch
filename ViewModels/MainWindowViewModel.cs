@@ -22,7 +22,7 @@ namespace WPFetch.ViewModels
     {
         private static readonly App app = (App)Application.Current;
 
-        private static readonly HardwareInfoService hardwareInfoService = app.HardwareInfoService ?? throw new ApplicationException("HardwareInfoService not found!");
+        private static readonly SystemInfoService hardwareInfoService = app.SystemInfoService ?? throw new ApplicationException("SystemInfoService not found!");
 
         private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService not found!");
 
