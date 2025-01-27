@@ -1,13 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using WPFetch.Model.System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using WPFetch.Model.System;
 
 namespace WPFetch.Backend
 {
@@ -15,13 +6,14 @@ namespace WPFetch.Backend
     {
         private const string Unknown = "N/A";
 
-        private readonly static LoggerService logger = new("SystemInfoService");
+        private readonly LoggerService logger;
 
         private readonly SystemInformationModel system; 
         
-        public SystemInfoService()
+        public SystemInfoService(RessourcesManagerService ressourcesManagerService)
         {
             system = new SystemInformationModel();
+            logger = new LoggerService("SystemInfoService", ressourcesManagerService);
         }
 
         public void Update()

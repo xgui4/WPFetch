@@ -111,12 +111,14 @@ namespace DesktopWallpaper
 
         private void StartServices(StartupEventArgs e)
         {
-            CmdArgs = new CommandLineArguments(e.Args);
-            SystemInfoService = new SystemInfoService();
-            MainImageService = new MainImageService((App)Application.Current);
-            AppLoggerService = new LoggerService("App");
-            SettingService = new SettingService();
             RessourcesManagerService = new RessourcesManagerService();
+            RessourcesManagerService.Start();
+
+            CmdArgs = new CommandLineArguments(e.Args);
+            SystemInfoService = new SystemInfoService(RessourcesManagerService);
+            MainImageService = new MainImageService((App)Application.Current);
+            AppLoggerService = new LoggerService("App", RessourcesManagerService);
+            SettingService = new SettingService(RessourcesManagerService);
         }
 
         private void SetUpMicaTheme()

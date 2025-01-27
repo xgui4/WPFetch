@@ -20,9 +20,9 @@ namespace WPFetch.Backend
         private Setting? setting;
         private SettingManager? settingManager;
 
-        public SettingService()
+        public SettingService(RessourcesManagerService ressourcesManagerService)
         {
-            logger = new LoggerService("SettingService");
+            logger = new LoggerService("SettingService", ressourcesManagerService);
             setting = null; 
         }
 

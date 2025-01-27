@@ -16,10 +16,10 @@ namespace WPFetch.Backend
         private readonly string FolderPath;
         private readonly string Filename;
 
-        public LoggerService(string filename)
+        public LoggerService(string filename, RessourcesManagerService ressourcesManagerService)
         {
-            var ressourcesManager = new RessourcesManager();
-            var appDataPath = ressourcesManager.GetAppDataFolderPath();
+            var ressourcesManager = ressourcesManagerService;
+            var appDataPath = ressourcesManager.GetAppDataPath();
             FolderPath = Path.Combine(appDataPath, "logs");
             Filename = filename;
             Log($"Starting Logging {Filename}");
