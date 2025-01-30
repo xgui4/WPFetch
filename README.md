@@ -1,7 +1,5 @@
 # WPFetch Version 0.0.0.1 (Developper Preview 3)
 
-## Warning this a BETA Version of a protoype version
-
 ## The installer is still a prototype and might not work proprely due to being still a test so do not use the installer on a production machine
 
 ## Warning : This project is a hobby project and may be one day stopped being updated and isnt covered by any warranty
@@ -32,7 +30,6 @@ A utility to fetch you system info with a OS-tan
 MIT
 
 ## Image Credits
-
 - (Unofficial) Windows 11 tan : https://www.reddit.com/r/OStan/comments/170ldzu/my_ostan_for_windows_11_koemi_madobe_today_is_its/
 - (Unofficial) Windows 11 tan (alt) : https://www.reddit.com/r/OStan/comments/11vl35o/fanart_ichika_madobe_mascot_windows_11/
 - (Unofficial) Windows 7 tan + app icon : https://www.reddit.com/r/MadobeNanami/comments/1hn9nlo/nanami_and_c_sharp/
