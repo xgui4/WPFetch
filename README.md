@@ -32,3 +32,9 @@ A utility to fetch you system info with a OS-tan
 MIT
 
 ## Image Credits
+- (Unofficial) Windows 11 tan : https://www.reddit.com/r/OStan/comments/170ldzu/my_ostan_for_windows_11_koemi_madobe_today_is_its/
+- (Unofficial) Windows 11 tan (alt) : https://www.reddit.com/r/OStan/comments/11vl35o/fanart_ichika_madobe_mascot_windows_11/
+- (Unofficial) Windows 7 tan + app icon : https://www.reddit.com/r/MadobeNanami/comments/1hn9nlo/nanami_and_c_sharp/
+
+## Legal disclaimer :
+This product isn't a official product by Microsoft and isn't affliated (and never will) by them.
