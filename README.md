@@ -30,9 +30,31 @@ A utility to fetch you system info with a OS-tan
 MIT
 
 ## Image Credits
-- (Unofficial) Windows 11 tan : https://www.reddit.com/r/OStan/comments/170ldzu/my_ostan_for_windows_11_koemi_madobe_today_is_its/
-- (Unofficial) Windows 11 tan (alt) : https://www.reddit.com/r/OStan/comments/11vl35o/fanart_ichika_madobe_mascot_windows_11/
-- (Unofficial) Windows 7 tan + app icon : https://www.reddit.com/r/MadobeNanami/comments/1hn9nlo/nanami_and_c_sharp/
+- App icon : https://www.reddit.com/r/MadobeNanami/comments/1hn9nlo/nanami_and_c_sharp/
+- Windows logo -> Microsoft Corporation, image are in wikipedia (list of link coming)
+- List of OS-Tan (Most of these of fanmade)
+    - OS-Tan Windows 1.0 -> "https://www.ostan-collections.net/wiki/index.php/File:Windows1avi.png",
+    - OS-Tan.Windows 2.0 => "https://www.ostan-collections.net/wiki/index.php/File:Windows2avi.png",
+    - OS-Tan Windows 3.1 => "https://www.ostan-collections.net/wiki/index.php/File:Win3-1.jpg",
+    - OS-Tan Windows NT => "https://www.ostan-collections.net/wiki/index.php/File:WinNTtan.jpg",
+    - OS-Tan Windows 95 => "https://www.ostan-collections.net/wiki/index.php/File:95-tan2.jpg?20120630044724",
+    - OS-Tan Windows 97 => "https://www.ostan-collections.net/wiki/index.php/File:Win97tan.jpg?20110501013251",
+    - OS-Tan Windows 98SE => "https://www.ostan-collections.net/wiki/index.php/File:98SEtan.jpg",
+    - OS-Tan Windows 98 => "https://www.ostan-collections.net/wiki/index.php/File:Win98tan.jpg",
+    - OS-Tan Microsoft Neptune => "https://www.ostan-collections.net/wiki/index.php/File:Neptune.gif",
+    - OS-Tan Windows Odyssey => "https://www.ostan-collections.net/wiki/index.php/File:Odyssey.gif",
+    - OS-Tan Windows Me => "https://www.ostan-collections.net/wiki/index.php/File:Winme.jpg",
+    - OS-Tan Windows 2000 => "https://www.ostan-collections.net/wiki/index.php/File:Win2K.jpg",
+    - OS-Tan Windows XP => "https://in.pinterest.com/pin/900157044269294388/",
+    - OS-Tan Windows Longhorn => "https://neuro.nya.pub/fun/ostan/",
+    - OS-Tan Windows Vista => "https://www.ostan-collections.net/wiki/index.php/File:Schoolgirlvistan.jpg",
+    - OS-Tan Windows Server 2003 => "https://www.ostan-collections.net/wiki/index.php/File:WinServer2003tan.jpg",
+    - OS-Tan Windows Server 2008 => "https://www.ostan-collections.net/wiki/index.php/File:Saba-fish.jpg",
+    - OS-Tan Windows 7 => https://www.reddit.com/r/MadobeNanami/comments/1hn9nlo/nanami_and_c_sharp/,
+    - OS-Tan Windows 8 => "https://www.ostan-collections.net/wiki/index.php/File:Yuai.png",
+    - OS-Tan Windows 10 => "https://www.ostan-collections.net/wiki/index.php/File:10-full_promo.png",
+    - OS-Tan Windows 11 =>  https://www.reddit.com/r/OStan/comments/170ldzu/my_ostan_for_windows_11_koemi_madobe_today_is_its/,
+    - OS-Tan Windows 11 (Alternatif) =>  https://www.reddit.com/r/OStan/comments/11vl35o/fanart_ichika_madobe_mascot_windows_11/
 
 ## Legal disclaimer :
 This product isn't a official product by Microsoft and isn't affliated (and never will) by them.
