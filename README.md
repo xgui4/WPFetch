@@ -1,4 +1,4 @@
-# WPFetch Version 0.0.0.1 (Developper Preview 3)
+# WPFetch
 
 ## The installer is still a prototype and might not work proprely due to being still a test so do not use the installer on a production machine
 
