@@ -147,9 +147,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="README.md">
+    <Content Include="README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Resource Include="Ressources\Images\appicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

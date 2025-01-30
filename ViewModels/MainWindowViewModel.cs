@@ -167,5 +167,17 @@ namespace WPFetch.ViewModels
 
             hardwareInfoService.GenerateLog();
         }
+
+        [RelayCommand]
+        public void OpenCredit()
+        {
+            new Process
+            {
+                StartInfo = new ProcessStartInfo("README.md")
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
     }
     }
