@@ -1,27 +1,19 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using WPFetch.Model.System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using WPFetch.Model.System;
 
 namespace WPFetch.Backend
 {
-    public class HardwareInfoService
+    public class SystemInfoService
     {
         private const string Unknown = "N/A";
 
-        private readonly static LoggerService logger = new("HardwareInfoService");
+        private readonly LoggerService logger;
 
         private readonly SystemInformationModel system; 
         
-        public HardwareInfoService()
+        public SystemInfoService(RessourcesManagerService ressourcesManagerService)
         {
             system = new SystemInformationModel();
+            logger = new LoggerService("SystemInfoService", ressourcesManagerService);
         }
 
         public void Update()
@@ -100,7 +92,6 @@ namespace WPFetch.Backend
 
         public void GenerateLog()
         {
-            logger.Log("Logging Started.");
             foreach (var error in system.ErrorsDuringFetch) { 
                 logger.Log(error); 
             }

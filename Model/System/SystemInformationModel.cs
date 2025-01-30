@@ -43,7 +43,6 @@ public class SystemInformationModel
         }
         catch (Exception ex) {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             OperatingSystemName = "N/A";
         }
     }
@@ -72,7 +71,6 @@ public class SystemInformationModel
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             ProcessorName = "N/A";
         }
     }
@@ -86,7 +84,6 @@ public class SystemInformationModel
         catch(Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             Battery = "N/A"; 
         }
     }
@@ -95,14 +92,13 @@ public class SystemInformationModel
     {
         try
         {
-            int numberProc = 0;
+            var numberProc = 0;
             foreach (var proc_id in SystemManager.GetHardwareInfo(Cim.PROCESSES, "Name")) { numberProc++; }
             NumbertOfTaskRunning = numberProc.ToString();
         }
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             NumbertOfTaskRunning = "N/A";
         }
     }
@@ -117,7 +113,6 @@ public class SystemInformationModel
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             Storage = "N/A"; 
         }
     }
@@ -140,7 +135,6 @@ public class SystemInformationModel
         catch (Exception e)
         {
             ErrorsDuringFetch.Add(e.Message);
-            Debug.WriteLine(e);
             TotalMemory = "N/A"; 
         }
     }
@@ -160,7 +154,6 @@ public class SystemInformationModel
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             Gpus?.Add("Error while find GPU Info");
         }
     }

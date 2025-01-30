@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using WPFetch.Model.Enums;
-using WPFetch.Model.Json;
 using WPFetch.Model.System;
 
-namespace WPFetch.Backend
+namespace WPFetch.Model.Json
 {
     public record DefaultSetting : Setting
     {

@@ -10,7 +10,6 @@ namespace WPFetch.Backend
         private const string MainImageArg = "os-tan=";
         private const string WindowsVerImageArg = "windowsver=";
 
-
         public MainImageService(App app)
         {
             this.app = app;
@@ -55,6 +54,7 @@ namespace WPFetch.Backend
         {
             return (app.CmdArgs?.Arguments.FirstOrDefault(arg => arg.StartsWith(MainImageArg))) switch
             {
+                $"{MainImageArg}11_ALT" => Os_Tan.WINDOWS_11_ALT.GetOsTanPathImgPath(),
                 $"{MainImageArg}11" => Os_Tan.WINDOWS_11.GetOsTanPathImgPath(),
                 $"{MainImageArg}10" => Os_Tan.WINDOWS_10.GetOsTanPathImgPath(),
                 $"{MainImageArg}8" => Os_Tan.WINDOWS_8.GetOsTanPathImgPath(),
