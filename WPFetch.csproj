@@ -23,6 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="README.md" />
     <None Remove="Ressources\Images\appicon.ico" />
     <None Remove="Ressources\Images\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp" />
     <None Remove="Ressources\Images\gpu-white.png" />
@@ -69,7 +70,6 @@
     <None Remove="Ressources\Images\winX.png" />
     <None Remove="LICENSE.txt" />
     <None Remove="os-tan.png" />
-    <None Remove="README.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -147,6 +147,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Ressources\Images\appicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -226,9 +229,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="LICENSE.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
