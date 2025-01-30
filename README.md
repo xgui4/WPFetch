@@ -1,6 +1,4 @@
-# WPFetch Version 0.0.0.1 (Developper Preview )2
-
-## Warning this a BETA Version of a protoype version
+# WPFetch Version 0.0.0.1 (Developper Preview 2 (Stable))
 
 ## The installer is still a prototype and might not work proprely due to being still a test so do not use the installer on a production machine
 
