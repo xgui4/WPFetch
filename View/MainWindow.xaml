@@ -11,7 +11,7 @@
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
-    <Viewbox>
+    <Viewbox Stretch="Fill" Margin="5">
         <StackPanel Margin="5">
             <StackPanel Margin="5" Orientation="Horizontal">
             <Image Name="MainImage" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="300" Source="{Binding FetchImage}" Stretch="Fill"/>
@@ -65,7 +65,9 @@
         <TextBlock Name="Disclaimer" FontWeight="UltraBlack" Text="{Binding DisclaimerValue}"/>
         <Line Margin="5"/>
         <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding RefreshButtonLabel}" Command="{Binding SetRefreshButtonCommand}"/>
+        <Line Margin="5"/>
         <Button x:Name="OpenCreditButton" Content="Open Credit" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" AutomationProperties.HelpText="Open readme.md on your default text editor" Command="{Binding OpenCreditCommand}"/>
+        <Line Margin="5"/>
         <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding MoreButtonLabel}" Command="{Binding SetAboutButtonCommand}"/>
         </StackPanel>
     </Viewbox>

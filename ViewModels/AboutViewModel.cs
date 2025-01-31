@@ -84,6 +84,21 @@ namespace WPFetch.ViewModels
         private string? confirmChangesButtonLabel = "Confirm Changes";
 
         [ObservableProperty]
+        private string? configSectionLabelContent = "Config (Work in progress)"; 
+
+        [ObservableProperty]
+        private string? isFluentUIEnableLabelContent = "Activate Fluent UI";
+
+        [ObservableProperty]
+        private string? defaultWindowsInputBoxLabelContent = "Default Windows Version";
+
+        [ObservableProperty]
+        private string? chooseALanguageLabelContent = "Choose a Language";
+
+        [ObservableProperty]
+        private string? chooseAThemeLabelContent = "Choose a Theme"; 
+
+        [ObservableProperty]
         private bool isFluentUIEnable = true;
 
         [ObservableProperty]

@@ -22,19 +22,19 @@
             <Label Name="License" Content="{Binding LicenseLabel}"/>
             <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}"/>
 
-            <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="Config (Work in progress)"/>
+            <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="{Binding ConfigSectionLabelContent}"/>
 
             <StackPanel Orientation="Horizontal">
-                <Label Name="FluentUICheckBoxLabel" Content="Enable Fuent UI (Windows 11 only)"/>
+                <Label Name="FluentUICheckBoxLabel" Content="{Binding IsFluentUIEnableLabelContent}"/>
                 <CheckBox Name="FluentUIEnable" IsChecked="{Binding IsFluentUIEnable}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Name="DefaultWindowsInputBoxLabel" Content="Default Windows Version :"/>
+                <Label Name="DefaultWindowsInputBoxLabel" Content="{Binding DefaultWindowsInputBoxLabelContent}"/>
                 <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}" />
             </StackPanel>
 
-            <Label Content="Choose a other language :"/>
+            <Label Name="ChooseALanguageLabel" Content="{Binding ChooseALanguageLabelContent}"/>
             <ComboBox ItemsSource="{Binding LocalesAvailable}" SelectedValue="{Binding LocaleSelected}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -43,7 +43,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Label Content="Choose a other theme :"/>
+            <Label Name="ChooseAThemeLabel" Content="{Binding ChooseAThemeLabelContent}"/>
             <ComboBox ItemsSource="{Binding ThemesAvailable}" SelectedValue="{Binding ThemeSelected}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
