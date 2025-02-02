@@ -55,7 +55,7 @@
             <Label Content="Disabled due to not being finish 100% and being not functionnal."/>
             
             <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" IsEnabled="False"/>
-            <Button Name="ResetChangesButton" Content="Reset Setting (Require app to be restart to take effect)" Command="{Binding ResetChangesButtonCommand}" IsEnabled="False"/>
+            <Button Name="ResetChangesButton" Content="{Binding ResetChangesButtonLabel}" Command="{Binding ResetChangesButtonCommand}" IsEnabled="False"/>
 
             <Label FontSize="20" Content="More options coming later" />
 

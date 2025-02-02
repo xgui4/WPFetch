@@ -96,7 +96,10 @@ namespace WPFetch.ViewModels
         private string? chooseALanguageLabelContent = "Choose a Language";
 
         [ObservableProperty]
-        private string? chooseAThemeLabelContent = "Choose a Theme"; 
+        private string? chooseAThemeLabelContent = "Choose a Theme";
+
+        [ObservableProperty]
+        private string? resetChangesButtonLabel = "Reset Setting (Require app to be restart to take effect}"; 
 
         [ObservableProperty]
         private bool isFluentUIEnable = true;
