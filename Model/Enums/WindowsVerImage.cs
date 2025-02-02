@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Pipelines;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFetch.Utils;
 
 namespace WPFetch.Model.Enums
 {
@@ -79,32 +81,56 @@ namespace WPFetch.Model.Enums
 
     public static class WindowsVerImageExtension
     {
-
+        private static readonly RessourcesManager ressources = new();
         /// <summary>
         /// Get the logo of the windows versions
         /// </summary>
         /// <param name="winVer"></param>
         /// <returns></returns>
-        public static string GetWindowsVerPath(this WindowsVerImage winVer)
+        public static string GetWindowsVerPathForDarkMode(this WindowsVerImage winVer)
         {
             return winVer switch
             {
-                WindowsVerImage.WIN_XP => "../Images/WindowsXP-white.png",
-                WindowsVerImage.WIN_VISTA => "../Images/winVista-white.png",
-                WindowsVerImage.WIN_7 => "../Images/win7-white.png",
-                WindowsVerImage.WIN_8 => "../Images/win8.png",
-                WindowsVerImage.WIN_10 => "../Images/win10.png",
-                WindowsVerImage.WIN_11 => "../Images/win11.png",
-                WindowsVerImage.WIN_1 => "../Images/winX-white.png",
-                WindowsVerImage.WIN_2 => "../Images/winX-white.png",
-                WindowsVerImage.WIN_3 => "../Images/win3X-white.png",
-                WindowsVerImage.WIN_NT => "../Images/winNT-white.png",
-                WindowsVerImage.WIN_95 => "../Images/win95-white.png",
-                WindowsVerImage.WIN_98 => "../Images/win98-white.png",
-                WindowsVerImage.WIN_NEPTUNE => "../Images/winNeptune-white.png",
-                WindowsVerImage.WIN_ME => "../Images/winME-white.png",
-                WindowsVerImage.WIN_2K => "../Images/win2K.png",
-                WindowsVerImage.WIN_LONGHORN => "../Images/winLonghorn-white.png",
+                WindowsVerImage.WIN_XP => ressources.GetImagesPath("WindowsXP-white.png"),
+                WindowsVerImage.WIN_VISTA => ressources.GetImagesPath("winVista-white.png"),
+                WindowsVerImage.WIN_7 => ressources.GetImagesPath("win7-white.png"),
+                WindowsVerImage.WIN_8 => ressources.GetImagesPath("win8.png"),
+                WindowsVerImage.WIN_10 => ressources.GetImagesPath("win10.png"),
+                WindowsVerImage.WIN_11 => ressources.GetImagesPath("win11.png"),
+                WindowsVerImage.WIN_1 => ressources.GetImagesPath("winX-white.png"),
+                WindowsVerImage.WIN_2 => ressources.GetImagesPath("winX-white.png"),
+                WindowsVerImage.WIN_3 => ressources.GetImagesPath("win3X-white.png"),
+                WindowsVerImage.WIN_NT => ressources.GetImagesPath("winNT-white.png"),
+                WindowsVerImage.WIN_95 => ressources.GetImagesPath("win95-white.png"),
+                WindowsVerImage.WIN_98 => ressources.GetImagesPath("win98-white.png"),
+                WindowsVerImage.WIN_NEPTUNE => ressources.GetImagesPath("winNeptune-white.png"),
+                WindowsVerImage.WIN_ME => ressources.GetImagesPath("winME-white.png"),
+                WindowsVerImage.WIN_2K => ressources.GetImagesPath("win2K.png"),
+                WindowsVerImage.WIN_LONGHORN => ressources.GetImagesPath("winLonghorn-white.png"),
+                _ => "Not Found!",
+            };
+        }
+
+        public static string GetWindowsVerPathForLightMode(this WindowsVerImage winVer)
+        {
+            return winVer switch
+            {
+                WindowsVerImage.WIN_XP => ressources.GetImagesPath("WindowsXP.png"),
+                WindowsVerImage.WIN_VISTA => ressources.GetImagesPath("winVista.png"),
+                WindowsVerImage.WIN_7 => ressources.GetImagesPath("win7.png"),
+                WindowsVerImage.WIN_8 => ressources.GetImagesPath("win8.png"),
+                WindowsVerImage.WIN_10 => ressources.GetImagesPath("win10.png"),
+                WindowsVerImage.WIN_11 => ressources.GetImagesPath("win11.png"),
+                WindowsVerImage.WIN_1 => ressources.GetImagesPath("winX.png"),
+                WindowsVerImage.WIN_2 => ressources.GetImagesPath("winX.png"),
+                WindowsVerImage.WIN_3 => ressources.GetImagesPath("win3X.png"),
+                WindowsVerImage.WIN_NT => ressources.GetImagesPath("winNT.png"),
+                WindowsVerImage.WIN_95 => ressources.GetImagesPath("win95.png"),
+                WindowsVerImage.WIN_98 => ressources.GetImagesPath("win98.png"),
+                WindowsVerImage.WIN_NEPTUNE => ressources.GetImagesPath("winNeptune.png"),
+                WindowsVerImage.WIN_ME => ressources.GetImagesPath("winME.png"),
+                WindowsVerImage.WIN_2K => ressources.GetImagesPath("win2K.png"),
+                WindowsVerImage.WIN_LONGHORN => ressources.GetImagesPath("winLonghorn.png"),
                 _ => "Not Found!",
             };
         }

@@ -21,7 +21,7 @@ namespace WPFetch.Model.Enums
             {
                 Locales.FR => "Français",
                 Locales.EN => "English",
-                _ => throw new ArgumentException("This locale is invalid!")
+                _ => "Invalid Locale!"
             };
         }
     }

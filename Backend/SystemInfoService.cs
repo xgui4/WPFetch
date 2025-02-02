@@ -1,24 +1,19 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using WPFetch.Model.System;
+﻿using WPFetch.Model.System;
 
 namespace WPFetch.Backend
 {
-    public class HardwareInfoService
+    public class SystemInfoService
     {
         private const string Unknown = "N/A";
 
+        private readonly LoggerService logger;
+
         private readonly SystemInformationModel system; 
         
-        public HardwareInfoService()
+        public SystemInfoService(RessourcesManagerService ressourcesManagerService)
         {
             system = new SystemInformationModel();
+            logger = new LoggerService("SystemInfoService", ressourcesManagerService);
         }
 
         public void Update()
@@ -40,30 +35,6 @@ namespace WPFetch.Backend
         public string RequestMachineName()
         {
             return system.MachineName ?? Unknown;
-        }
-
-        public string RequestIsSystem64Bit()
-        {
-           try
-           {
-                int boolean = Convert.ToInt32(Is64BitOS()); 
-                
-                if (boolean == 1)
-                {
-                    return "true"; 
-                }
-
-                return "false";
-           } 
-           catch (Exception ex) 
-           {
-                return ex.Message;
-           }
-        } 
-
-        private bool Is64BitOS()
-        {
-            return system.Is64BitOS ?? throw new Exception(Unknown); 
         }
 
         public string RequestStorage() 
@@ -116,22 +87,13 @@ namespace WPFetch.Backend
             if (system.Battery != null)
                 return $"{system.Battery}%";
             else
-                return Unknown; 
+                return Unknown;
         }
 
         public void GenerateLog()
         {
-            string logsFolderPath = Environment.CurrentDirectory + "\\logs\\";
-
-            if (!Directory.Exists(logsFolderPath))
-            {
-                Directory.CreateDirectory(logsFolderPath);
-                MessageBox.Show(logsFolderPath + " Created!");
-            }
-
-            using (StreamWriter file = new StreamWriter(logsFolderPath + "HardwareInfoService.log"))
-            {
-                system.ErrorsDuringFetch.ForEach((error) => file.WriteLine(error));
+            foreach (var error in system.ErrorsDuringFetch) { 
+                logger.Log(error); 
             }
         }
     }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using WPFetch.Utils;
 
 namespace WPFetch.Model.System
 {
@@ -10,11 +12,12 @@ namespace WPFetch.Model.System
     {
         private readonly int _iterator = 0;
 
-        public GpuModel(GpuModel prevGpu, string name)
+        public GpuModel(GpuModel prevGpu, string name, string? imagePath = null)
         {
             _iterator = prevGpu._iterator + 1;
             Name = name;
             Label = $"GPU {_iterator}";
+            Image = new RessourcesManager().GetImagesPath("gpu.png");
         }
 
         public GpuModel(string name)
@@ -22,6 +25,7 @@ namespace WPFetch.Model.System
             _iterator = 0;
             Name = name;
             Label = $"GPU {_iterator}";
+            Image = new RessourcesManager().GetImagesPath("gpu.png");
         }
 
         /// <summary>
@@ -29,14 +33,15 @@ namespace WPFetch.Model.System
         /// </summary>
         /// <param name="iterator"></param>
         /// <param name="label"></param>
-        protected GpuModel(int iterator, string label)
+        internal protected GpuModel(int iterator, string label, string? imagePath = null)
         {
             _iterator = iterator;
             Label = label;
+            Image = new RessourcesManager().GetImagesPath("gpu.png");
         }
 
         public string? Label { get; set; } = "GPU";
-
-        public string? Name { get; set; } = "Unknow GPU";
+        public string? Image { get; set; } = new RessourcesManager().GetImagesPath("gpu.png"); 
+        public string? Name { get; set; } = "Unknown GPU";
     }
 }

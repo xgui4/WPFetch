@@ -17,8 +17,10 @@
             <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
             <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
             <Label Name="Authors" Content="{Binding AuthorsLabel}"/>
+            <Label Name="Features" Content="{Binding FeaturesLabelValue}" />
+            <Label Name="Techs" Content="{Binding TechUsedLabelValue}" />
             <Label Name="License" Content="{Binding LicenseLabel}"/>
-            <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}" Background="Green"/>
+            <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}"/>
 
             <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="Config (Work in progress)"/>
 
@@ -29,7 +31,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Name="DefaultWindowsInputBoxLabel" Content="Default Windows Version :"/>
-                <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}"/>
+                <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}" />
             </StackPanel>
 
             <Label Content="Choose a other language :"/>
@@ -50,8 +52,10 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Label Content="Save Configuration and configuration feature via GUI isn't implemented yet!"/>
-            <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" Background="Red" IsEnabled="False"/>
+            <Label Content="Disabled due to not being finish 100% and being not functionnal."/>
+            
+            <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}" IsEnabled="False"/>
+            <Button Name="ResetChangesButton" Content="Reset Setting (Require app to be restart to take effect)" Command="{Binding ResetChangesButtonCommand}" IsEnabled="False"/>
 
             <Label FontSize="20" Content="More options coming later" />
 

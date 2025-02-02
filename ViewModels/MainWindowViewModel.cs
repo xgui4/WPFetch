@@ -22,15 +22,16 @@ namespace WPFetch.ViewModels
     {
         private static readonly App app = (App)Application.Current;
 
-        private static readonly HardwareInfoService hardwareInfoService = app.HardwareInfoService ?? throw new ApplicationException("HardwareInfoService not found!");
+        private static readonly SystemInfoService hardwareInfoService = app.SystemInfoService ?? throw new ApplicationException("SystemInfoService not found!");
 
-        private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService Not Found");
+        private static readonly MainImageService mainImageService = app.MainImageService ?? throw new ApplicationException("MainImageService not found!");
+
+        private static readonly RessourcesManagerService resx = app.RessourcesManagerService ?? throw new ApplicationException("RessourcesManagerSevice not found!");
 
         public MainWindowViewModel()
         {
             hardwareInfoService.GenerateLog();
         }
-
 
         [ObservableProperty]
         private string? fetchImage = GetOsTan();
@@ -55,12 +56,6 @@ namespace WPFetch.ViewModels
 
         [ObservableProperty]
         private string? machineNameInformationValue = hardwareInfoService.RequestMachineName();
-
-        [ObservableProperty]
-        private string is64BitInformationLabel = "Is 64 Bit Operating System";
-
-        [ObservableProperty]
-        private string? is64BitInformationValue = hardwareInfoService.RequestIsSystem64Bit();
 
         [ObservableProperty]
         private string storageInformationLabel = "Storage";
@@ -107,28 +102,20 @@ namespace WPFetch.ViewModels
         [ObservableProperty]
         private string? moreButtonLabel = "➕ More";
 
+        [ObservableProperty]
+        private string? ramImagePath = resx.GetImagesPath("ram-white.png");
+
+        [ObservableProperty]
+        private string? disclaimerValue = "Disclaimer : This product isn't a official product by Microsoft and isn't affliated(and never will) by them.";
+
         private static string GetOsTan()
         {
-            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
-            {
-                return mainImageService.GetDefaultOSTanPath(); 
-            }
-            else
-            {
-                return mainImageService.GetOSTanPathWithCmdArgs();
-            }
+            return mainImageService.RequestOSTanPath();
         }
 
         private static string GetWindowsVerImage()
         {
-            if (app.CmdArgs?.Arguments == null || !app.CmdArgs.Arguments.Any())
-            {
-                return mainImageService.GetDefaultWindowsVerImage();
-            }
-            else
-            {
-                return mainImageService.GetWindowsVerImageWithCmdArgs();
-            }
+            return mainImageService.RequestWindowsVerLogoPath();
         }
 
         [RelayCommand]
@@ -152,36 +139,45 @@ namespace WPFetch.ViewModels
             var osToCompare = hardwareInfoService.RequestOperatingSystem();
             if (osToCompare != OperatingSystemInformationValue) OperatingSystemInformationValue = osToCompare;
 
-            string kernelToCompare = hardwareInfoService.RequestKernel();
+            var kernelToCompare = hardwareInfoService.RequestKernel();
             if (kernelToCompare != KernelInformationValue) KernelInformationValue = kernelToCompare;
 
-            string machineNameToCompare = hardwareInfoService.RequestMachineName();
+            var machineNameToCompare = hardwareInfoService.RequestMachineName();
             if (machineNameToCompare != MachineNameInformationValue) MachineNameInformationValue = machineNameToCompare;
 
-            string newValue = hardwareInfoService.RequestIsSystem64Bit();
-            if (newValue != Is64BitInformationValue) Is64BitInformationValue = newValue;
-
-            string storageToCompare = hardwareInfoService.RequestStorage();
+            var storageToCompare = hardwareInfoService.RequestStorage();
             if (storageToCompare != StorageInformationValue) StorageInformationValue = storageToCompare;
 
-            string threadsToCompare = hardwareInfoService.RequestCpuThreads();
+            var threadsToCompare = hardwareInfoService.RequestCpuThreads();
             if (threadsToCompare != CpuThreadsInformationValue) CpuThreadsInformationValue = threadsToCompare;
 
             if (Gpus?.Count == 0 ) Gpus = new ObservableCollection<GpuModel>(hardwareInfoService.RequestGPU());
 
-            string cpuToCompare = hardwareInfoService.RequestCPU();
+            var cpuToCompare = hardwareInfoService.RequestCPU();
             if (cpuToCompare != CpuInformationValue) CpuInformationValue = cpuToCompare;
 
-            string memoryToCompare = hardwareInfoService.RequestRAM();
+            var memoryToCompare = hardwareInfoService.RequestRAM();
             if (memoryToCompare != MemoryInformationValue) MemoryInformationValue = memoryToCompare;
 
-            string numberOfTaskToCompare = hardwareInfoService.RequestNumberOfTaskRunning();
+            var numberOfTaskToCompare = hardwareInfoService.RequestNumberOfTaskRunning();
             if (numberOfTaskToCompare != NumbersOfTaskRunningValue) NumbersOfTaskRunningValue = numberOfTaskToCompare;
 
-            string batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
+            var batteryToCompare = hardwareInfoService.RequestBatteryPercentage();
             if (batteryToCompare != BatteryInformationValue) BatteryInformationValue = batteryToCompare;
 
             hardwareInfoService.GenerateLog();
+        }
+
+        [RelayCommand]
+        public void OpenCredit()
+        {
+            new Process
+            {
+                StartInfo = new ProcessStartInfo("README.md")
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
         }
     }
     }

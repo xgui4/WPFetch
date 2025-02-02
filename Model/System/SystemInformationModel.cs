@@ -12,7 +12,6 @@ public class SystemInformationModel
     public string? OperatingSystemName { get; private set; } = null;
     public string? KernelVersion { get; private set; } = null;
     public string? MachineName { get; private set; } = null;
-    public bool? Is64BitOS { get; private set; } = null;
     public string? ProcessorCount { get; private set; } = null;
     public string? ProcessorName { get; private set; } = null;
     public string? TotalMemory { get; private set; } = null;
@@ -27,7 +26,6 @@ public class SystemInformationModel
         FetchOperatingSystemName();
         FetchKernelVersion();
         FetchMachineName();
-        FetchOsIsX64();
         FetchThreads();
         FetchProcessorInfo();
         FetchTotalMemoryInfo();
@@ -45,7 +43,6 @@ public class SystemInformationModel
         }
         catch (Exception ex) {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             OperatingSystemName = "N/A";
         }
     }
@@ -58,11 +55,6 @@ public class SystemInformationModel
     public void FetchMachineName()
     {
         MachineName = Environment.MachineName;
-    }
-
-    public void FetchOsIsX64()
-    {
-        Is64BitOS = Environment.Is64BitProcess;
     }
 
     public void FetchThreads()
@@ -79,7 +71,6 @@ public class SystemInformationModel
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             ProcessorName = "N/A";
         }
     }
@@ -93,7 +84,6 @@ public class SystemInformationModel
         catch(Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             Battery = "N/A"; 
         }
     }
@@ -102,14 +92,13 @@ public class SystemInformationModel
     {
         try
         {
-            int numberProc = 0;
+            var numberProc = 0;
             foreach (var proc_id in SystemManager.GetHardwareInfo(Cim.PROCESSES, "Name")) { numberProc++; }
             NumbertOfTaskRunning = numberProc.ToString();
         }
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             NumbertOfTaskRunning = "N/A";
         }
     }
@@ -124,7 +113,6 @@ public class SystemInformationModel
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             Storage = "N/A"; 
         }
     }
@@ -147,7 +135,6 @@ public class SystemInformationModel
         catch (Exception e)
         {
             ErrorsDuringFetch.Add(e.Message);
-            Debug.WriteLine(e);
             TotalMemory = "N/A"; 
         }
     }
@@ -167,7 +154,6 @@ public class SystemInformationModel
         catch (Exception ex)
         {
             ErrorsDuringFetch.Add(ex.Message);
-            Debug.WriteLine(ex);
             Gpus?.Add("Error while find GPU Info");
         }
     }

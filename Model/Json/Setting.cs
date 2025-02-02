@@ -13,18 +13,37 @@ namespace WPFetch.Model.Json
     public record Setting
     {
         [JsonProperty(nameof(LocaleSelected))]
-        public required Locales LocaleSelected { get; set; }
+        public Locales LocaleSelected { get; set; }
 
         [JsonProperty(nameof(DefaultWindowsVersions))]
-        public required string DefaultWindowsVersions { get; set; }
+        public string DefaultWindowsVersions { get; set; }
 
         [JsonProperty(nameof(IsFluentUIEnabled))]
-        public required bool IsFluentUIEnabled { get; set; }
+        public bool IsFluentUIEnabled { get; set; }
 
         [JsonProperty(nameof(Theme))]
-        public required string Theme { get; set; }
+        public string Theme { get; set; }
 
         [JsonProperty(nameof(HardwaresToFetch))]
-        public required SystemOptions[] HardwaresToFetch { get; set; }
+        public SystemOptions[] HardwaresToFetch { get; set; }
+
+        public Setting(string locale, string defaultWindowsVersion, bool fluentUIEnable, string theme, SystemOptions[] hardwaresToFetch)
+        {
+            if (locale == Locales.FR.GetString()) LocaleSelected = Locales.FR;  
+            else LocaleSelected = Locales.EN;
+
+            DefaultWindowsVersions = defaultWindowsVersion;
+
+            IsFluentUIEnabled = fluentUIEnable;
+
+            Theme = theme;
+
+            HardwaresToFetch = hardwaresToFetch;
+        }
+
+        public override string ToString()
+        {
+            return $"Locale : {LocaleSelected.ToString()}, Default Win Version : {DefaultWindowsVersions}, Fluent Theme : {IsFluentUIEnabled}, Aero2 Theme Mode : {Theme} , List of Hardware To Fetch : {HardwaresToFetch}";
+        }
     }
 }
