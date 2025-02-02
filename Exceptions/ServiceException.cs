@@ -1,10 +1,7 @@
 ﻿namespace WPFetch.Exceptions
 {
     [Serializable]
-    internal class ServiceException : Exception
+    public class ServiceException(string? message) : Exception(message)
     {
-        public ServiceException(string? message) : base(message)
-        {
-        }
     }
 }
