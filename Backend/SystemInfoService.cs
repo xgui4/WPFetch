@@ -90,6 +90,11 @@ namespace WPFetch.Backend
                 return Unknown;
         }
 
+        public void LogInformation(string message)
+        {
+            logger.Log(message); 
+        }
+
         public void GenerateLog()
         {
             foreach (var error in system.ErrorsDuringFetch) { 

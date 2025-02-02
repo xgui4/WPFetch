@@ -14,7 +14,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WPFetch.Backend
 {
-    public class SettingService : IService
+    public class SettingService
     {
         private readonly LoggerService logger;
         private Setting? setting;

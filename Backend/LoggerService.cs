@@ -11,7 +11,7 @@ using WPFetch.Utils;
 
 namespace WPFetch.Backend
 {
-    public class LoggerService : IService
+    public class LoggerService
     {
         private readonly string FolderPath;
         private readonly string Filename;
@@ -31,7 +31,6 @@ namespace WPFetch.Backend
             {
                 var path = Path.Combine(FolderPath, $"{Filename}.log");
                 if (!Directory.Exists(path)) Directory.CreateDirectory(FolderPath);
-                if (!File.Exists(FolderPath)) File.WriteAllText(path, string.Empty);
                 using var outputFile = new StreamWriter(path, true);
                 outputFile.WriteLine($"{DateTime.Now}: {message}");
             }
