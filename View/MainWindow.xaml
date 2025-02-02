@@ -11,63 +11,79 @@
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
-    <Viewbox>
+    <Viewbox Stretch="Uniform" Margin="5">
         <StackPanel Margin="5">
             <StackPanel Margin="5" Orientation="Horizontal">
-            <Image Name="MainImage" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="300" Source="{Binding FetchImage}" Stretch="Fill"/>
-            <Line Margin="10"/>
-            <StackPanel Orientation="Vertical">
-                <Image Name="WindowsVerImage" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="50" Source="{Binding WindowsVerImage}" Stretch="Fill"/>
-                <Line Margin="8"/>
-                <TextBlock Name="SystemInformation" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15">
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE977;" />
-                    <Run FontWeight="Bold" Text="{Binding OperatingSystemInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding OperatingSystemInformationValue}"/>
-                    <LineBreak/>
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xF167;" />
-                    <Run FontWeight="Bold" Text="{Binding KernelInformationLabel}"/> <Run Text=":"/> <Run Text="{Binding KernelInformationValue}"/>
-                    <LineBreak/>
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xEC4E;" />
-                    <Run FontWeight="Bold" Text="{Binding MachineNameInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MachineNameInformationValue}"/>
-                    <LineBreak/>
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xEDA2;" />
-                    <Run FontWeight="Bold" Text="{Binding StorageInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding StorageInformationValue}"/>
-                    <LineBreak/>
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE950;" />
-                    <Run FontWeight="Bold" Text="{Binding CpuInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuInformationValue}"/> 
-                    <Run  Text="("/> <Run Text="{Binding CpuThreadsInformationValue}"/> <Run Text="{Binding CpuThreadsInformationLabel}" /> <Run Text=")" />
-                    <LineBreak/>
-                    <ItemsControl ItemsSource="{Binding Gpus}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock>
-                                        <Image Name="GraphicCardImage" Source="{Binding Image}" Width="16" Height="16"/> 
-                                        <Run FontWeight="Bold" Text="{Binding Label}"/>
-                                        <Run Text=" : "/>
-                                        <Run Text="{Binding Name}"/>
-                                    </TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <LineBreak/>
-                    <Image Name="MemorySickImage" Source="{Binding RamImagePath}" Width="16" Height="16"/>
-                    <Run FontWeight="Bold" Text="{Binding MemoryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MemoryInformationValue}"/>
-                    <LineBreak/>
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE71D;" />
-                    <Run FontWeight="Bold" Text="{Binding NumbersOfTaskRunningLabel}" /> <Run Text=":"/> <Run Text="{Binding NumbersOfTaskRunningValue}"/>
-                    <LineBreak/>
-                    <Run FontFamily="Segoe Fluent Icons" Text="&#xF5FC;" />
-                    <Run FontWeight="Bold" Text="{Binding BatteryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding BatteryInformationValue}"/>
+                <Image Name="MainImage" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="300" Source="{Binding FetchImage}" Stretch="Fill"/>
+                <Line Margin="10"/>
+                <StackPanel Orientation="Vertical">
+                    <Image Name="WindowsVerImage" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="50" Source="{Binding WindowsVerImage}" Stretch="Fill"/>
+                    <Line Margin="8"/>
+                    <TextBlock Name="SystemInformation" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15">
+                        <Run FontFamily="Segoe Fluent Icons" Text="&#xE977;" />
+                        <Run FontWeight="Bold" Text="{Binding OperatingSystemInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding OperatingSystemInformationValue}"/>
+                        <LineBreak/>
+                        <Run FontFamily="Segoe Fluent Icons" Text="&#xF167;" />
+                        <Run FontWeight="Bold" Text="{Binding KernelInformationLabel}"/> <Run Text=":"/> <Run Text="{Binding KernelInformationValue}"/>
+                        <LineBreak/>
+                        <Run FontFamily="Segoe Fluent Icons" Text="&#xEC4E;" />
+                        <Run FontWeight="Bold" Text="{Binding MachineNameInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MachineNameInformationValue}"/>
+                        <LineBreak/>
+                        <Run FontFamily="Segoe Fluent Icons" Text="&#xEDA2;" />
+                        <Run FontWeight="Bold" Text="{Binding StorageInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding StorageInformationValue}"/>
+                        <LineBreak/>
+                        <Run FontFamily="Segoe Fluent Icons" Text="&#xE950;" />
+                        <Run FontWeight="Bold" Text="{Binding CpuInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding CpuInformationValue}"/> 
+                        <Run  Text="("/> <Run Text="{Binding CpuThreadsInformationValue}"/> <Run Text="{Binding CpuThreadsInformationLabel}" /> <Run Text=")" />
+                        <LineBreak/>
+                        <ItemsControl ItemsSource="{Binding Gpus}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <Image Name="GraphicCardImage" Source="{Binding Image}" Width="16" Height="16"/> 
+                                            <Run FontWeight="Bold" Text="{Binding Label}"/>
+                                            <Run Text=" : "/>
+                                            <Run Text="{Binding Name}"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <LineBreak/>
+                        <Image Name="MemorySickImage" Source="{Binding RamImagePath}" Width="16" Height="16"/>
+                        <Run FontWeight="Bold" Text="{Binding MemoryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding MemoryInformationValue}"/>
+                        <LineBreak/>
+                        <Run FontFamily="Segoe Fluent Icons" Text="&#xE71D;" />
+                        <Run FontWeight="Bold" Text="{Binding NumbersOfTaskRunningLabel}" /> <Run Text=":"/> <Run Text="{Binding NumbersOfTaskRunningValue}"/>
+                        <LineBreak/>
+                        <Run FontFamily="Segoe Fluent Icons" Text="&#xF5FC;" />
+                        <Run FontWeight="Bold" Text="{Binding BatteryInformationLabel}" /> <Run Text=":"/> <Run Text="{Binding BatteryInformationValue}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Name="Disclaimer" FontWeight="UltraBlack" Text="{Binding DisclaimerValue}"/>
+                <Line Margin="5"/>
+                <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Command="{Binding SetRefreshButtonCommand}">
+                <TextBlock>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE895;"/>
+                    <Run Text="{Binding RefreshButtonLabel}"/>
                 </TextBlock>
-            </StackPanel>
-        </StackPanel>
-        <TextBlock Name="Disclaimer" FontWeight="UltraBlack" Text="{Binding DisclaimerValue}"/>
-        <Line Margin="5"/>
-        <Button Name="RefreshButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding RefreshButtonLabel}" Command="{Binding SetRefreshButtonCommand}"/>
-        <Button x:Name="OpenCreditButton" Content="Open Credit" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" AutomationProperties.HelpText="Open readme.md on your default text editor" Command="{Binding OpenCreditCommand}"/>
-        <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="{Binding MoreButtonLabel}" Command="{Binding SetAboutButtonCommand}"/>
+                </Button>
+                <Line Margin="5"/>
+                <Button x:Name="OpenCreditButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" AutomationProperties.HelpText="Open readme.md on your default text editor" Command="{Binding OpenCreditCommand}">
+                <TextBlock>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xE8A7;"/>
+                    <Run Text="{Binding OpenCreditButtonLabel}"/>
+                </TextBlock>
+                </Button>
+                <Line Margin="5"/>
+                <Button Name="MoreButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Command="{Binding SetAboutButtonCommand}">
+                <TextBlock>
+                    <Run FontFamily="Segoe Fluent Icons" Text="&#xF8B0;"/>
+                    <Run Text="{Binding MoreButtonLabel}"/>
+                </TextBlock>
+            </Button>
         </StackPanel>
     </Viewbox>
 </Window>
-
