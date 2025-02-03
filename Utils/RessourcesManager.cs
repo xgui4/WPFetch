@@ -10,7 +10,7 @@ namespace WPFetch.Utils
 
         public RessourcesManager()
         {
-            RessourcesFolderPath = Path.Combine(AppContext.BaseDirectory, "Ressources");
+            RessourcesFolderPath = Path.Combine(AppContext.BaseDirectory, "Assets");
             ImagesFolderPath = Path.Combine(RessourcesFolderPath, "Images");
             AppDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Xgui4 Studio", "WPFetch");
         }
