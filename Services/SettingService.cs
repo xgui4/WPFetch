@@ -1,16 +1,9 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using WPFetch.Exceptions;
 using WPFetch.Model.Json;
 using WPFetch.Model.System;
 using WPFetch.Utils;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WPFetch.Backend
 {
