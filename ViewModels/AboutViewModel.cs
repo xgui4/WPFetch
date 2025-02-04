@@ -72,7 +72,7 @@ namespace WPFetch.ViewModels
             """;
 
         [ObservableProperty]
-        private string? appIconPath = ressourcesManagerService.GetImagesPath("appicon.ico");
+        private string? appIconPath = ressourcesManagerService?.GetImagesPath("appicon.ico") ?? "../Assets/Images/appicon.ico";
 
         [ObservableProperty]
         private string? authorsLabel = "🧑‍💻 Developer : Xgui4 Studio";
