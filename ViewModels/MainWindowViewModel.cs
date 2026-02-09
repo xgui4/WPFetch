@@ -97,10 +97,13 @@ namespace WPFetch.ViewModels
         private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage();
 
         [ObservableProperty]
-        private string? refreshButtonLabel = "🔄️ Refresh";
+        private string? refreshButtonLabel = "Update Info";
 
         [ObservableProperty]
-        private string? moreButtonLabel = "➕ More";
+        private string? openCreditButtonLabel = "Open Credit"; 
+
+        [ObservableProperty]
+        private string? moreButtonLabel = "Config";
 
         [ObservableProperty]
         private string? ramImagePath = resx.GetImagesPath("ram-white.png");
@@ -169,7 +172,7 @@ namespace WPFetch.ViewModels
         }
 
         [RelayCommand]
-        public void OpenCredit()
+        private void OpenCredit()
         {
             new Process
             {
