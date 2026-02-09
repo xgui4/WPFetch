@@ -26,11 +26,14 @@ namespace WPFetch.ViewModels
 
         private static SettingService? settings;
 
+        private static RessourcesManagerService ressourcesManagerService; 
+
         public AboutViewModel()
         {
             try
             {
                 settings = app.SettingService ?? throw new Exception("Setting Service Not Found !");
+                ressourcesManagerService = app.RessourcesManagerService ?? throw new Exception("Ressources Managers Service Not Found !");
             }
             catch (Exception ex)
             {
@@ -69,7 +72,7 @@ namespace WPFetch.ViewModels
             """;
 
         [ObservableProperty]
-        private string? appIconPath = "../Ressources/Images/appicon.ico";
+        private string? appIconPath = ressourcesManagerService?.GetImagesPath("appicon.ico") ?? "../Assets/Images/appicon.ico";
 
         [ObservableProperty]
         private string? authorsLabel = "🧑‍💻 Developer : Xgui4 Studio";

@@ -3,7 +3,7 @@ using WPFetch.Model.Enums;
 
 namespace WPFetch.Backend
 {
-    public class MainImageService : IService
+    public class MainImageService
     {
         private readonly App app;
 
@@ -17,37 +17,21 @@ namespace WPFetch.Backend
         private string GetDefaultOSTanPath()
         {
             if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
-            {
                 return Os_Tan.WINDOWS_11.GetOsTanPathImgPath();
-            }
             if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
-            {
                 return Os_Tan.WINDOWS_10.GetOsTanPathImgPath();
-            }
             if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
-            {
                 return Os_Tan.WINDOWS_8.GetOsTanPathImgPath();
-            }
             if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
-            {
                 return Os_Tan.WINDOWS_7.GetOsTanPathImgPath();
-            }
             if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
-            {
                 return Os_Tan.WINDOWS_VISTA.GetOsTanPathImgPath();
-            }
             if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
-            {
                 return Os_Tan.WINDOWS_XP.GetOsTanPathImgPath();
-            }
             if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
-            {
                 return Os_Tan.WINDOWS_2000.GetOsTanPathImgPath();
-            }
             else
-            {
                 return Os_Tan.NT.GetOsTanPathImgPath();
-            }
         }
 
         public string RequestOSTanPath()
@@ -83,73 +67,11 @@ namespace WPFetch.Backend
         {
             if (app.Theme == "Dark")
             {
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
-                {
-                    return WindowsVerImage.WIN_11.GetWindowsVerPathForDarkMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
-                {
-                    return WindowsVerImage.WIN_10.GetWindowsVerPathForDarkMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
-                {
-                    return WindowsVerImage.WIN_8.GetWindowsVerPathForDarkMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
-                {
-                    return WindowsVerImage.WIN_7.GetWindowsVerPathForDarkMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
-                {
-                    return WindowsVerImage.WIN_VISTA.GetWindowsVerPathForDarkMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
-                {
-                    return WindowsVerImage.WIN_XP.GetWindowsVerPathForDarkMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
-                {
-                    return WindowsVerImage.WIN_2K.GetWindowsVerPathForDarkMode();
-                }
-                else
-                {
-                    return WindowsVerImage.WIN_NT.GetWindowsVerPathForDarkMode();
-                }
+                return GetWindowsVerImagePathDarkMode();
             }
-            else 
+            else
             {
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
-                {
-                    return WindowsVerImage.WIN_11.GetWindowsVerPathForLightMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
-                {
-                    return WindowsVerImage.WIN_10.GetWindowsVerPathForLightMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
-                {
-                    return WindowsVerImage.WIN_8.GetWindowsVerPathForLightMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
-                {
-                    return WindowsVerImage.WIN_7.GetWindowsVerPathForLightMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
-                {
-                    return WindowsVerImage.WIN_VISTA.GetWindowsVerPathForLightMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
-                {
-                    return WindowsVerImage.WIN_XP.GetWindowsVerPathForLightMode();
-                }
-                if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
-                {
-                    return WindowsVerImage.WIN_2K.GetWindowsVerPathForLightMode();
-                }
-                else
-                {
-                    return WindowsVerImage.WIN_NT.GetWindowsVerPathForLightMode();
-                }
+                return GetWindowsVerImagePathLightMode();
             }
         }
 
@@ -201,6 +123,45 @@ namespace WPFetch.Backend
                     _ => GetDefaultWindowsVerImage(),
                 };
             }
-        } 
+        }
+        private static string GetWindowsVerImagePathLightMode()
+        {
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
+                return WindowsVerImage.WIN_11.GetWindowsVerPathForLightMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
+                return WindowsVerImage.WIN_10.GetWindowsVerPathForLightMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
+                return WindowsVerImage.WIN_8.GetWindowsVerPathForLightMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
+                return WindowsVerImage.WIN_7.GetWindowsVerPathForLightMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
+                return WindowsVerImage.WIN_VISTA.GetWindowsVerPathForLightMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
+                return WindowsVerImage.WIN_XP.GetWindowsVerPathForLightMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
+                return WindowsVerImage.WIN_2K.GetWindowsVerPathForLightMode();
+            else
+                return WindowsVerImage.WIN_NT.GetWindowsVerPathForLightMode();
+        }
+
+        private static string GetWindowsVerImagePathDarkMode()
+        {
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 22000))
+                return WindowsVerImage.WIN_11.GetWindowsVerPathForDarkMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 10, 0, 0))
+                return WindowsVerImage.WIN_10.GetWindowsVerPathForDarkMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 2, 0))
+                return WindowsVerImage.WIN_8.GetWindowsVerPathForDarkMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 1, 0))
+                return WindowsVerImage.WIN_7.GetWindowsVerPathForDarkMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 6, 0, 0))
+                return WindowsVerImage.WIN_VISTA.GetWindowsVerPathForDarkMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 1, 0))
+                return WindowsVerImage.WIN_XP.GetWindowsVerPathForDarkMode();
+            if (OperatingSystem.IsOSPlatformVersionAtLeast("Windows", 5, 0, 0))
+                return WindowsVerImage.WIN_2K.GetWindowsVerPathForDarkMode();
+            else
+                return WindowsVerImage.WIN_NT.GetWindowsVerPathForDarkMode();
+        }
     }
 }

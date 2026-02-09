@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace WPFetch.Utils
 {
@@ -15,7 +10,7 @@ namespace WPFetch.Utils
 
         public RessourcesManager()
         {
-            RessourcesFolderPath = Path.Combine(AppContext.BaseDirectory, "Ressources");
+            RessourcesFolderPath = Path.Combine(AppContext.BaseDirectory, "Assets");
             ImagesFolderPath = Path.Combine(RessourcesFolderPath, "Images");
             AppDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Xgui4 Studio", "WPFetch");
         }

@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using WPFetch.Utils;
+﻿using System.IO;
 
 namespace WPFetch.Backend
 {
-    public class LoggerService : IService
+    public class LoggerService
     {
         private readonly string FolderPath;
         private readonly string Filename;
@@ -31,7 +22,6 @@ namespace WPFetch.Backend
             {
                 var path = Path.Combine(FolderPath, $"{Filename}.log");
                 if (!Directory.Exists(path)) Directory.CreateDirectory(FolderPath);
-                if (!File.Exists(FolderPath)) File.WriteAllText(path, string.Empty);
                 using var outputFile = new StreamWriter(path, true);
                 outputFile.WriteLine($"{DateTime.Now}: {message}");
             }

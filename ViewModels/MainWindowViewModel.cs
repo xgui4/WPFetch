@@ -124,10 +124,29 @@ namespace WPFetch.ViewModels
         [RelayCommand]
         private async Task SetRefreshButton()
         {
-            await Task.Run(() => {
-                hardwareInfoService.Update(); 
-                UpdateSystemInformationData(); 
-            });
+            await UpdateDataCommand();
+        }
+
+        private async Task UpdateDataCommand()
+        {
+            try
+            {
+                {
+                    MessageBox.Show("Updating Info...");
+                    await Task.Run(() =>
+                    {
+                        hardwareInfoService.Update();
+                        UpdateSystemInformationData();
+                        MessageBox.Show("Update Sucessful !");
+                    });
+                    hardwareInfoService.GenerateLog();
+                }
+            }
+            catch (Exception ex)
+            {
+                hardwareInfoService.GenerateLog();
+                MessageBox.Show($"Error : {ex.Message}", "Error while updting info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         [RelayCommand]

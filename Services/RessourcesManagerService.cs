@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WPFetch.Utils;
+﻿using WPFetch.Utils;
 
 namespace WPFetch.Backend
 {
-    public class RessourcesManagerService : IService
+    public class RessourcesManagerService
     {
         private readonly RessourcesManager resx; 
 
