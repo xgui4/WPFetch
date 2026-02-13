@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -11,13 +11,13 @@
 	<AssemblyName>wpfetch</AssemblyName>
 	<Company>Xgui4 Studio</Company>
 	<Copyright>Copyright (C) Xgui4 Studio 2024</Copyright>
-	<FileVersion>0.0.0.1</FileVersion>
+	<FileVersion>0.0.0.2</FileVersion>
 	<CreateDesktopShortcut>true</CreateDesktopShortcut>
-	<InformationalVersion>0.0.0.1 Developper Preview 3</InformationalVersion>
+	<InformationalVersion>0.0.0.2</InformationalVersion>
 	<TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
 	<DefaultLanguage>English</DefaultLanguage>
 	<Description>A utility to fetch you system info with a OS-tan</Description>
-	<Version>0.0.0.1</Version>
+	<Version>0.0.0.2</Version>
 	<LangVersion>preview</LangVersion>
 	<Configurations>Debug;Release</Configurations>
   </PropertyGroup>
@@ -151,9 +151,8 @@
     <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="FluentSysInfo.Core" Version="1.0.8860" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="System.Drawing.Common" Version="9.0.1" />
-    <PackageReference Include="System.Management" Version="9.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Management" Version="10.0.3" />
   </ItemGroup>
 
   <ItemGroup>

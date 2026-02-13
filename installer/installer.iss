@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "WPFetch"
-#define MyAppVersion "0.0.0.1 Developper Preview 3"
+#define MyAppVersion "0.0.0.2"
 #define MyAppPublisher "Xgui4 Studio"
 #define MyAppURL "https://github.com/xgui4/WPFetch"
 #define MyAppExeName "wpfetch.exe"
