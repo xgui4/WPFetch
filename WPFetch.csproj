@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿ <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -23,15 +23,7 @@
 	<AssemblyTitle>wpfetch </AssemblyTitle>
 	<SignAssembly>False</SignAssembly>
 	<Title>WPFetch</Title>
-	<PackageProjectUrl>https://github.com/xgui4/WPFetch</PackageProjectUrl>
-	<PackageIcon>appicon.png</PackageIcon>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<RepositoryUrl>https://github.com/xgui4/WPFetch</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
-	<PackAsTool>True</PackAsTool>
 	<NeutralLanguage>en-CA</NeutralLanguage>
-	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
