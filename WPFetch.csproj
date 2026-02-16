@@ -7,10 +7,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Assets\icons\appicon.ico</ApplicationIcon>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
 	<AssemblyName>wpfetch</AssemblyName>
-	<Company>Xgui4 Studio</Company>
-	<Copyright>Copyright (C) Xgui4 Studio 2024</Copyright>
+	<Company>Xgui4</Company>
+	<Copyright>Copyright (MIT) Xgui4 2026</Copyright>
 	<FileVersion>0.0.0.2</FileVersion>
 	<CreateDesktopShortcut>true</CreateDesktopShortcut>
 	<InformationalVersion>0.0.0.2</InformationalVersion>
@@ -20,6 +20,18 @@
 	<Version>0.0.0.2</Version>
 	<LangVersion>preview</LangVersion>
 	<Configurations>Debug;Release</Configurations>
+	<AssemblyTitle>wpfetch </AssemblyTitle>
+	<SignAssembly>False</SignAssembly>
+	<Title>WPFetch</Title>
+	<PackageProjectUrl>https://github.com/xgui4/WPFetch</PackageProjectUrl>
+	<PackageIcon>appicon.png</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/xgui4/WPFetch</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackAsTool>True</PackAsTool>
+	<NeutralLanguage>en-CA</NeutralLanguage>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,7 +45,6 @@
     <None Remove=".gitattributes" />
     <None Remove=".gitignore" />
     <None Remove="Download The Icons Fonts.url" />
-    <None Remove="README.md" />
     <None Remove="Assets\Images\appicon.ico" />
     <None Remove="Assets\Images\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp" />
     <None Remove="Assets\Images\gpu-white.png" />
@@ -78,7 +89,6 @@
     <None Remove="Assets\Images\winVista.png" />
     <None Remove="Assets\Images\winX-white.png" />
     <None Remove="Assets\Images\winX.png" />
-    <None Remove="LICENSE.txt" />
     <None Remove="os-tan.png" />
   </ItemGroup>
 
@@ -240,6 +250,21 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\icons\appicon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
