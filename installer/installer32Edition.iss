@@ -31,8 +31,8 @@ ArchitecturesAllowed=x86compatible
 ArchitecturesInstallIn64BitMode=x86compatible
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=..\bin\Release\net9.0-windows\publish\win-86\LICENSE.txt
-InfoBeforeFile=..\bin\Release\net9.0-windows\publish\win-86\README.md
+LicenseFile=..\LICENSE.txt
+InfoBeforeFile=..\README.md
 ; Remove the following line to run in administrative install mode (install for all users).
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
@@ -48,8 +48,8 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\bin\Release\net9.0-windows\publish\win-86\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\bin\Release\net9.0-windows\publish\win-86\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\bin\Release\net10.0-windows7.0\publish\win-86\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\bin\Release\net10.0-windows7.0\publish\win-86\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
