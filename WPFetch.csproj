@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Assets\Images\appicon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\icons\appicon.ico</ApplicationIcon>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
 	<AssemblyName>wpfetch</AssemblyName>
 	<Company>Xgui4 Studio</Company>
@@ -83,7 +83,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\Images\appicon.ico">
+    <Content Include="Assets\icons\appicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\win11-os-tan-temp.png">
@@ -159,7 +159,7 @@
     <Content Include="README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\Images\appicon.ico">
+    <Resource Include="Assets\icons\appicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Content Include="Assets\Images\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp">

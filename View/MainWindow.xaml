@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:WPFetch.ViewModels"
         mc:Ignorable="d"
         Title="WPFetch" Height="460" Width="850"
-        Icon="../Assets/Images/appicon.ico">
+        Icon="../Assets/icons/appicon.ico">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
