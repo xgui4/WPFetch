@@ -1,6 +1,6 @@
 # WPFetch
 
-<img src="Assets/icons/appicon.png" alt="WPFetch Logo" with="75px"; height="75px"/>
+<img src="Assets/icons/appicon.png" alt="WPFetch Logo" width="75" height="75">
 
 > [!Note]
 > This project is a hobby project and may be one day stopped being updated and isnt covered by any warranty
