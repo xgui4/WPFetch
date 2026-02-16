@@ -1,10 +1,5 @@
 ﻿using Microsoft.Win32;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.Windows;
-using System.Windows.Controls;
 using WPFetch.Backend;
 using WPFetch.Model;
 using WPFetch.Model.Json;

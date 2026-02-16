@@ -1,19 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DesktopWallpaper;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.DirectoryServices.ActiveDirectory;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using WPFetch.Backend;
 using WPFetch.Model.System;
-using WPFetch.Utils;
 using WPFetch.View;
 
 namespace WPFetch.ViewModels
@@ -43,37 +35,37 @@ namespace WPFetch.ViewModels
         private string operatingSystemInformationLabel = "Operating System";
 
         [ObservableProperty]
-        private string? operatingSystemInformationValue = hardwareInfoService.RequestOperatingSystem();
+        private string? operatingSystemInformationValue = "";
 
         [ObservableProperty]
         private string kernelInformationLabel = "Kernel";
 
         [ObservableProperty]
-        private string? kernelInformationValue = hardwareInfoService.RequestKernel();
+        private string? kernelInformationValue = "";
 
         [ObservableProperty]
         private string machineNameInformationLabel = "Machine Name";
 
         [ObservableProperty]
-        private string? machineNameInformationValue = hardwareInfoService.RequestMachineName();
+        private string? machineNameInformationValue = "";
 
         [ObservableProperty]
         private string storageInformationLabel = "Storage";
 
         [ObservableProperty]
-        private string? storageInformationValue = hardwareInfoService.RequestStorage();
+        private string? storageInformationValue = "";
 
         [ObservableProperty]
         private string cpuThreadsInformationLabel = "Threads";
 
         [ObservableProperty]
-        private string? cpuThreadsInformationValue = hardwareInfoService.RequestCpuThreads();
+        private string? cpuThreadsInformationValue = "";
 
         [ObservableProperty]
         private string cpuInformationLabel = "Processor";
 
         [ObservableProperty]
-        private string? cpuInformationValue = hardwareInfoService.RequestCPU();
+        private string? cpuInformationValue = "";
 
         [ObservableProperty]
         private ObservableCollection<GpuModel>? gpus = new(hardwareInfoService.RequestGPU());
@@ -82,19 +74,19 @@ namespace WPFetch.ViewModels
         private string memoryInformationLabel = "Total Memory (RAM)";
 
         [ObservableProperty]
-        private string? memoryInformationValue = hardwareInfoService.RequestRAM();
+        private string? memoryInformationValue = "";
 
         [ObservableProperty]
         private string numbersOfTaskRunningLabel = "Numbers of Tasks Running";
 
         [ObservableProperty]
-        private string? numbersOfTaskRunningValue = hardwareInfoService.RequestNumberOfTaskRunning();
+        private string? numbersOfTaskRunningValue = "";
 
         [ObservableProperty]
         private string batteryInformationLabel = "Battery";
 
         [ObservableProperty]
-        private string? batteryInformationValue = hardwareInfoService.RequestBatteryPercentage();
+        private string? batteryInformationValue = "";
 
         [ObservableProperty]
         private string? refreshButtonLabel = "Update Info";

@@ -1,22 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DesktopWallpaper;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using WPFetch.Backend;
 using WPFetch.Model.Enums;
-using WPFetch.Model.Json;
-using WPFetch.Model.System;
-using WPFetch.Utils;
 
 namespace WPFetch.ViewModels
 {
@@ -26,7 +15,7 @@ namespace WPFetch.ViewModels
 
         private static SettingService? settings;
 
-        private static RessourcesManagerService ressourcesManagerService; 
+        private static RessourcesManagerService? ressourcesManagerService; 
 
         public AboutViewModel()
         {
@@ -50,35 +39,35 @@ namespace WPFetch.ViewModels
         [ObservableProperty]
         private string? featuresLabelValue =
             """
-            ## Features
-            - Fetch you hardware like noefetch does but with a GUI and with customisable main image 
-            - Show OS-Tan as main images and windows logo on top on of the setup info
-            - Command line argurment
-            - Configuration via GUI (comming soon)
-            - Link for a the github release page in the check update button (might do more in the future)
+            Features
+                - Fetch you hardware like noefetch does but with a GUI and with customisable main image 
+                - Show OS-Tan as main images and windows logo on top on of the setup info
+                - Command line argurment
+                - Configuration via GUI (disabled) 
+                - Link for a the github release page in the check update button (might do more in the future)
             """;
 
         [ObservableProperty]
         private string? techUsedLabelValue =
             """
             ## Nuget Packages && Framework used :
-            - Community Toolkit  Version 8.4.0
-            - FluentSysInfo.Core" Version 1.0.8860
-            - Newtonsoft.Json" Version 13.0.3
-            - System.Drawing.Common Version 9.0.0
-            - System.Management" Version= 9.0.0"
+            - Community Toolkit
+            - FluentSysInfo.Core
+            - Newtonsoft.Json
+            - System.Drawing.Common
+            - System.Management
             - Windows Presentation Foundation
-            - Inno Setup for the installer 
+            - Inno Setup for the installer
             """;
 
         [ObservableProperty]
-        private string? appIconPath = ressourcesManagerService?.GetImagesPath("appicon.ico") ?? "../Assets/Images/appicon.ico";
+        private string? appIconPath = "../Assets/icons/appicon.ico";
 
         [ObservableProperty]
-        private string? authorsLabel = "🧑‍💻 Developer : Xgui4 Studio";
+        private string? authorsLabel = "Developer : Xgui4 Studio";
 
         [ObservableProperty]
-        private string? licenseLabel = "📜 License : MIT License";
+        private string? licenseLabel = "License : MIT License";
 
         [ObservableProperty]
         private string? checkUpdateButtonLabel = "Check Update";

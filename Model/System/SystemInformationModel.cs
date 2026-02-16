@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Numerics;
-using System.Windows;
+﻿using System.Numerics;
 using FluentSysInfo.Core.Enums;
 using WPFetch.Model.Enums;
 using WPFetch.Utils;
