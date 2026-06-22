@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 ; Non-commercial use only
 
-#define MyAppName "wpfetch"
-#define MyAppVersion "0.0.0.2"
+#define MyAppName "WPFetch (ARM)"
+#define MyAppVersion "0.0.1.0"
 #define MyAppPublisher "Xgui4"
 #define MyAppURL "https://github.com/xgui4/wpfetch"
 #define MyAppExeName "wpfetch.exe"

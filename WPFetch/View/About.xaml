@@ -1,0 +1,62 @@
+﻿<Window x:Class="WPFetch.View.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFetch.View"
+        xmlns:vm="clr-namespace:WPFetch.ViewModels"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="About" Height="500" Width="500">
+    <Window.DataContext>
+        <vm:AboutViewModel/>
+    </Window.DataContext>
+    <ScrollViewer>
+        <StackPanel>
+            <Image Name="AppIcon" Source="{Binding AppIconPath}" HorizontalAlignment="Left" Width="100" Height="100"/>
+            <TextBlock FontWeight="Bold" Name="AppTitle" Text="{Binding FullTitleValue}"/>
+            <Label Name="DescriptionLabel" Content="{Binding DescriptionValue}"/>
+            <Label Name="Authors" Content="{Binding AuthorsLabel}"/>
+            <Label Name="Features" Content="{Binding FeaturesLabelValue}" />
+            <Label Name="Techs" Content="{Binding TechUsedLabelValue}" />
+            <Label Name="License" Content="{Binding LicenseLabel}"/>
+            <Button Name="CheckUpdateButton" Content="{Binding CheckUpdateButtonLabel}" Command="{Binding SetCheckUpdateButtonCommand}"/>
+
+            <Label FontWeight="UltraBold" FontSize="30" Name="ConfigSectionLabel" Content="{Binding ConfigSectionLabelContent}"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Name="FluentUICheckBoxLabel" Content="{Binding IsFluentUIEnableLabelContent}"/>
+                <CheckBox Name="FluentUIEnable" IsChecked="{Binding IsFluentUIEnable}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Name="DefaultWindowsInputBoxLabel" Content="{Binding DefaultWindowsInputBoxLabelContent}"/>
+                <TextBox Name="DefaultWindowsInputBox" Text="{Binding DefaultWindowsVersionInputBoxValue}" />
+            </StackPanel>
+
+            <Label Name="ChooseALanguageLabel" Content="{Binding ChooseALanguageLabelContent}"/>
+            <ComboBox ItemsSource="{Binding LocalesAvailable}" SelectedValue="{Binding LocaleSelected}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ComboBoxItem Content="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Label Name="ChooseAThemeLabel" Content="{Binding ChooseAThemeLabelContent}"/>
+            <ComboBox ItemsSource="{Binding ThemesAvailable}" SelectedValue="{Binding ThemeSelected}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ComboBoxItem Content="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
+            <Button Name="ConfirmChangesButton" Content="{Binding ConfirmChangesButtonLabel}" Command="{Binding ConfirmChangesButtonCommand}"/>
+            <Button Name="ResetChangesButton" Content="{Binding ResetChangesButtonLabel}" Command="{Binding ResetChangesButtonCommand}"/>
+
+            <Label FontSize="20" Content="More options coming later" />
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>

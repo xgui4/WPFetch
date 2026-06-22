@@ -6,7 +6,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="WPFetch.csproj">
+  <Project Path="Wpfetch\WPFetch.csproj">
     <BuildType Solution="Debug|x86" Project="Release" />
     <BuildType Solution="Release|x86" Project="Debug" />
   </Project>

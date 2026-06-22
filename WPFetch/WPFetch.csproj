@@ -1,0 +1,213 @@
+﻿ <Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\Assets\Images\icons\appicon.ico</ApplicationIcon>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<AssemblyName>wpfetch</AssemblyName>
+	<Company>Xgui4</Company>
+	<Copyright>Copyright (GPLv3) Xgui4 2026</Copyright>
+	<FileVersion>0.0.1.0</FileVersion>
+	<CreateDesktopShortcut>true</CreateDesktopShortcut>
+	<InformationalVersion>0.0.1.0</InformationalVersion>
+	<TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+	<DefaultLanguage>English</DefaultLanguage>
+	<Description>A utility to fetch you system info with a OS-tan.</Description>
+	<Version>0.0.1.0</Version>
+	<LangVersion>preview</LangVersion>
+	<Configurations>Debug;Release</Configurations>
+	<AssemblyTitle>wpfetch</AssemblyTitle>
+	<SignAssembly>False</SignAssembly>
+	<Title>WPFetch</Title>
+	<NeutralLanguage>en-CA</NeutralLanguage>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\Assets\Images\icons\appicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\OS-Tan\win11-os-tan-temp.png" Link="Assets\Images\OS-Tan\win11-os-tan-temp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Assets\Images\Windows\win2012Server.png" Link="Assets\Images\Windows\win2012Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2016Server-white.png" Link="Assets\Images\Windows\win2016Server-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2019Server.png" Link="Assets\Images\Windows\win2019Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2022Server.png" Link="Assets\Images\Windows\win2022Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2025Server.png" Link="Assets\Images\Windows\win2025Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2K.png" Link="Assets\Images\Windows\win2K.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2K3Server-white.png" Link="Assets\Images\Windows\win2K3Server-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2K3Server.png" Link="Assets\Images\Windows\win2K3Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2K8Server.png" Link="Assets\Images\Windows\win2K8Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win2K8Server-white.png" Link="Assets\Images\Windows\win2K8Server-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win3dot1.png" Link="Assets\Images\Windows\win3dot1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Assets\Images\icons\gpu.png" Link="Assets\Images\icons\gpu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\icons\ram-white.png" Link="Assets\Images\icons\ram-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\icons\ram.png" Link="Assets\Images\icons\ram.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win10.png" Link="Assets\Images\Windows\win10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win11.png" Link="Assets\Images\Windows\win11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Common" Version="8.4.0" />
+    <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.4.0" />
+    <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="FluentSysInfo.Core" Version="1.0.8860" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Management" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\README.md" Link="README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="..\Assets\Images\icons\appicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="..\Assets\Images\OS-Tan\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp" Link="Assets\Images\OS-Tan\fanart-ichika-madobe-mascot-windows-11-v0-1n9jlmb54poa1.webp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\OS-Tan\os-tan7.png" Link="Assets\Images\OS-Tan\os-tan7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win3x-white.png" Link="Assets\Images\Windows\win3x-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win3x.png" Link="Assets\Images\Windows\win3x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win7-white.png" Link="Assets\Images\Windows\win7-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win7.png" Link="Assets\Images\Windows\win7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win8.png" Link="Assets\Images\Windows\win8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win95-white.png" Link="Assets\Images\Windows\win95-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win95.png" Link="Assets\Images\Windows\win95.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win98-white.png" Link="Assets\Images\Windows\win98-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\win98.png" Link="Assets\Images\Windows\win98.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\WindowsXP-white.png" Link="Assets\Images\Windows\WindowsXP-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\WindowsXP.png" Link="Assets\Images\Windows\WindowsXP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winLonghorn-white.png" Link="Assets\Images\Windows\winLonghorn-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winLonghorn.png" Link="Assets\Images\Windows\winLonghorn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winME-white.png" Link="Assets\Images\Windows\winME-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winME.png" Link="Assets\Images\Windows\winME.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winNeptune-white.png" Link="Assets\Images\Windows\winNeptune-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winNeptune.png" Link="Assets\Images\Windows\winNeptune.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winNT-white.png" Link="Assets\Images\Windows\winNT-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winNT.png" Link="Assets\Images\Windows\winNT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winVista-white.png" Link="Assets\Images\Windows\winVista-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winVista.png" Link="Assets\Images\Windows\winVista.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winX-white.png" Link="Assets\Images\Windows\winX-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Images\Windows\winX.png" Link="Assets\Images\Windows\winX.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\LICENSE.txt" Link="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="..\Assets\Images\icons\appicon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Images\icons\" />
+    <Folder Include="Assets\Images\OS-Tan\" />
+    <Folder Include="Assets\Images\Windows\" />
+  </ItemGroup>
+
+</Project>

@@ -1,13 +1,13 @@
 # WPFetch
 
-<img src="Assets/icons/appicon.png" alt="WPFetch Logo" width="75" height="75">
+<img src="Assets/Images/icons/appicon.png" alt="WPFetch Logo" width="75" height="75">
 
 > [!Note]
-> This project is a hobby project and may be one day stopped being updated and isnt covered by any warranty
+> This project is a hobby project and may be one day stopped being updated and isn't covered by any warranty
 
 ## Summary
 
-A utility to fetch you system info with a OS-tan
+A utility to fetch you system info with a OS-tan.
 
 ## Features
 
@@ -28,6 +28,7 @@ A utility to fetch you system info with a OS-tan
 - Inno Setup for the installer
 
 ## Compilation and Installation
+    Note : this guide might not be updated, and might not work with the latest updatre with the updated structureé
 
 - **Option 1: Compile from Source**
 
@@ -65,7 +66,7 @@ A utility to fetch you system info with a OS-tan
 
 ## License
 
-MIT
+GPLv3
 
 ## Credits
 
