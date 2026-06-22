@@ -19,7 +19,7 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release
     - name : zip the publish 
-    - run : Compress-Archive -p "WPFetch\bin\Release\net9.0-windows7.0\publish\*" -DestinationPath 'wpfetch-nightly.zip'
+      run : Compress-Archive -p "WPFetch\bin\Release\net9.0-windows7.0\publish\*" -DestinationPath 'wpfetch-nightly.zip'
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v7.0.1
       with:
@@ -46,8 +46,7 @@ jobs:
           with:
             tag_name: nightly
             name: Nightly Release
-            body: "
-              Automatic Nighty (daily) binary build powered by GtiHub Actions. \n
+            body: "Automatic Nighty (daily) binary build powered by GtiHub Actions."
             files: |
               ./artifacts/*.zip
     
