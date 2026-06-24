@@ -5,6 +5,8 @@ name: Build and Publish Nightly Build
 on:
   push:
     branches: ["dev"]
+  permissions:
+    contents: write
 jobs:
   build:
     runs-on: windows-latest
