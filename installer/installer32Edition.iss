@@ -48,8 +48,8 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\bin\Release\net10.0-windows7.0\publish\win-86\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\bin\Release\net10.0-windows7.0\publish\win-86\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\WPFetch\bin\Release\net9.0-windows7.0\publish\win-86\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\WPFetch\bin\Release\net9.0-windows7.0\publish\win-86\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

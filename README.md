@@ -5,6 +5,10 @@
 > [!Note]
 > This project is a hobby project and may be one day stopped being updated and isn't covered by any warranty
 
+## Cross-Platform Version
+
+[See Anime-Fetch (anime-fetch)](https://github.com/xgui4/anime-fetch)
+
 ## Summary
 
 A utility to fetch you system info with a OS-tan.
@@ -28,7 +32,7 @@ A utility to fetch you system info with a OS-tan.
 - Inno Setup for the installer
 
 ## Compilation and Installation
-    Note : this guide might not be updated, and might not work with the latest updatre with the updated structureé
+    Note : this guide might not be updated, and might not work with the latest updatre with the updated structureï¿½
 
 - **Option 1: Compile from Source**
 
