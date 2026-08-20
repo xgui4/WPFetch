@@ -1,5 +1,5 @@
 ﻿# Credits
-- - App icon : <https://www.reddit.com/r/MadobeNanami/comments/1hn9nlo/nanami_and_c_sharp/>
+- App icon : <https://www.reddit.com/r/MadobeNanami/comments/1hn9nlo/nanami_and_c_sharp/>
 - Windows logo (Own by Microsoft Corporation) image available on Wikipedia
   - Windows 11 : <https://en.wikipedia.org/wiki/Windows_11#/media/File:Windows_11_logo.svg/2>
   - Windows 10 : <https://en.wikipedia.org/wiki/Windows_10#/media/File:Windows_10_Logo.svg/2>
